@@ -1,5 +1,5 @@
 {
-  "name": "up4grabs",
+  "name": "NextJS-Prisma-Tailwind-template",
   "private": true,
   "scripts": {
     "dev": "next dev",
