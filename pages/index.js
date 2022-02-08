@@ -6,12 +6,13 @@ const prisma = new PrismaClient();
 
 export async function getStaticProps() {
   const users = await prisma.user.findMany();
+  const categories = await prisma.categories.findMany();
   return {
-    props: { users },
+    props: { users, categories },
   };
 }
 
-export default function Home({ users }) {
+export default function Home({ users, categories }) {
   return (
     <div className="">
       <Head>
@@ -22,13 +23,20 @@ export default function Home({ users }) {
 
       <main className="bg-grey w-100 h-96">
         <h1 className="bg-grey text-9xl text-center">Up4Grabs</h1>
-        {/* <ul className="w-fit">
-          {users.map((user) => (
+        <ul className="w-fit">
+          {/* {users.map((user) => (
             <li key={user.id} className="text-green">
               {user.name}
             </li>
           ))}
-        </ul> */}
+        </ul>
+        <ul className="w-fit">
+          {categories.map((category) => (
+            <li key={category.id} className="text-green">
+              {category.category}
+            </li>
+          ))} */}
+        </ul>
       </main>
 
       <footer className=""></footer>
