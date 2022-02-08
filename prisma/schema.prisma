@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,40 +7,57 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ExtendedProfile {
-  id        Int    @id @default(autoincrement())
-  biography String
-  user      User   @relation(fields: [userId], references: [id])
-  userId    Int
-}
-
 model User {
-  id           Int              @id @default(autoincrement())
-  name         String?
-  email        String           @unique
-  profileViews Int              @default(0)
-  role         Role             @default(USER)
-  coinflips    Boolean[]
-  posts        Post[]
-  profile      ExtendedProfile?
+  id       Int            @id @default(autoincrement())
+  name     String?
+  email    String         @unique
+  password String?
+  Sender   Conversation[] @relation("sender_id")
+  Receiver Conversation[] @relation("receiver_id")
+  Message  Message[]
 }
 
-model Post {
-  id         Int        @id @default(autoincrement())
-  title      String
-  published  Boolean    @default(true)
-  author     User       @relation(fields: [authorId], references: [id])
-  authorId   Int
-  comments   Json?
-  views      Int        @default(0)
-  likes      Int        @default(0)
-  categories Category[]
+model Categories {
+  id       Int     @id @default(autoincrement())
+  category String?
 }
 
-model Category {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
-  posts Post[]
+model Listings {
+  id          Int     @id @default(autoincrement())
+  user_id     Int
+  category_id Int
+  title       String
+  description String?
+  img_src     String
+  start_date  String
+  end_date    String
+  postal_code String
+}
+
+model Biddings {
+  id         Int @id @default(autoincrement())
+  user_id    Int
+  listing_id Int
+}
+
+model Conversation {
+  id          Int       @id @default(autoincrement())
+  sender_id   Int
+  receiver_id Int
+  sender      User      @relation(name: "sender_id", fields: [sender_id], references: [id])
+  receiver    User      @relation(name: "receiver_id", fields: [receiver_id], references: [id])
+  Message     Message[]
+}
+
+model Message {
+  id              Int          @id @default(autoincrement())
+  content         String
+  timestamp       DateTime     @default(now())
+  sender_id       Int
+  User            User         @relation(fields: [sender_id], references: [id])
+  conversation_id Int
+  Conversation    Conversation @relation(fields: [conversation_id], references: [id])
+
 }
 
 enum Role {
