@@ -14,7 +14,7 @@ model User {
   password String?
   Sender   Conversation[] @relation("sender_id")
   Receiver Conversation[] @relation("receiver_id")
-  Message  Message[]
+  messages  Message[]
 }
 
 model Categories {
@@ -46,7 +46,7 @@ model Conversation {
   receiver_id Int
   sender      User      @relation(name: "sender_id", fields: [sender_id], references: [id])
   receiver    User      @relation(name: "receiver_id", fields: [receiver_id], references: [id])
-  Message     Message[]
+  messages    Message[]
 }
 
 model Message {

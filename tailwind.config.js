@@ -6,6 +6,8 @@ module.exports = {
   theme: {
     colors: {
       'blue': '#1fb6ff',
+      'aqua': '#8ED1CA',
+      'aquaLight':'#afded9',
       'purple': '#7e5bef',
       'pink': '#ff49db',
       'orange': '#ff7849',
@@ -21,5 +23,7 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 }
