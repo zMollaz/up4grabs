@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "../components/NavBar";
+import Header from "../components/Header";
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -21,6 +22,7 @@ export default function Home({ users }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      <Header />
       {/* <h1 className="bg-grey text-9xl text-center">Up4Grabs</h1>
         <ul className="w-fit">
           {users.map((user) => (
