@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <div className="navbar mb-2 shadow-lg bg-aqua text-neutral-content">
+    <div className="navbar shadow-lg bg-aqua text-neutral-content">
       <div className="flex-none px-2 mx-2">
         <span className="text-lg font-bold">Up4Grabs</span>
       </div>
