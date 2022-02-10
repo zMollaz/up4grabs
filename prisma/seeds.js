@@ -2,16 +2,16 @@ const { PrismaClient, Prisma } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const main = async () => {
+  console.log("Seeding started!!");
+
   await prisma.user.createMany({
     data: [
       { name: "Bob", email: "bob@prisma.io", password: "password" },
       { name: "Yewande", email: "yewande@prisma.io", password: "password" },
     ],
-    skipDuplicates: true, //
+    skipDuplicates: true,
   });
-};
 
-const category = async () => {
   await prisma.categories.createMany({
     data: [
       { category: "Furniture" },
@@ -22,9 +22,7 @@ const category = async () => {
     ],
     skipDuplicates: true, //
   });
-};
 
-const listing = async () => {
   await prisma.listings.createMany({
     data: [
       {
@@ -269,9 +267,7 @@ const listing = async () => {
     ],
     skipDuplicates: true,
   });
-};
 
-const bidding = async () => {
   await prisma.biddings.createMany({
     data: [
       { user_id: 1, listing_id: 20 },
@@ -281,18 +277,14 @@ const bidding = async () => {
       { user_id: 2, listing_id: 4 },
       { user_id: 2, listing_id: 3 },
     ],
-    skipDuplicates: true, //
+    skipDuplicates: true,
   });
-};
 
-const conversation = async () => {
   await prisma.conversation.createMany({
     data: [{ sender_id: 1, receiver_id: 2 }],
-    skipDuplicates: true, //
+    skipDuplicates: true,
   });
-};
 
-const message = async () => {
   await prisma.message.createMany({
     data: [
       {
@@ -301,40 +293,16 @@ const message = async () => {
         content: "Congratulations you've been selected as the winner!",
       },
     ],
-    skipDuplicates: true, //
+    skipDuplicates: true,
   });
+  console.log("Seeding done!!");
 };
 
-const seedData = async () => {
-  await main().catch((e) => {
-    console.error(e);
+main()
+  .catch((e) => {
+    console.log(e);
     process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
   });
-
-  await category().catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
-
-  await listing().catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
-
-  await bidding().catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
-
-  await conversation().catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
-
-  await message().catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
-};
-
-seedData();

@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -9,7 +9,9 @@ export default function Navbar() {
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden lg:flex">
           <a className="btn btn-ghost btn-sm rounded-btn">Home</a>
-          <a className="btn btn-ghost btn-sm rounded-btn">Listings</a>
+          <Link href="/api/listings">
+            <a className="btn btn-ghost btn-sm rounded-btn">Listings</a>
+          </Link>
           <a className="btn btn-ghost btn-sm rounded-btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +34,7 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="Search"
-            className="input input-ghost"
+            className="input input-ghost h-7"
           />
         </div>
       </div>
