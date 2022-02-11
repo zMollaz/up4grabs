@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "../components/NavBar";
 import Header from "../components/Header";
+import Listings from "../components/Listings";
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -23,6 +24,14 @@ export default function Home({ users }) {
       </Head>
       <Navbar />
       <Header />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 p-5">
+      <Listings />
+      <Listings />
+      <Listings />
+      <Listings />
+      <Listings />
+      <Listings />
+      </div>
       {/* <h1 className="bg-grey text-9xl text-center">Up4Grabs</h1>
         <ul className="w-fit">
           {users.map((user) => (
