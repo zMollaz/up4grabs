@@ -2,11 +2,9 @@ import Head from "next/head";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import Listings from "../components/Listings";
+import prisma from '../lib/prisma';
 
-const { PrismaClient } = require("@prisma/client");
 export async function getStaticProps() {
-  const prisma = new PrismaClient();
-
   const listings = await prisma.listings.findMany();
   console.log("inside fetcher", listings);
   return {
@@ -15,6 +13,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({listings}) {
+// export default function Home() {
   return (
     <div className="bg-grey w-100 h-96">
       <Head>
@@ -26,6 +25,7 @@ export default function Home({listings}) {
       <Header />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 p-5">
       <Listings listings={listings}/>
+      {/* <Listings /> */}
       </div>
     </div>
   );
