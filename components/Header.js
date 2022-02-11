@@ -5,7 +5,7 @@ export default function Header() {
         autoPlay
         loop
         muted
-        className="absolute z-10 w-auto min-w-full max-h-3/6 max-w-none"
+        className="relative z-10 w-auto min-w-full max-h-3/6 max-w-none"
       >
         <source src="/videos/header2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
