@@ -52,7 +52,7 @@ const main = async () => {
       {
         user_id: 1,
         category_id: 3,
-        title: "Brother Printer",
+        title: "Brother - Printer",
         description:
           "Unopened. Bought for the home office, but ended up never using. Black and white print only. Well reviewed, great little all in one setup. Model: DCP-L254DW",
         img_src: "https://i.ibb.co/QHz2sHf/printer.jpg",
@@ -100,7 +100,7 @@ const main = async () => {
       {
         user_id: 1,
         category_id: 2,
-        title: "Bestway H2O GO! 18ft. Single Water Slide",
+        title: "18ft. Single Water Slide",
         description:
           "Easy set-up 18 water slide for a smoother, longer, faster, wetter ride. Includes One 18 ft. Water Slide and One Surf Rider Inflatable. Slide: 18 ft. / 5.49 m, Rider inflated: 22 in. x 12 in. / 56 cm x 30 cm x 10 cm. Ages 5 to 12.",
         img_src: "https://i.ibb.co/sFQJHpG/H20-GO-water-slide.jpg",
@@ -160,7 +160,7 @@ const main = async () => {
       {
         user_id: 2,
         category_id: 2,
-        title: "Spin Master -  Monster Truck",
+        title: "Spin Master - Monster Truck",
         description:
           "The Monster Jam MEGA El Toro RC is the ultimate monster for kids aged 4 and up. Requires 2 AAA batteries (not included) for the remote control. Dimensions (Overall): 17.5 Inches (H) x 28.5 Inches (W) x 18.6 Inches (D).",
         img_src: "https://i.ibb.co/grzVwdG/free-spin-master.jpg",
@@ -175,7 +175,7 @@ const main = async () => {
         title: "Industrial Flashlight",
         description:
           "Small and compact, this general purpose flashlight is suitable for use in personal applications ranging from reading books and maps, to searching through crawlspaces and storage units. Requires AA batteries.",
-        img_src: "https://i.ibb.co/sqhKnBM/toaster.jpg",
+        img_src: "https://i.ibb.co/sgkzv8p/industrialflashlight.jpg",
         start_date: "2022-02-17",
         end_date: "2022-02-24",
         postal_code: "M6K",
@@ -232,7 +232,7 @@ const main = async () => {
       {
         user_id: 2,
         category_id: 3,
-        title: "Apple Keyboard (Small Defect)",
+        title: "Apple Keyboard",
         description:
           "This is a 2015 Apple Magic Keyboard in excellent working condition with one issue: there is a bit of a bend on the right-bottom of the keyboard. Bluetooth-enabled Mac computer with OS X v10.11 or later. iOS devices running iOS 9.1 or later. Height: 0.16–0.43 inch (0.41–1.09 cm) Width: 10.98 inches (27.9 cm).",
         img_src: "https://i.ibb.co/84ngVx6/apple-magic-Keyboard.jpg",

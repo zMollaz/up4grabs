@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Listings from "../components/Listings";
 import prisma from '../lib/prisma';
 
+
 export async function getStaticProps() {
   const listings = await prisma.listings.findMany();
   console.log("inside fetcher", listings);
@@ -11,6 +12,8 @@ export async function getStaticProps() {
     props: { listings },
   };
 }
+
+
 
 export default function Home({listings}) {
 // export default function Home() {
