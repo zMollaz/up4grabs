@@ -1,20 +1,20 @@
 import Head from "next/head";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import Listings from "../components/Listings";
 
 const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
-
 export async function getStaticProps() {
-  const users = await prisma.user.findMany();
+  const prisma = new PrismaClient();
 
+  const listings = await prisma.listings.findMany();
+  console.log("inside fetcher", listings);
   return {
-    props: { users },
+    props: { listings },
   };
 }
 
-export default function Home({ users }) {
+export default function Home({listings}) {
   return (
     <div className="bg-grey w-100 h-96">
       <Head>
@@ -25,21 +25,8 @@ export default function Home({ users }) {
       <Navbar />
       <Header />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 p-5">
-      <Listings />
-      <Listings />
-      <Listings />
-      <Listings />
-      <Listings />
-      <Listings />
+      <Listings listings={listings}/>
       </div>
-      {/* <h1 className="bg-grey text-9xl text-center">Up4Grabs</h1>
-        <ul className="w-fit">
-          {users.map((user) => (
-            <li key={user.id} className="text-green">
-              {user.name}
-            </li>
-          ))}
-        </ul> */}
     </div>
   );
 }
