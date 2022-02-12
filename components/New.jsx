@@ -1,3 +1,4 @@
+import { useState } from 'react';
 
 async function saveListing(listing) {
   const response = await fetch('/api/new', {
@@ -13,6 +14,7 @@ async function saveListing(listing) {
 
 
 export default function New({ handleClick }) {
+  const [listing, setListing] = useState({})
   return (
     <div
       aria-hidden="true"
