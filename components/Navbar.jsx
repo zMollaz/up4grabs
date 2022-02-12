@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-export default function Navbar({onClick}) {
+export default function Navbar({ handleClick }) {
   return (
-    <div className="navbar sticky top-0 -z-500 shadow-lg bg-aqua text-neutral-content">
+    <div className="navbar sticky top-0 -z-500 shadow-lg bg-gray-dark text-neutral-content">
       <div className="flex-none px-2 mx-2">
         <span className="text-lg font-bold">Up4Grabs</span>
       </div>
@@ -29,24 +29,23 @@ export default function Navbar({onClick}) {
               ></path>
             </svg>
           </a>
-          <Link href="/listings/new">
-            <a onClick={onClick} className="btn btn-ghost btn-sm rounded-btn">
-              <svg
-                class="h-6 w-6 text-white"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                {" "}
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />{" "}
-                <line x1="12" y1="8" x2="12" y2="16" />{" "}
-                <line x1="8" y1="12" x2="16" y2="12" />
-              </svg>
-            </a>
-          </Link>
+
+          <a onClick={handleClick} className="btn btn-ghost btn-sm rounded-btn">
+            <svg
+              className="h-6 w-6 text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {" "}
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />{" "}
+              <line x1="12" y1="8" x2="12" y2="16" />{" "}
+              <line x1="8" y1="12" x2="16" y2="12" />
+            </svg>
+          </a>
         </div>
       </div>
       <div className="flex-1 lg:flex-none">
