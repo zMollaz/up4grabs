@@ -77,9 +77,11 @@ export default function New({ handleClick }) {
             />
           </div>
           {/*  */}
-          <label for="start">Draw Date:</label>
+          <label 
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" for="start">Draw Date:</label>
 
           <input 
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           type="date" 
           id="start" 
           name="trip-start"
