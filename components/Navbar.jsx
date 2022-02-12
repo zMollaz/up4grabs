@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Navbar() {
+export default function Navbar({onClick}) {
   return (
     <div className="navbar sticky top-0 -z-500 shadow-lg bg-aqua text-neutral-content">
       <div className="flex-none px-2 mx-2">
@@ -8,8 +8,10 @@ export default function Navbar() {
       </div>
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden lg:flex">
-          <a className="btn btn-ghost btn-sm rounded-btn">Home</a>
-          <Link href="/api/listings">
+          <Link href="/">
+            <a className="btn btn-ghost btn-sm rounded-btn">Home</a>
+          </Link>
+          <Link href="/">
             <a className="btn btn-ghost btn-sm rounded-btn">Listings</a>
           </Link>
           <a className="btn btn-ghost btn-sm rounded-btn">
@@ -27,6 +29,24 @@ export default function Navbar() {
               ></path>
             </svg>
           </a>
+          <Link href="/listings/new">
+            <a onClick={onClick} className="btn btn-ghost btn-sm rounded-btn">
+              <svg
+                class="h-6 w-6 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                {" "}
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />{" "}
+                <line x1="12" y1="8" x2="12" y2="16" />{" "}
+                <line x1="8" y1="12" x2="16" y2="12" />
+              </svg>
+            </a>
+          </Link>
         </div>
       </div>
       <div className="flex-1 lg:flex-none">
