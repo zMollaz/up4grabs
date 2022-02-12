@@ -5,6 +5,7 @@ import New from "../components/New";
 import prisma from "../lib/prisma";
 import {useState} from 'react';
 
+
 export async function getStaticProps() {
   const listings = await prisma.listings.findMany();
   // console.log("inside fetcher", listings);

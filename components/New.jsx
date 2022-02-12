@@ -1,5 +1,8 @@
+
+
 export default function New({ handleClick }) {
   return (
+  
     <div
       aria-hidden="true"
       className={` max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
@@ -59,7 +62,7 @@ export default function New({ handleClick }) {
               required=""
             />
           </div>
-  
+
           {/*  */}
           <div>
             <label
@@ -76,6 +79,18 @@ export default function New({ handleClick }) {
             />
           </div>
           {/*  */}
+          <div class="flex items-center justify-center">
+            <div class="datepicker relative form-floating mb-3 xl:w-96">
+              <input
+                type="text"
+                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                placeholder="Select a date"
+              />
+              <label for="floatingInput" class="text-gray-700">
+                Select a date
+              </label>
+            </div>
+          </div>
           {/*  */}
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">
