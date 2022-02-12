@@ -19,7 +19,7 @@ export default function listingItem({ listingItem }) {
   return (
     <Layout>
       <section className="text-gray-600 body-font">
-        <div className="container mx-auto bg-[#c39611] flex px-8 py-24 md:flex-row justify-between flex-col items-center">
+        <div className="container mx-auto bg-[#fefefe] w-full flex px-8 py-24 md:flex-row justify-between flex-col items-center">
           <div className="lg:w-52  md:w-1/2 w-5/6 mb-10 md:mb-0 self-start">
             <img
               className="lg:max-w-lg  md:w-42 md:h-[35vh] rounded"
