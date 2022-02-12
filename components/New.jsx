@@ -1,6 +1,19 @@
+
+async function saveListing(listing) {
+  const response = await fetch('/api/new', {
+    method: 'POST',
+    body: JSON.stringify(listing)
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return await response.json();
+}
+
+
 export default function New({ handleClick }) {
   return (
-  
     <div
       aria-hidden="true"
       className={` max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
@@ -122,7 +135,17 @@ export default function New({ handleClick }) {
                 </div>
               </div>
               <div className="flex justify-center p-2">
-                <button className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
+                <button 
+                    onSubmit={async (data, e) => {
+                      try {
+                        await saveListing(data);
+                        setListing([...listing, data]);
+                        e.target.reset();
+                      } catch (err) {
+                        console.log(err);
+                      }
+                    }}
+                className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
                   Create
                 </button>
               </div>
