@@ -77,15 +77,15 @@ export default function New({ handleClick }) {
             />
           </div>
           {/*  */}
-          <label for="start">Draw Date</label>
+          <label for="start">Draw Date:</label>
 
-          <input type="date" 
+          <input 
+          type="date" 
           id="start" 
           name="trip-start"
-          value="2018-07-22"
-          min="2018-01-01" 
-       max="2018-12-31" 
-       />
+          min="2020-01-01"
+          max="2024-12-31" 
+           />
           {/*  */}
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">
