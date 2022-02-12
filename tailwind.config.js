@@ -2,7 +2,6 @@ module.exports = {
   content: [
     "./pages/**/*.{js,jsx,html}",
     "./components/**/*.{js,jsx,html}",
-    "./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js"
   ],
   theme: {
     colors: {
@@ -29,7 +28,6 @@ module.exports = {
   },
   plugins: [
     require('daisyui'),
-    require('tw-elements/dist/plugin')
   ],
 
 }
