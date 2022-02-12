@@ -19,7 +19,7 @@ export default function Listings({ listings }) {
     );
   });
   return (
-    <div className="bg-[#c39611] pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 ">
+    <div className="bg-[#c39611] pr-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 ">
       {parsedListings}
     </div>
   );

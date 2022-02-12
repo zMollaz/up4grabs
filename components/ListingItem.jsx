@@ -6,15 +6,15 @@ export default function Listings(props) {
   return (
     <Link href={`/listings/${id}`}>
       <a>
-        <div className=" bg-white shadow-md hover:shadow-2xl m-4 rounded-lg border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <div className=" bg-white w-full shadow-md hover:shadow-2xl m-4 rounded-lg border-gray-200">
           <header>
             <img src={img} className=" rounded-t-lg h-40 w-full" />
           </header>
-          <div className="p-5 h-44">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-black">
+          <div className="p-5 h-44 flex flex-col items-center justify-between">
+            <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 text-black">
               {title}
             </h5>
-            <footer className="text-black">{date}</footer>
+            <footer className="text-black self-end ">{date}</footer>
           </div>
         </div>
       </a>

@@ -21,7 +21,7 @@ module.exports = {
       'black': '#000000',
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
+      sans: ['Graphik', 'sans-serif', ],
       serif: ['Merriweather', 'serif'],
     },
     extend: {},
