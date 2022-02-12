@@ -14,7 +14,13 @@ async function saveListing(listing) {
 
 
 export default function New({ handleClick }) {
-  const [listing, setListing] = useState({})
+  const [state, setState] = useState({
+    title: "",
+    description: "",
+    img_src: "",
+    postal_code: "K1Y4W1",
+    end_date: "2022-02-24",
+  })
   return (
     <div
       aria-hidden="true"

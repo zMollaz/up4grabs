@@ -8,7 +8,6 @@ const prisma = new PrismaClient();
 // }
 
 export default async function formHandler(req, res) {
-
   if(req.method !== 'POST') {
     return res.status(405).json({ messsage: 'Method not allowed'});
   }
@@ -20,3 +19,4 @@ export default async function formHandler(req, res) {
 
  res.json({savedListing});
 }
+
