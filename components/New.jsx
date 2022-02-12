@@ -1,5 +1,6 @@
 export default function New({ handleClick }) {
   return (
+  
     <div
       aria-hidden="true"
       className={` max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
@@ -59,7 +60,7 @@ export default function New({ handleClick }) {
               required=""
             />
           </div>
-  
+
           {/*  */}
           <div>
             <label
@@ -76,6 +77,18 @@ export default function New({ handleClick }) {
             />
           </div>
           {/*  */}
+          <label 
+          htmlFor="drawdate"
+          className="block mt-2 text-sm font-medium text-black " for="start">Draw Date </label>
+          <input 
+          name="drawdate"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          type="date" 
+          id="start" 
+          name="trip-start"
+          min="2020-01-01"
+          max="2024-12-31" 
+           />
           {/*  */}
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">
