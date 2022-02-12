@@ -8,9 +8,9 @@ export default function Listings(props) {
       <a>
         <div className=" bg-white shadow-md hover:shadow-2xl m-4 rounded-lg border-gray-200 dark:bg-gray-800 dark:border-gray-700">
           <header>
-            <img src={img} className="object-fill rounded-t-lg h-60 w-full" />
+            <img src={img} className=" rounded-t-lg h-40 w-full" />
           </header>
-          <div className="p-5">
+          <div className="p-5 h-44">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-black">
               {title}
             </h5>
