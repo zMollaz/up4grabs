@@ -1,17 +1,17 @@
 export default function Footer() {
   return (
-    <footer className="bottom-0 items-center p-4 footer bg-gray-dark text-neutral-content">
+    <footer className="bottom-0 items-center p-4 footer bg-gray-dark font-bold text-md text-neutral-content ">
       <div className="items-center grid-flow-col">
         <svg
-          class="h-12 w-12 text-white"
+          className="h-12 w-12 text-white"
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          strokeWidth="2"
           stroke="currentColor"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           {" "}
           <path stroke="none" d="M0 0h24v24H0z" />{" "}
@@ -25,7 +25,7 @@ export default function Footer() {
             transform="rotate(240 12 13)"
           />
         </svg>
-        <p>Up4Grabs © 2022 - All right reserved</p>
+        <p>Up4Grabs © 2022 - All rights reserved</p>
       </div>
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
         <a>
