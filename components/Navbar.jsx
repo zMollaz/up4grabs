@@ -1,8 +1,7 @@
 import Link from "next/link";
-import {useState} from 'react';
+import { useState } from "react";
 
-
-export default function Navbar({ handleClick, onSearch}) {
+export default function Navbar({ handleClick, onSearch }) {
   const [searchValue, setSearchValue] = useState("");
 
   return (
@@ -52,17 +51,20 @@ export default function Navbar({ handleClick, onSearch}) {
           </a>
         </div>
       </div>
-      {/* <button onClick={getServerSideProps} className="btn btn-">Test</button> */}
+      <button onClick={() => onSearch(searchValue)} className="btn btn-">
+        Test
+      </button>
       <div className="flex-1 lg:flex-none">
         <div className="form-control">
           <input
             value={searchValue}
-            onChange={(e) => {setSearchValue(e.target.value)
-              if(e.target.value === "") {
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              if (e.target.value === "") {
                 onSearch("");
               }
             }}
-            onKeyDown={ (e) => {
+            onKeyDown={(e) => {
               if (e.keyCode === 13) {
                 onSearch(searchValue);
               }
