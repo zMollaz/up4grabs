@@ -89,7 +89,7 @@ const changeHandler = (e) => {
               value={state.title}
               onChange={changeHandler}
               name="title"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="..."
               required=""
             />
@@ -107,7 +107,7 @@ const changeHandler = (e) => {
               type="text"
               name="description"
               placeholder="..."
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required=""
             />
           </div>
@@ -124,7 +124,7 @@ const changeHandler = (e) => {
               onChange={changeHandler}
               value={state.postal_code}
               name="postal_code"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="..."
               required=""
             />
@@ -137,7 +137,7 @@ const changeHandler = (e) => {
           onChange={changeHandler}
           value={state.end_date}
           name="end_date"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           type="date" 
           id="start" 
           min="2020-01-01"
