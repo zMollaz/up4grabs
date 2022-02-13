@@ -15,6 +15,19 @@ export async function getStaticProps() {
   };
 }
 
+//search function 
+// export async function getStaticProps() {
+//   const search = await prisma.listings.findMany({
+//     where: {
+//       title: {
+//         contains: 'shelf',
+//       },
+//     },
+//   })
+// }
+
+
+
 //use useEffect inside the component when you want to make additional queries to db or api like create
 
 export default function Home({ listings }) {
