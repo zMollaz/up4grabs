@@ -16,6 +16,7 @@ export async function getServerSideProps(context) {
 
 export default function listingItem({ listingItem }) {
   const { title, description, img_src, end_date, postal_code } = listingItem;
+  
 
   return (
     <Layout>
@@ -28,7 +29,9 @@ export default function listingItem({ listingItem }) {
               src={img_src}
             />
           </div>
-          <Countdown/>
+          <Countdown
+          end_date={end_date}
+          />
           <div className="lg:max-w-lg lg:w-70  md:w-60 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-black">
               {title}

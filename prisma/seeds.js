@@ -33,7 +33,7 @@ const main = async () => {
           "Iron metal frame with a bronze finish; enhanced with metal rosettes. Mounts vertically or horizontally; mounting hardware is included. Star detailing at each intersection.",
         img_src: "https://i.ibb.co/5RYKb2d/wall-mirror.jpg",
         start_date: "2022-02-10",
-        end_date: "2022-02-24",
+        end_date: "2022-02-15",
         postal_code: "M2N",
       },
 
@@ -45,7 +45,7 @@ const main = async () => {
           "Bought this for my kids, but sadly they don’t really play with it anymore. Thought I’d give it away. Details… you’re trapped inside an amusement park with the janitor-turned-zombie, but the only way out is find a key in the dark, spooky shed. But be careful! At any moment you could get zombified! If you do become a zombie, you’ll be on a new team–go after other players until you catch them all!",
         img_src: "https://i.ibb.co/0QtNtGq/zombie-chase-game.jpg",
         start_date: "2022-02-09",
-        end_date: "2022-02-24",
+        end_date: "2022-02-26",
         postal_code: "M2N",
       },
 
@@ -93,7 +93,7 @@ const main = async () => {
           "Vintage wall unit from 1970 in excellent condition. Two piece wall unit, six shelves, one light up glass cabinet, three drawers, and a liquor cabinet Holds a 32 inch TV.",
         img_src: "https://i.ibb.co/9Nj1nPn/tv-shelf.jpg",
         start_date: "2022-02-02",
-        end_date: "2022-02-24",
+        end_date: "2022-02-18",
         postal_code: "M2N",
       },
 
