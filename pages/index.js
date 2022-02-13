@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Listings from "../components/Listings";
 import New from "../components/New";
 import prisma from "../lib/prisma";
@@ -28,6 +29,7 @@ export default function Home({ listings }) {
       <Header />
       <Listings listings={listings}/>
       {display && <New handleClick={handleClick} />}
+      <Footer />
     </Layout>
   );
 
