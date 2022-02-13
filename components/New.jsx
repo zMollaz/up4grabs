@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 // async function saveListing(listing) {
 //   const response = await fetch('/api/new', {
@@ -12,40 +12,79 @@ import { useState } from 'react';
 //   return await response.json();
 // }
 
-
 export default function New({ handleClick }) {
   const defaultState = {
     title: "",
     description: "",
-    img_src: "",
+    // img_src: "",
     end_date: "",
     postal_code: "K1Y4W1",
   };
 
-  const [state, setState] = useState(defaultState)
+  const [image, setImage] = useState(null);
+  const [state, setState] = useState(defaultState);
   // const [title, setTitle] = useState('')
-const changeHandler = (e) => {
-  const {name, value} = e.target;
-  const newState = {...state, [name]: value};
-  setState(newState);
-}
+  const changeHandler = (e) => {
+    console.log(123, e.target);
+    const { name, value } = e.target;
+    const newState = { ...state, [name]: value };
+    setState(newState);
+  };
 
-  async function saveTitle(e) {
+  async function saveListing(e) {
     e.preventDefault();
-    const response = await fetch('/api/new', {
+    const response = await fetch("/api/new", {
       body: JSON.stringify(state),
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      method: 'POST',
+      method: "POST",
     });
-
-    const newListing= await response.json();
-    setState(defaultState)
-  
+    // saveImage(e)
+    uploadToWebApi(e);
+    const newListing = await response.json();
+    setState(defaultState);
   }
 
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+
+  // async function Main() {
+  //   const file = document.querySelector("#myfile").files[0];
+  //   console.log(await toBase64(file));
+  // }
+
+  // Main();
+
+  const saveImage = (e) => {
+    console.log("Inside saveImage", e.target.files[0]);
+    if (e.target.files && e.target.files[0]) {
+      const i = e.target.files[0];
+      setImage(i);
+    }
+  };
+
+  const uploadToWebApi = async (e) => {
+    console.log("Inside uploadToWebApi", image);
+    const parsedImage = await toBase64(image)
+    console.log(222, parsedImage)
+    const body = new FormData();
+    body.append("file", parsedImage);
+    const imageServerWebApi =
+      `'https://api.imgbb.com/1/upload?key=44cfa4dc7b5f14fa19e55b846de10cd4' --form 'image=${parsedImage}'`;
+    const response = await fetch(imageServerWebApi, {
+      method: "POST",
+      body,
+    });
+    const res = await response.json();
+    console.log(res);
+  };
 
   return (
     <div
@@ -75,6 +114,7 @@ const changeHandler = (e) => {
           </button>
         </div>
         <form
+          onSubmit={saveListing}
           className="overflow-auto px-4 pb-4 space-y-8 rounded-lg  lg:px-8 sm:pb-6  bg-white fixed inset-24 "
           action="#"
         >
@@ -102,8 +142,8 @@ const changeHandler = (e) => {
               Description
             </label>
             <textarea
-            value={state.value}
-             onChange={changeHandler}
+              value={state.value}
+              onChange={changeHandler}
               type="text"
               name="description"
               placeholder="..."
@@ -130,19 +170,23 @@ const changeHandler = (e) => {
             />
           </div>
           {/*  */}
-          <label 
-          htmlFor="start"
-          className="flow-root mt-2 text-sm font-medium text-black " for="start">Draw Date </label>
-          <input 
-          onChange={changeHandler}
-          value={state.end_date}
-          name="end_date"
-          className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          type="date" 
-          id="start" 
-          min="2020-01-01"
-          max="2024-12-31" 
-           />
+          <label
+            htmlFor="start"
+            className="flow-root mt-2 text-sm font-medium text-black "
+            for="start"
+          >
+            Draw Date{" "}
+          </label>
+          <input
+            onChange={changeHandler}
+            value={state.end_date}
+            name="end_date"
+            className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            type="date"
+            id="start"
+            min="2020-01-01"
+            max="2024-12-31"
+          />
           {/*  */}
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">
@@ -171,14 +215,18 @@ const changeHandler = (e) => {
                         Attach a file
                       </p>
                     </div>
-                    <input onChange={changeHandler} value={state.img_src} type="file" className="opacity-0" name="img_src"/>
+                    {/* <input onChange={changeHandler} value={state.img_src} type="file" className="opacity-0" name="img_src"/> */}
+                    <input
+                      onChange={(e) => saveImage(e)}
+                      type="file"
+                      className="opacity-0"
+                      name="img_src"
+                    />
                   </label>
                 </div>
               </div>
               <div className="flex justify-center p-2">
-                <button 
-                    onClick={saveTitle}
-                className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
+                <button className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
                   Create
                 </button>
               </div>
