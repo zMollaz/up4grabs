@@ -43,7 +43,7 @@ export default function listingItem({ listingItem }) {
             mapStyle="mapbox://styles/mapbox/streets-v9"
             mapboxAccessToken={MAPBOX_TOKEN}
           >
-            <Marker longitude={45.421} latitude={75.697} />
+            <Marker  latitude={43.59438} longitude={-79.64279}/>
           </Map>
 
           <div className="lg:max-w-lg lg:w-70  md:w-60 flex flex-col md:items-start md:text-left items-center text-center">
