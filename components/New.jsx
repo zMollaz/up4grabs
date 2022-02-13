@@ -50,7 +50,7 @@ const changeHandler = (e) => {
   return (
     <div
       aria-hidden="true"
-      className={` max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
+      className={`max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
     >
       <div className="absolute inset-0  w-full  h-full md:h-auto">
         {/* <div className="flex justify-center items-center rounded-lg shadow w-screen h-screen"> */}
@@ -75,7 +75,7 @@ const changeHandler = (e) => {
           </button>
         </div>
         <form
-          className="px-4 pb-4 space-y-8 rounded-lg  lg:px-8 sm:pb-6  bg-white fixed inset-24 "
+          className="overflow-auto px-4 pb-4 space-y-8 rounded-lg  lg:px-8 sm:pb-6  bg-white fixed inset-24 "
           action="#"
         >
           <div>
@@ -89,7 +89,7 @@ const changeHandler = (e) => {
               value={state.title}
               onChange={changeHandler}
               name="title"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="..."
               required=""
             />
@@ -107,7 +107,7 @@ const changeHandler = (e) => {
               type="text"
               name="description"
               placeholder="..."
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required=""
             />
           </div>
@@ -124,7 +124,7 @@ const changeHandler = (e) => {
               onChange={changeHandler}
               value={state.postal_code}
               name="postal_code"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="..."
               required=""
             />
@@ -132,12 +132,12 @@ const changeHandler = (e) => {
           {/*  */}
           <label 
           htmlFor="start"
-          className="block mt-2 text-sm font-medium text-black " for="start">Draw Date </label>
+          className="flow-root mt-2 text-sm font-medium text-black " for="start">Draw Date </label>
           <input 
           onChange={changeHandler}
           value={state.end_date}
           name="end_date"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           type="date" 
           id="start" 
           min="2020-01-01"
