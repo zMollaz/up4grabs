@@ -1,5 +1,9 @@
 import Layout from "../../components/Layout";
 import prisma from "../../lib/prisma";
+import Map, { Marker } from "react-map-gl";
+
+import "mapbox-gl/dist/mapbox-gl.css";
+const MAPBOX_TOKEN = 'pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg';
 
 export async function getServerSideProps(context) {
   const listingItem = await prisma.listings.findUnique({
@@ -26,13 +30,29 @@ export default function listingItem({ listingItem }) {
               alt="hero"
               src={img_src}
             />
+            <div>
+              <Map
+                initialViewState={{
+                  latitude: 48.8566,
+                  longitude: 2.3522,
+                  zoom: 14,
+                }}
+                style={{ width: 800, height: 600 }}
+                mapStyle="mapbox://styles/mapbox/streets-v9"
+                mapboxAccessToken={MAPBOX_TOKEN}
+              >
+                <Marker longitude={48.8566} latitude={2.3522} color="red" />
+              </Map>
+            </div>
           </div>
           <div className="lg:max-w-lg lg:w-70  md:w-60 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-black">
               {title}
               <br className="hidden lg:inline-block" />
             </h1>
-            <p className="max-w-md mb-8 text-black leading-relaxed">{description}</p>
+            <p className="max-w-md mb-8 text-black leading-relaxed">
+              {description}
+            </p>
             <div className="flex justify-center">
               <button className="ml-4 inline-flex text-white bg-gray-dark border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
                 Button
