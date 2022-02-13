@@ -28,10 +28,12 @@ export default function listingItem({ listingItem }) {
               alt="hero"
               src={img_src}
             />
+          <div className="max-w-full">           
+            <Countdown
+            end_date={end_date}
+            />
           </div>
-          <Countdown
-          end_date={end_date}
-          />
+          </div>
           <div className="lg:max-w-lg lg:w-70  md:w-60 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-black">
               {title}
