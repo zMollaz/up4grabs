@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import prisma from "../../lib/prisma";
+import Countdown from "../../components/Countdown";
 
 export async function getServerSideProps(context) {
   const listingItem = await prisma.listings.findUnique({
@@ -27,6 +28,7 @@ export default function listingItem({ listingItem }) {
               src={img_src}
             />
           </div>
+          <Countdown/>
           <div className="lg:max-w-lg lg:w-70  md:w-60 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-black">
               {title}
