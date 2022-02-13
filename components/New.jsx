@@ -1,26 +1,52 @@
 import { useState } from 'react';
 
-async function saveListing(listing) {
-  const response = await fetch('/api/new', {
-    method: 'POST',
-    body: JSON.stringify(listing)
-  });
+// async function saveListing(listing) {
+//   const response = await fetch('/api/new', {
+//     method: 'POST',
+//     body: JSON.stringify(listing)
+//   });
 
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  return await response.json();
-}
+//   if (!response.ok) {
+//     throw new Error(response.statusText);
+//   }
+//   return await response.json();
+// }
 
 
 export default function New({ handleClick }) {
-  const [state, setState] = useState({
+  const defaultState = {
     title: "",
     description: "",
     img_src: "",
+    end_date: "",
     postal_code: "K1Y4W1",
-    end_date: "2022-02-24",
-  })
+  };
+
+  const [state, setState] = useState(defaultState)
+  // const [title, setTitle] = useState('')
+const changeHandler = (e) => {
+  const {name, value} = e.target;
+  const newState = {...state, [name]: value};
+  setState(newState);
+}
+
+  async function saveTitle(e) {
+    e.preventDefault();
+    const response = await fetch('/api/new', {
+      body: JSON.stringify(state),
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      method: 'POST',
+    });
+
+    const newListing= await response.json();
+    setState(defaultState)
+  
+  }
+
+
   return (
     <div
       aria-hidden="true"
@@ -60,6 +86,8 @@ export default function New({ handleClick }) {
               Title
             </label>
             <input
+              value={state.title}
+              onChange={changeHandler}
               name="title"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="..."
@@ -74,6 +102,8 @@ export default function New({ handleClick }) {
               Description
             </label>
             <textarea
+            value={state.value}
+             onChange={changeHandler}
               type="text"
               name="description"
               placeholder="..."
@@ -91,7 +121,9 @@ export default function New({ handleClick }) {
               Postal code
             </label>
             <input
-              name="title"
+              onChange={changeHandler}
+              value={state.postal_code}
+              name="postal_code"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="..."
               required=""
@@ -99,14 +131,15 @@ export default function New({ handleClick }) {
           </div>
           {/*  */}
           <label 
-          htmlFor="drawdate"
+          htmlFor="start"
           className="block mt-2 text-sm font-medium text-black " for="start">Draw Date </label>
           <input 
-          name="drawdate"
+          onChange={changeHandler}
+          value={state.end_date}
+          name="end_date"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           type="date" 
           id="start" 
-          name="trip-start"
           min="2020-01-01"
           max="2024-12-31" 
            />
@@ -138,21 +171,13 @@ export default function New({ handleClick }) {
                         Attach a file
                       </p>
                     </div>
-                    <input type="file" className="opacity-0" />
+                    <input onChange={changeHandler} value={state.img_src} type="file" className="opacity-0" name="img_src"/>
                   </label>
                 </div>
               </div>
               <div className="flex justify-center p-2">
                 <button 
-                    onSubmit={async (data, e) => {
-                      try {
-                        await saveListing(data);
-                        setListing([...listing, data]);
-                        e.target.reset();
-                      } catch (err) {
-                        console.log(err);
-                      }
-                    }}
+                    onClick={saveTitle}
                 className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
                   Create
                 </button>
