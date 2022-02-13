@@ -132,7 +132,7 @@ const changeHandler = (e) => {
           {/*  */}
           <label 
           htmlFor="start"
-          className="block mt-2 text-sm font-medium text-black " for="start">Draw Date </label>
+          className="flow-root mt-2 text-sm font-medium text-black " for="start">Draw Date </label>
           <input 
           onChange={changeHandler}
           value={state.end_date}
