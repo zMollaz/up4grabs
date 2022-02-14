@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Listings from "../components/Listings";
+import PageBreak from "../components/PageBreak";
 import New from "../components/New";
 import prisma from "../lib/prisma";
 import { useState } from "react";
@@ -35,6 +36,7 @@ export default function Home({ listings }) {
   return (
     <Layout handleClick={handleClick} onSearch={onSearch}>
       <Header />
+      <PageBreak/>
       <Listings listings={filteredListings} />
       {display && <New handleClick={handleClick} />}
       <Footer />
