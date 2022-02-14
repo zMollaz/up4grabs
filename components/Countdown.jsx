@@ -37,9 +37,8 @@ const {end_date} = props
   })
 
   return (
-    <div>{data} until draw!
+    <div>
+      {data} until draw!
     </div>
-    
-
   )
 }
