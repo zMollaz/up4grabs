@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function New({ handleClick }) {
+
   const defaultState = {
     title: "",
     description: "",
@@ -19,6 +20,7 @@ export default function New({ handleClick }) {
 
   const saveListing = async (e) => {
     e.preventDefault();
+    console.log("inside saveListing", state)
     const response = await fetch("/api/new", {
       body: JSON.stringify(state),
       headers: {
@@ -33,12 +35,21 @@ export default function New({ handleClick }) {
     const newListing = await response.json();
     setState(defaultState);
   };
+  const imageToBase64 = (img) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(img);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 
-  const saveImage = (e) => {
-    // console.log("Inside saveImage", e.target.files[0]);
+  const saveImage = async (e) => {
+    console.log("Inside saveImage", e.target.files[0]);
     if (e.target.files && e.target.files[0]) {
       const savedImage = e.target.files[0];
-      setState({ ...state, img_src: savedImage });
+      const convertedImage = await imageToBase64(savedImage)
+      // const parsedImage = convertedImage.split(",")[1];
+      setState({ ...state, img_src: convertedImage });
     }
   };
 
