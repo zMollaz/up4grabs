@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Navbar from "./Navbar";
-
+import Footer from "../components/Footer";
 
 export default function Layout({ children, onSearch }) {
 
@@ -15,6 +15,7 @@ export default function Layout({ children, onSearch }) {
       </Head>
       <Navbar onSearch={onSearch} />
       <div>{children}</div>
+      <Footer />
     </div>
   );
 }

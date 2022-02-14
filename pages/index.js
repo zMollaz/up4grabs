@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+
 import Listings from "../components/Listings";
 import PageBreak from "../components/PageBreak";
 
@@ -18,15 +18,13 @@ export async function getStaticProps() {
 //use useEffect inside the component when you want to make additional queries to db or api like create
 
 export default function Home({ listings }) {
-
   const [filteredListings, setFilteredListings] = useState(listings);
-  
 
   const onSearch = (searchValue) => {
     setFilteredListings(
       listings.filter((listing) => {
-        if (!searchValue) return true 
-        return listing.title.toLowerCase().includes(searchValue.toLowerCase())
+        if (!searchValue) return true;
+        return listing.title.toLowerCase().includes(searchValue.toLowerCase());
       })
     );
   };
@@ -34,9 +32,8 @@ export default function Home({ listings }) {
   return (
     <Layout onSearch={onSearch}>
       <Header />
-      <PageBreak/>
+      <PageBreak />
       <Listings listings={filteredListings} />
-      <Footer />
     </Layout>
   );
 }
