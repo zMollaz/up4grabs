@@ -37,40 +37,15 @@ const {end_date} = props
   })
 
   return (
-    <div class="flex py-2 border-gray-200 text-red text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
+    <div className="flex py-2 border-gray-200 text-red text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
       {data} until draw!
     </div>
   
   )
 }
 
-{/* <div class="flex flex-col">
-<span class="font-mono text-5xl countdown">
-</span>
-    days
-  
-</div> 
-<div class="flex flex-col">
-<span class="font-mono text-5xl countdown">
 
-</span>
-    hours
-  
-</div> 
-<div class="flex flex-col">
-<span class="font-mono text-5xl countdown">
 
-</span>
-    min
-  
-</div> 
-<div class="flex flex-col">
-<span class="font-mono text-5xl countdown">
-
-</span>
-    sec
-  
-</div> */}
 
 
 

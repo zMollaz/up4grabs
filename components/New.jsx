@@ -171,12 +171,12 @@ export default function New({ handleClick }) {
             max="2024-12-31"
           />
           <button className="dropdown ">
-            <div tabindex="0" class="flex flex-row w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
+            <div tabindex="0" className="flex flex-row w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
               Categories
             </div>
             <ul
               tabindex="0"
-              class="shadow menu dropdown-content bg-base-100 "
+              className="shadow menu dropdown-content bg-base-100 "
             >
               <li>
                 <a>Furniture</a>
