@@ -52,7 +52,7 @@ export default function Navbar({ handleClick, onSearch }) {
         </div>
       </div>
       <button onClick={() => onSearch(searchValue)} className="btn btn-">
-        Test
+      enter
       </button>
       <div className="flex-1 lg:flex-none">
         <div className="form-control">
