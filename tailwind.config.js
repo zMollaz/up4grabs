@@ -1,4 +1,9 @@
 module.exports = {
+  purge: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './layouts/**/*.{js,ts,jsx,tsx}'
+  ],
   content: [
     "./pages/**/*.{js,jsx,html}",
     "./components/**/*.{js,jsx,html}",
@@ -22,7 +27,8 @@ module.exports = {
       'earthy-blue' : '#31708e',
       'seaweed' : '#687864',
       'bb-blue' : '#8fc1e3',
-      'off-white' :'#f7f9fb'
+      'off-white' :'#f7f9fb',
+      'red' : '#ff6961',
     },
     fontFamily: {
       sans: ['Teko', 'sans-serif', ],
