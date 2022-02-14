@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+const imgbbUploader = require("imgbb-uploader");
 // async function saveListing(listing) {
 //   const response = await fetch('/api/new', {
 //     method: 'POST',
@@ -16,16 +16,15 @@ export default function New({ handleClick }) {
   const defaultState = {
     title: "",
     description: "",
-    // img_src: "",
+    img_src: "",
     end_date: "",
     postal_code: "K1Y4W1",
   };
 
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
   const [state, setState] = useState(defaultState);
-  // const [title, setTitle] = useState('')
+
   const changeHandler = (e) => {
-    console.log(123, e.target);
     const { name, value } = e.target;
     const newState = { ...state, [name]: value };
     setState(newState);
@@ -41,10 +40,18 @@ export default function New({ handleClick }) {
       },
       method: "POST",
     });
-    // saveImage(e)
+
+    // saveImage(e);
     uploadToWebApi(e);
     const newListing = await response.json();
     setState(defaultState);
+
+    // imgbbUploader(
+    //   "44cfa4dc7b5f14fa19e55b846de10cd4",
+    //   "/Users/ae/lighthouse/up4grabs/public/images/test.png"
+    // )
+    //   .then((response) => console.log(response))
+    //   .catch((error) => console.error(error));
   }
 
   const toBase64 = (file) =>
@@ -66,18 +73,20 @@ export default function New({ handleClick }) {
     console.log("Inside saveImage", e.target.files[0]);
     if (e.target.files && e.target.files[0]) {
       const i = e.target.files[0];
-      setImage(i);
+      setState({...state, img_src: i});
     }
   };
-
-  const uploadToWebApi = async (e) => {
-    console.log("Inside uploadToWebApi", image);
-    const parsedImage = await toBase64(image)
-    console.log(222, parsedImage)
+//change state into listing before sending it to the backend
+  const uploadToWebApi = async () => {
+    console.log("Inside uploadToWebApi", state.img_src);
+    const rawImage = await toBase64(state.img_src);
+    const parsedImage = rawImage.split(",")[1];
+    console.log(222, parsedImage);
     const body = new FormData();
-    body.append("file", parsedImage);
-    const imageServerWebApi =
-      `'https://api.imgbb.com/1/upload?key=44cfa4dc7b5f14fa19e55b846de10cd4' --form 'image=${parsedImage}'`;
+    body.append("image", parsedImage);
+    console.log(333, Object.fromEntries(body))
+    // const body = { key: "44cfa4dc7b5f14fa19e55b846de10cd4", image: "/Users/ae/lighthouse/up4grabs/public/images/test.png", name: "testname" }
+    const imageServerWebApi = `https://api.imgbb.com/1/upload?key=44cfa4dc7b5f14fa19e55b846de10cd4`;
     const response = await fetch(imageServerWebApi, {
       method: "POST",
       body,
@@ -173,7 +182,6 @@ export default function New({ handleClick }) {
           <label
             htmlFor="start"
             className="flow-root mt-2 text-sm font-medium text-black "
-            for="start"
           >
             Draw Date{" "}
           </label>
@@ -183,7 +191,6 @@ export default function New({ handleClick }) {
             name="end_date"
             className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             type="date"
-            id="start"
             min="2020-01-01"
             max="2024-12-31"
           />
@@ -215,9 +222,13 @@ export default function New({ handleClick }) {
                         Attach a file
                       </p>
                     </div>
-                    {/* <input onChange={changeHandler} value={state.img_src} type="file" className="opacity-0" name="img_src"/> */}
+
+                    {/* <input  */}
+                    {/* onChange={(e) => saveImage(e)} */}
+
                     <input
-                      onChange={(e) => saveImage(e)}
+                      onChange={saveImage}
+                      // value={state.img_src}
                       type="file"
                       className="opacity-0"
                       name="img_src"
