@@ -1,16 +1,4 @@
 import { useState } from "react";
-const imgbbUploader = require("imgbb-uploader");
-// async function saveListing(listing) {
-//   const response = await fetch('/api/new', {
-//     method: 'POST',
-//     body: JSON.stringify(listing)
-//   });
-
-//   if (!response.ok) {
-//     throw new Error(response.statusText);
-//   }
-//   return await response.json();
-// }
 
 export default function New({ handleClick }) {
   const defaultState = {
@@ -21,7 +9,6 @@ export default function New({ handleClick }) {
     postal_code: "K1Y4W1",
   };
 
-  // const [image, setImage] = useState(null);
   const [state, setState] = useState(defaultState);
 
   const changeHandler = (e) => {
@@ -30,7 +17,7 @@ export default function New({ handleClick }) {
     setState(newState);
   };
 
-  async function saveListing(e) {
+  const saveListing = async (e) => {
     e.preventDefault();
     const response = await fetch("/api/new", {
       body: JSON.stringify(state),
@@ -45,16 +32,9 @@ export default function New({ handleClick }) {
     uploadToWebApi(e);
     const newListing = await response.json();
     setState(defaultState);
+  };
 
-    // imgbbUploader(
-    //   "44cfa4dc7b5f14fa19e55b846de10cd4",
-    //   "/Users/ae/lighthouse/up4grabs/public/images/test.png"
-    // )
-    //   .then((response) => console.log(response))
-    //   .catch((error) => console.error(error));
-  }
-
-  const toBase64 = (file) =>
+  const imageToBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -62,38 +42,31 @@ export default function New({ handleClick }) {
       reader.onerror = (error) => reject(error);
     });
 
-  // async function Main() {
-  //   const file = document.querySelector("#myfile").files[0];
-  //   console.log(await toBase64(file));
-  // }
-
-  // Main();
-
   const saveImage = (e) => {
-    console.log("Inside saveImage", e.target.files[0]);
+    // console.log("Inside saveImage", e.target.files[0]);
     if (e.target.files && e.target.files[0]) {
-      const i = e.target.files[0];
-      setState({...state, img_src: i});
+      const savedImage = e.target.files[0];
+      setState({ ...state, img_src: savedImage });
     }
   };
-//change state into listing before sending it to the backend
-  const uploadToWebApi = async () => {
-    console.log("Inside uploadToWebApi", state.img_src);
-    const rawImage = await toBase64(state.img_src);
-    const parsedImage = rawImage.split(",")[1];
-    console.log(222, parsedImage);
-    const body = new FormData();
-    body.append("image", parsedImage);
-    console.log(333, Object.fromEntries(body))
-    // const body = { key: "44cfa4dc7b5f14fa19e55b846de10cd4", image: "/Users/ae/lighthouse/up4grabs/public/images/test.png", name: "testname" }
-    const imageServerWebApi = `https://api.imgbb.com/1/upload?key=44cfa4dc7b5f14fa19e55b846de10cd4`;
-    const response = await fetch(imageServerWebApi, {
-      method: "POST",
-      body,
-    });
-    const res = await response.json();
-    console.log(res);
-  };
+
+  //change state into listing before sending it to the backend
+  // const uploadToWebApi = async (listing) => {
+  //   // console.log("Inside uploadToWebApi", listing.img_src);
+  //   const rawImage = await imageToBase64(listing.img_src);
+  //   const parsedImage = rawImage.split(",")[1];
+  //   // console.log(222, parsedImage);
+  //   const body = new FormData();
+  //   body.append("image", parsedImage);
+  //   // console.log(333, Object.fromEntries(body));
+  //   const imageServerWebApi = `https://api.imgbb.com/1/upload?key=44cfa4dc7b5f14fa19e55b846de10cd4`;
+  //   const response = await fetch(imageServerWebApi, {
+  //     method: "POST",
+  //     body,
+  //   });
+  //   const res = await response.json();
+  //   console.log(res);
+  // };
 
   return (
     <div
