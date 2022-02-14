@@ -1,6 +1,6 @@
 import { useState } from "react";
 // pass set display and set state and defaultState as props
-export default function New({ handleClick }) {
+export default function New({ handleClick, setDisplay }) {
   const defaultState = {
     title: "",
     description: "",
@@ -31,6 +31,7 @@ export default function New({ handleClick }) {
 
     const newListing = await response.json();
     setState(defaultState);
+    setDisplay(false);
   };
 
   const imageToBase64 = (img) =>

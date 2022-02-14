@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Listings from "../components/Listings";
 import PageBreak from "../components/PageBreak";
-import New from "../components/New";
+
 import prisma from "../lib/prisma";
 import { useState } from "react";
 
@@ -18,11 +18,9 @@ export async function getStaticProps() {
 //use useEffect inside the component when you want to make additional queries to db or api like create
 
 export default function Home({ listings }) {
-  const [display, setDisplay] = useState(false);
+
   const [filteredListings, setFilteredListings] = useState(listings);
-  const handleClick = () => {
-    setDisplay((prev) => !prev);
-  };
+  
 
   const onSearch = (searchValue) => {
     setFilteredListings(
@@ -34,11 +32,10 @@ export default function Home({ listings }) {
   };
 
   return (
-    <Layout handleClick={handleClick} onSearch={onSearch}>
+    <Layout onSearch={onSearch}>
       <Header />
       <PageBreak/>
       <Listings listings={filteredListings} />
-      {display && <New handleClick={handleClick} />}
       <Footer />
     </Layout>
   );
