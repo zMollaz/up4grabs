@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useState } from "react";
 
-export default function Navbar({ handleClick }) {
+export default function Navbar({ handleClick, onSearch }) {
+  const [searchValue, setSearchValue] = useState("");
+
   return (
     <div className="navbar sticky top-0 -z-500 shadow-lg bg-gray-dark text-neutral-content">
       <div className="flex-none px-2 mx-2">
@@ -48,9 +51,24 @@ export default function Navbar({ handleClick }) {
           </a>
         </div>
       </div>
+      <button onClick={() => onSearch(searchValue)} className="btn btn-">
+      enter
+      </button>
       <div className="flex-1 lg:flex-none">
         <div className="form-control">
           <input
+            value={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              if (e.target.value === "") {
+                onSearch("");
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.keyCode === 13) {
+                onSearch(searchValue);
+              }
+            }}
             type="text"
             placeholder="Search"
             className="input input-ghost h-7"
