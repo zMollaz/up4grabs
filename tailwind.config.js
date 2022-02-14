@@ -13,12 +13,16 @@ module.exports = {
       'orange': '#ff7849',
       'green': '#13ce66',
       'yellow': '#ffc82c',
-      'gray-dark': '#273444',
+      'gray-dark': '#1e3b50',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
       't-gray': '#080707', 
       'white': '#fefefe',
       'black': '#000000',
+      'earthy-blue' : '#31708e',
+      'seaweed' : '#687864',
+      'bb-blue' : '#8fc1e3',
+      'off-white' :'#f7f9fb'
     },
     fontFamily: {
       sans: ['Teko', 'sans-serif', ],
