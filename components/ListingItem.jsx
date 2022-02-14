@@ -18,7 +18,7 @@ export default function Listings(props) {
             <footer className=" card-footer absolute bottom-0 flex right-0 s-between w-full">
               <div>
                 <svg
-                  class="h-7 w-7 text-red"
+                  class=" icon h-7 w-7 text-red"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"

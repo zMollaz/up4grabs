@@ -8,6 +8,10 @@
   padding: 4%;
 }
 
+.icon:hover {
+  fill: #DA4567;
+}
+
 /* html,
 body {
   padding: 0;
