@@ -29,18 +29,10 @@ export default function New({ handleClick }) {
     });
 
     // saveImage(e);
-    uploadToWebApi(e);
+    // uploadToWebApi(e);
     const newListing = await response.json();
     setState(defaultState);
   };
-
-  const imageToBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
 
   const saveImage = (e) => {
     // console.log("Inside saveImage", e.target.files[0]);
