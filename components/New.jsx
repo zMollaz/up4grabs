@@ -75,7 +75,7 @@ const changeHandler = (e) => {
           </button>
         </div>
         <form
-          className="overflow-auto px-4 pb-4 space-y-8 rounded-lg  lg:px-8 sm:pb-6  bg-white fixed inset-24 "
+          className="w-5/12 overflow-auto px-4 pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
           action="#"
         >
           <div>
