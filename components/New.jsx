@@ -144,8 +144,8 @@ export default function New({ handleClick }) {
             min="2020-01-01"
             max="2024-12-31"
           />
-          <button className="dropdown">
-            <div tabindex="0" class=" w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
+          <button className="dropdown ">
+            <div tabindex="0" class="flex flex-row w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
               Categories
             </div>
             <ul
