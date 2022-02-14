@@ -240,7 +240,6 @@ export default function New({ handleClick }) {
               </div>
               <div className="flex justify-center p-2">
                 <button
-                  onClick={saveTitle}
                   className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl"
                 >
                   Create
