@@ -1,10 +1,12 @@
 import Layout from "../../components/Layout";
+import Countdown from "../../components/Countdown";
 import prisma from "../../lib/prisma";
 import Map, { Marker } from "react-map-gl";
-
 import "mapbox-gl/dist/mapbox-gl.css";
+
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
+
 
 export async function getServerSideProps(context) {
   const listingItem = await prisma.listings.findUnique({
@@ -20,6 +22,7 @@ export async function getServerSideProps(context) {
 
 export default function listingItem({ listingItem }) {
   const { title, description, img_src, end_date, postal_code } = listingItem;
+  
 
   return (
     <Layout>
@@ -31,6 +34,11 @@ export default function listingItem({ listingItem }) {
               alt="hero"
               src={img_src}
             />
+        
+            <Countdown
+            end_date={end_date}
+            />
+
           </div>
 
           <Map
