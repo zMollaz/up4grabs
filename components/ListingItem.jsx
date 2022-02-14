@@ -14,10 +14,12 @@ export default function Listings(props) {
             <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 text-black">
               {title}
             </h5>
-            <footer className="text-black self-end ">{date}</footer>
+            <footer className=" bg-gray-light w-5/12 rounded-lg overflow-hidden shadow-lg text-center text-black self-end ">{date}</footer>
           </div>
         </div>
       </a>
     </Link>
   );
 }
+
+
