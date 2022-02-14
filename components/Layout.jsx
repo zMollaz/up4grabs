@@ -13,7 +13,7 @@ export default function Layout({ children, onSearch }) {
         <link rel="icon" href="/favicon.ico" />
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v<YOUR_MAPBOX_VERSION>/mapbox-gl.css' rel='stylesheet' />
       </Head>
-      <Navbar onSearch={onSearch} />
+      <Navbar onSearch={onSearch}/>
       <div>{children}</div>
       <Footer />
     </div>

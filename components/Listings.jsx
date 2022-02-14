@@ -1,8 +1,12 @@
 import ListingItem from "./ListingItem";
 import moment from "moment";
+import { useEffect } from "react";
+// import { useState} from "react";
 
 export default function Listings({ listings }) {
-  // console.log("inside component", listings);
+  // const [gallery, setGallery] = useState(false)
+
+
   const myDate = function (date) {
     return moment(date, "").fromNow();
   };

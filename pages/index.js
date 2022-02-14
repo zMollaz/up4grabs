@@ -1,9 +1,7 @@
 import Layout from "../components/Layout";
 import Header from "../components/Header";
-
 import Listings from "../components/Listings";
 import PageBreak from "../components/PageBreak";
-
 import prisma from "../lib/prisma";
 import { useState } from "react";
 
@@ -18,6 +16,7 @@ export async function getStaticProps() {
 //use useEffect inside the component when you want to make additional queries to db or api like create
 
 export default function Home({ listings }) {
+
   const [filteredListings, setFilteredListings] = useState(listings);
 
   const onSearch = (searchValue) => {
@@ -28,6 +27,10 @@ export default function Home({ listings }) {
       })
     );
   };
+
+  useEffect(() => {
+    
+  }, [])
 
   return (
     <Layout onSearch={onSearch}>

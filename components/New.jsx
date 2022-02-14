@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useRouter } from 'next/router';
+
 // pass set display and set state and defaultState as props
-export default function New({ handleClick, setDisplay }) {
+export default function New({ handleClick, setDisplay}) {
+  const router = useRouter()
+
   const defaultState = {
     title: "",
     description: "",
@@ -19,7 +23,6 @@ export default function New({ handleClick, setDisplay }) {
   // use a use effect or create a custom hook
   const saveListing = async (e) => {
     e.preventDefault();
-    console.log("inside saveListing", state);
     const response = await fetch("/api/new", {
       body: JSON.stringify(state),
       headers: {
@@ -32,6 +35,7 @@ export default function New({ handleClick, setDisplay }) {
     const newListing = await response.json();
     setState(defaultState);
     setDisplay(false);
+    router.reload()
   };
 
   const imageToBase64 = (img) =>
@@ -43,7 +47,6 @@ export default function New({ handleClick, setDisplay }) {
     });
 
   const saveImage = async (e) => {
-    console.log("Inside saveImage", e.target.files[0]);
     if (e.target.files && e.target.files[0]) {
       const savedImage = e.target.files[0];
       const convertedImage = await imageToBase64(savedImage);
