@@ -37,7 +37,9 @@ export default function listingItem({ listingItem }) {
         <h2 className="text-sm title-font text-gray-500 tracking-widest">Up4Grabs</h2>
         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{title}</h1>
         <div className="flex mb-4">
-  
+        <Countdown
+            end_date={end_date}
+            />
           <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
             <a className="text-gray-500">
               <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
@@ -89,9 +91,7 @@ export default function listingItem({ listingItem }) {
               src={img_src}
             />
         
-            {/* <Countdown
-            end_date={end_date}
-            /> */}
+
          
            
 
