@@ -11,7 +11,6 @@ export default function New({ handleClick }) {
   };
 
   const [state, setState] = useState(defaultState);
-
   const changeHandler = (e) => {
     const { name, value } = e.target;
     const newState = { ...state, [name]: value };
@@ -100,7 +99,7 @@ export default function New({ handleClick }) {
         </div>
         <form
           onSubmit={saveListing}
-          className="overflow-auto px-4 pb-4 space-y-8 rounded-lg  lg:px-8 sm:pb-6  bg-white fixed inset-24 "
+          className="w-5/12 overflow-auto px-4 pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
           action="#"
         >
           <div>
@@ -165,11 +164,38 @@ export default function New({ handleClick }) {
             onChange={changeHandler}
             value={state.end_date}
             name="end_date"
-            className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
             type="date"
+            id="start"
             min="2020-01-01"
             max="2024-12-31"
           />
+          <button className="dropdown ">
+            <div tabindex="0" class="flex flex-row w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
+              Categories
+            </div>
+            <ul
+              tabindex="0"
+              class="shadow menu dropdown-content bg-base-100 "
+            >
+              <li>
+                <a>Furniture</a>
+              </li>
+              <li>
+                <a>Toys/Games</a>
+              </li>
+              <li>
+                <a>Electronics</a>
+              </li>
+              <li>
+                <a>Home Appliances</a>
+              </li>
+              <li>
+                <a>Books</a>
+              </li>
+            </ul>
+          </button>
+
           {/*  */}
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">
@@ -213,7 +239,10 @@ export default function New({ handleClick }) {
                 </div>
               </div>
               <div className="flex justify-center p-2">
-                <button className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
+                <button
+                  onClick={saveTitle}
+                  className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl"
+                >
                   Create
                 </button>
               </div>
