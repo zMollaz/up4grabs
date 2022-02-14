@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 // async function saveListing(listing) {
 //   const response = await fetch('/api/new', {
@@ -12,7 +12,6 @@ import { useState } from 'react';
 //   return await response.json();
 // }
 
-
 export default function New({ handleClick }) {
   const defaultState = {
     title: "",
@@ -22,30 +21,28 @@ export default function New({ handleClick }) {
     postal_code: "K1Y4W1",
   };
 
-  const [state, setState] = useState(defaultState)
+  const [state, setState] = useState(defaultState);
   // const [title, setTitle] = useState('')
-const changeHandler = (e) => {
-  const {name, value} = e.target;
-  const newState = {...state, [name]: value};
-  setState(newState);
-}
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    const newState = { ...state, [name]: value };
+    setState(newState);
+  };
 
   async function saveTitle(e) {
     e.preventDefault();
-    const response = await fetch('/api/new', {
+    const response = await fetch("/api/new", {
       body: JSON.stringify(state),
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      method: 'POST',
+      method: "POST",
     });
 
-    const newListing= await response.json();
-    setState(defaultState)
-  
+    const newListing = await response.json();
+    setState(defaultState);
   }
-
 
   return (
     <div
@@ -102,8 +99,8 @@ const changeHandler = (e) => {
               Description
             </label>
             <textarea
-            value={state.value}
-             onChange={changeHandler}
+              value={state.value}
+              onChange={changeHandler}
               type="text"
               name="description"
               placeholder="..."
@@ -130,19 +127,49 @@ const changeHandler = (e) => {
             />
           </div>
           {/*  */}
-          <label 
-          htmlFor="start"
-          className="flow-root mt-2 text-sm font-medium text-black " for="start">Draw Date </label>
-          <input 
-          onChange={changeHandler}
-          value={state.end_date}
-          name="end_date"
-          className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          type="date" 
-          id="start" 
-          min="2020-01-01"
-          max="2024-12-31" 
-           />
+          <label
+            htmlFor="start"
+            className="flow-root mt-2 text-sm font-medium text-black"
+            for="start"
+          >
+            Draw Date{" "}
+          </label>
+          <input
+            onChange={changeHandler}
+            value={state.end_date}
+            name="end_date"
+            className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+            type="date"
+            id="start"
+            min="2020-01-01"
+            max="2024-12-31"
+          />
+          <button className="dropdown">
+            <div tabindex="0" class=" w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
+              Categories
+            </div>
+            <ul
+              tabindex="0"
+              class="shadow menu dropdown-content bg-base-100 "
+            >
+              <li>
+                <a>Furniture</a>
+              </li>
+              <li>
+                <a>Toys/Games</a>
+              </li>
+              <li>
+                <a>Electronics</a>
+              </li>
+              <li>
+                <a>Home Appliances</a>
+              </li>
+              <li>
+                <a>Books</a>
+              </li>
+            </ul>
+          </button>
+
           {/*  */}
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">
@@ -171,14 +198,21 @@ const changeHandler = (e) => {
                         Attach a file
                       </p>
                     </div>
-                    <input onChange={changeHandler} value={state.img_src} type="file" className="opacity-0" name="img_src"/>
+                    <input
+                      onChange={changeHandler}
+                      value={state.img_src}
+                      type="file"
+                      className="opacity-0"
+                      name="img_src"
+                    />
                   </label>
                 </div>
               </div>
               <div className="flex justify-center p-2">
-                <button 
-                    onClick={saveTitle}
-                className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
+                <button
+                  onClick={saveTitle}
+                  className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl"
+                >
                   Create
                 </button>
               </div>
