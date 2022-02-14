@@ -14,6 +14,7 @@
   "dependencies": {
     "@prisma/client": "^3.9.2",
     "autoprefixer": "^10.4.2",
+    "axios": "^0.26.0",
     "daisyui": "^1.25.4",
     "mapbox-gl": "^2.7.0",
     "moment": "^2.29.1",
