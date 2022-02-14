@@ -1,18 +1,7 @@
 import { useState } from "react";
 
-// async function saveListing(listing) {
-//   const response = await fetch('/api/new', {
-//     method: 'POST',
-//     body: JSON.stringify(listing)
-//   });
-
-//   if (!response.ok) {
-//     throw new Error(response.statusText);
-//   }
-//   return await response.json();
-// }
-
 export default function New({ handleClick }) {
+
   const defaultState = {
     title: "",
     description: "",
@@ -22,15 +11,15 @@ export default function New({ handleClick }) {
   };
 
   const [state, setState] = useState(defaultState);
-  // const [title, setTitle] = useState('')
   const changeHandler = (e) => {
     const { name, value } = e.target;
     const newState = { ...state, [name]: value };
     setState(newState);
   };
 
-  async function saveTitle(e) {
+  const saveListing = async (e) => {
     e.preventDefault();
+    console.log("inside saveListing", state)
     const response = await fetch("/api/new", {
       body: JSON.stringify(state),
       headers: {
@@ -40,9 +29,46 @@ export default function New({ handleClick }) {
       method: "POST",
     });
 
+    // saveImage(e);
+    // uploadToWebApi(e);
     const newListing = await response.json();
     setState(defaultState);
-  }
+  };
+  const imageToBase64 = (img) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(img);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+
+  const saveImage = async (e) => {
+    console.log("Inside saveImage", e.target.files[0]);
+    if (e.target.files && e.target.files[0]) {
+      const savedImage = e.target.files[0];
+      const convertedImage = await imageToBase64(savedImage)
+      // const parsedImage = convertedImage.split(",")[1];
+      setState({ ...state, img_src: convertedImage });
+    }
+  };
+
+  //change state into listing before sending it to the backend
+  // const uploadToWebApi = async (listing) => {
+  //   // console.log("Inside uploadToWebApi", listing.img_src);
+  //   const rawImage = await imageToBase64(listing.img_src);
+  //   const parsedImage = rawImage.split(",")[1];
+  //   // console.log(222, parsedImage);
+  //   const body = new FormData();
+  //   body.append("image", parsedImage);
+  //   // console.log(333, Object.fromEntries(body));
+  //   const imageServerWebApi = `https://api.imgbb.com/1/upload?key=44cfa4dc7b5f14fa19e55b846de10cd4`;
+  //   const response = await fetch(imageServerWebApi, {
+  //     method: "POST",
+  //     body,
+  //   });
+  //   const res = await response.json();
+  //   console.log(res);
+  // };
 
   return (
     <div
@@ -72,6 +98,7 @@ export default function New({ handleClick }) {
           </button>
         </div>
         <form
+          onSubmit={saveListing}
           className="w-5/12 overflow-auto px-4 pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
           action="#"
         >
@@ -129,8 +156,7 @@ export default function New({ handleClick }) {
           {/*  */}
           <label
             htmlFor="start"
-            className="flow-root mt-2 text-sm font-medium text-black"
-            for="start"
+            className="flow-root mt-2 text-sm font-medium text-black "
           >
             Draw Date{" "}
           </label>
@@ -198,9 +224,13 @@ export default function New({ handleClick }) {
                         Attach a file
                       </p>
                     </div>
+
+                    {/* <input  */}
+                    {/* onChange={(e) => saveImage(e)} */}
+
                     <input
-                      onChange={changeHandler}
-                      value={state.img_src}
+                      onChange={saveImage}
+                      // value={state.img_src}
                       type="file"
                       className="opacity-0"
                       name="img_src"
@@ -210,7 +240,6 @@ export default function New({ handleClick }) {
               </div>
               <div className="flex justify-center p-2">
                 <button
-                  onClick={saveTitle}
                   className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl"
                 >
                   Create
