@@ -1,11 +1,11 @@
 import Layout from "../../components/Layout";
 import Countdown from "../../components/Countdown";
 import prisma from "../../lib/prisma";
-import Map, { Marker } from "react-map-gl";
+// import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
+// const MAPBOX_TOKEN =
+//   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
 
 
 export async function getServerSideProps(context) {
@@ -38,10 +38,12 @@ export default function listingItem({ listingItem }) {
             <Countdown
             end_date={end_date}
             />
+         
+           
 
           </div>
 
-          <Map
+          {/* <Map
             initialViewState={{
               latitude: 43.59438,
               longitude: -79.64279,
@@ -52,7 +54,7 @@ export default function listingItem({ listingItem }) {
             mapboxAccessToken={MAPBOX_TOKEN}
           >
             <Marker  latitude={43.59438} longitude={-79.64279}/>
-          </Map>
+          </Map> */}
 
           <div className="lg:max-w-lg lg:w-70  md:w-60 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-black">
