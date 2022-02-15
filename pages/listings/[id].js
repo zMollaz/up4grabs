@@ -8,7 +8,7 @@ import axios from "axios";
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const listingItem = await prisma.listings.findUnique({
     where: {
       id: Number(context.params.id),
