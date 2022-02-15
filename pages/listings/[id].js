@@ -1,11 +1,11 @@
 import Layout from "../../components/Layout";
 import Countdown from "../../components/Countdown";
 import prisma from "../../lib/prisma";
-// import Map, { Marker } from "react-map-gl";
+import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-// const MAPBOX_TOKEN =
-//   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
+const MAPBOX_TOKEN =
+  "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
 
 export async function getServerSideProps(context) {
   const listingItem = await prisma.listings.findUnique({
@@ -24,8 +24,8 @@ export default function listingItem({ listingItem }) {
 
   return (
     <Layout>
-      <section className="text-gray-700 body-font overflow-hidden bg-white">
-        <div className="container px-5 py-24 mx-auto">
+      <section className="text-gray-700 body-font overflow-hidden bg-white h-full">
+        <div className=" px-5 py-18 h-full mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
@@ -89,9 +89,9 @@ export default function listingItem({ listingItem }) {
                 <span className="title-font font-medium text-2xl text-gray-dark">
                   Like to bid
                 </span>
-                <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                {/* <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
                   Button
-                </button>
+                </button> */}
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg
                     className=" icon h-7 w-7 text-red"
@@ -112,35 +112,37 @@ export default function listingItem({ listingItem }) {
         </div>
       </section>
 
-      {/* <section classNameName="text-gray-600 body-font">
-        <div classNameName="container mx-auto bg-[#fefefe] w-full flex px-8 py-24 md:flex-row justify-between flex-col items-center">
-          <div classNameName="lg:w-52  md:w-1/2 w-5/6 mb-10 md:mb-0 flex-col self-start ">
+      {/* <section classNameName=" sticky -z-50000"> */}
+        {/* <div classNameName="container mx-auto bg-[#fefefe] w-full flex px-8 py-24 md:flex-row justify-between flex-col items-center"> */}
+          {/* <div classNameName="lg:w-52  md:w-1/2 w-5/6 mb-10 md:mb-0 flex-col self-start ">
             <img
               classNameName="lg:max-w-lg  md:w-42 md:h-[35vh] rounded"
               alt="hero"
               src={img_src}
             />
-        
 
-         
-           
+          </div> */}
 
-          {/* </div> */}
-
-      {/* <Map
+          <Map
             initialViewState={{
               latitude: 43.59438,
               longitude: -79.64279,
               zoom: 14,
             }}
-            style={{ width: 400, height: 300, alignSelf: 'end', position: 'absolute',}}
+            style={{
+              width: 400,
+              height: 300,
+              position: "absolute",
+              zIndex: 1000,
+              right: 0,
+            }}
             mapStyle="mapbox://styles/mapbox/streets-v9"
             mapboxAccessToken={MAPBOX_TOKEN}
           >
-            <Marker  latitude={43.59438} longitude={-79.64279}/>
-          </Map> */}
+            <Marker latitude={43.59438} longitude={-79.64279} />
+          </Map>
 
-      {/* <div classNameName="lg:max-w-lg lg:w-70  md:w-60 flex flex-col md:items-start md:text-left items-center text-center">
+          {/* <div classNameName="lg:max-w-lg lg:w-70  md:w-60 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 classNameName="title-font sm:text-4xl text-3xl mb-4 font-medium text-black">
               {title}
               <br classNameName="hidden lg:inline-block" />
@@ -153,9 +155,9 @@ export default function listingItem({ listingItem }) {
                 Button
               </button>
             </div>
-          </div>
-        </div>
-      </section> */}
+          </div> */}
+        {/* </div> */}
+      {/* </section> */}
     </Layout>
   );
 }

@@ -66,9 +66,10 @@ export default function Navbar() {
       <div className="flex-1 lg:flex-none">
         <div className="form-control">
           <input
-            value={searchValue}
+            defaultValue={searchValue}
             onChange={(e) => {
               setSearchValue(e.target.value);
+              onSearch(searchValue);
               if (e.target.value === "") {
                 onSearch("");
               }

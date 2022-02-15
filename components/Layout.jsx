@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 export default function Layout({ children }) {
 
   return (
-    <div className="bg-grey h-100">
+    <div className="bg-grey h-full">
       <Head>
       <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet"/>
         <title>Up4Grabs</title>
