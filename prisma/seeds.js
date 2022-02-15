@@ -6,8 +6,18 @@ const main = async () => {
 
   await prisma.user.createMany({
     data: [
-      { name: "Bob", email: "bob@prisma.io", password: "password" },
-      { name: "Yewande", email: "yewande@prisma.io", password: "password" },
+      {name: "Bobby Lee", email: "noura4403@gmail.com", password: "password" },
+      {name: "Yewande Ahmed", email: "mikko.delosreyes12@gmail.com", password: "password" },
+      {name: "Merl Scuse", email: "mscuse0@sbwire.com", password: "password" },
+      {name: "Royal Jerschke", email: "rjerschke1@google.it", password: "password" },
+      {name: "Guy Capozzi", email: "gcapozzi2@aol.com", password: "password" },
+      {name: "Fanchette Glassup", email: "fglassup3@businessinsider.com", password: "password" },
+      {name: "Adeline Garmons", email: "agarmons4@seattletimes.com", password: "password" },
+      {name: "Morissa Thurlbeck", email: "mthurlbeck5@latimes.com", password: "password" },
+      {name: "Colet Cresser", email: "ccresser6@jimdo.com", password: "password" },
+      {name: "Pierette Simonassi", email: "psimonassi7@google.ru", password: "password" },
+      {name: "Sanson Hubble", email: "shubble8@bandcamp.com", password: "password" },
+      {name: "Kelvin Leyzell", email: "kleyzell9@cbsnews.com", password: "password" },
     ],
     skipDuplicates: true,
   });
