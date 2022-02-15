@@ -8,9 +8,27 @@
   padding: 4%;
 }
 
+.z-index {
+  z-index: 500;
+}
+
 .icon:hover {
   fill: #DA4567;
 }
+
+.category-button {
+  background-color: #1e3b50;
+  align-content: center;
+  margin-bottom: 3px;
+  text-align: center;
+  margin-left: 40px;
+}
+
+.drop-button {
+  background-color: #1e3b50;
+}
+
+
 
 /* html,
 body {

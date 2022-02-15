@@ -13,7 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar sticky top-0 -z-500 shadow-lg bg-gray-dark text-off-white">
+    <div className="navbar sticky top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div className="flex-none px-2 mx-2">
         <span className="text-lg font-bold">Up4Grabs</span>
       </div>
@@ -60,9 +60,6 @@ export default function Navbar() {
           </a>
         </div>
       </div>
-      <button onClick={() => onSearch(searchValue)} className="btn btn-">
-      enter
-      </button>
       <div className="flex-1 lg:flex-none">
         <div className="form-control">
           <input
@@ -80,10 +77,13 @@ export default function Navbar() {
               }
             }}
             type="text"
-            placeholder="Search"
-            className="input input-ghost h-7"
+            // placeholder="Search"
+            className="mr-5 p-4 input input-ghost h-7"
           />
         </div>
+        <button onClick={() => onSearch(searchValue)} className="btn btn-sm mr-10 ">
+      search
+      </button>
       </div>
     </div>
   );

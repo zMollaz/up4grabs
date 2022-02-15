@@ -17,14 +17,15 @@ export default async function formHandler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ messsage: "Method not allowed" });
   }
-
+  
+  const categoryToInteger = Number(req.body.category_id)
   const imageUrl = await uploadToWebApi(req.body);
   const startDate = moment().format("YYYY/MM/DD");
   const newListing = {
     ...req.body,
     img_src: imageUrl,
     user_id: 1,
-    category_id: 3,
+    category_id: categoryToInteger,
     start_date: startDate,
   };
 
