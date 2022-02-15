@@ -1,8 +1,10 @@
 import Link from "next/link";
 import New from "../components/New";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import {ListingsContext} from "../context/ListingsContext"
 
-export default function Navbar({ onSearch }) {
+export default function Navbar() {
+  const {onSearch} = useContext(ListingsContext);
   const [searchValue, setSearchValue] = useState("");
   const [display, setDisplay] = useState(false);
 

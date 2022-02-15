@@ -3,9 +3,10 @@ import Header from "../components/Header";
 import Listings from "../components/Listings";
 import PageBreak from "../components/PageBreak";
 import prisma from "../lib/prisma";
-import { useState } from "react";
+import {ListingsContext} from "../context/ListingsContext"
+import useListings from "../hooks/useListings";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const listings = await prisma.listings.findMany();
   // console.log("inside fetcher", listings);
   return {
@@ -15,28 +16,22 @@ export async function getStaticProps() {
 
 //use useEffect inside the component when you want to make additional queries to db or api like create
 
-export default function Home({ listings }) {
+export default function Home(props) {
+  // const {setListings, filteredListings, onSearch} = useContext(ListingsContext)
+  // setListings(props.listings);
+ 
 
-  const [filteredListings, setFilteredListings] = useState(listings);
-
-  const onSearch = (searchValue) => {
-    setFilteredListings(
-      listings.filter((listing) => {
-        if (!searchValue) return true;
-        return listing.title.toLowerCase().includes(searchValue.toLowerCase());
-      })
-    );
-  };
-
-  useEffect(() => {
+  // useEffect(() => {
     
-  }, [])
+  // }, [])
 
   return (
-    <Layout onSearch={onSearch}>
+    <ListingsContext.Provider value={useListings(props.listings)}>
+    <Layout >
       <Header />
       <PageBreak />
-      <Listings listings={filteredListings} />
+      <Listings />
     </Layout>
+    </ListingsContext.Provider>
   );
 }

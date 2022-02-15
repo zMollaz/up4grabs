@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from 'next/router';
+import { ListingsContext } from "../context/ListingsContext";
 
 // pass set display and set state and defaultState as props
 export default function New({ handleClick, setDisplay}) {
+  const {addListing} = useContext(ListingsContext);
+
   const router = useRouter()
 
   const defaultState = {
@@ -15,6 +18,7 @@ export default function New({ handleClick, setDisplay}) {
   };
 
   const [state, setState] = useState(defaultState);
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
     const newState = { ...state, [name]: value };
@@ -35,7 +39,7 @@ export default function New({ handleClick, setDisplay}) {
     const newListing = await response.json();
     setState(defaultState);
     setDisplay(false);
-    router.reload()
+    addListing(newListing);
   };
 
   const imageToBase64 = (img) =>
@@ -157,12 +161,7 @@ export default function New({ handleClick, setDisplay}) {
           />
           <button className="dropdown ">
             <div tabindex="0" className="flex flex-row w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
-              Categories
-            </div>
-            <ul
-              tabindex="0"
-              className="shadow menu dropdown-content bg-base-100 "
-            >
+              
               Categories
             </div>
             <ul tabindex="0" class="shadow menu dropdown-content bg-base-100 ">
