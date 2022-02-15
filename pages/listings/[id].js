@@ -2,8 +2,9 @@ import Layout from "../../components/Layout";
 import Countdown from "../../components/Countdown";
 import prisma from "../../lib/prisma";
 import Map, { Marker } from "react-map-gl";
+// import {mapboxgl} from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-
+import axios from "axios";
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
 
@@ -14,12 +15,19 @@ export async function getServerSideProps(context) {
     },
   });
 
+  const response = await axios
+    .get(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${listingItem.postal_code}.json?access_token=pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg`
+    )
+  const extract = response.data.features[0].center;
+  const coordinates = {longitude: extract[0], latitude: extract[1]};
+
   return {
-    props: { listingItem },
+    props: { listingItem, coordinates },
   };
 }
 
-export default function listingItem({ listingItem }) {
+export default function listingItem({ listingItem, coordinates }) {
   const { title, description, img_src, end_date, postal_code } = listingItem;
 
   return (
@@ -112,8 +120,8 @@ export default function listingItem({ listingItem }) {
           </div>
           <Map
             initialViewState={{
-              latitude: 43.59438,
-              longitude: -79.64279,
+              longitude: coordinates.longitude,
+              latitude: coordinates.latitude,
               zoom: 14,
             }}
             style={{
@@ -127,7 +135,7 @@ export default function listingItem({ listingItem }) {
             mapStyle="mapbox://styles/mapbox/streets-v9"
             mapboxAccessToken={MAPBOX_TOKEN}
           >
-            <Marker latitude={43.59438} longitude={-79.64279} />
+            <Marker latitude={coordinates.latitude} longitude={coordinates.longitude} />
           </Map>
         </div>
         {/* </div> */}
