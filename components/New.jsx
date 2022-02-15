@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function New({ handleClick }) {
-
   const defaultState = {
     title: "",
     description: "",
@@ -19,7 +18,7 @@ export default function New({ handleClick }) {
 
   const saveListing = async (e) => {
     e.preventDefault();
-    console.log("inside saveListing", state)
+    console.log("inside saveListing", state);
     const response = await fetch("/api/new", {
       body: JSON.stringify(state),
       headers: {
@@ -35,18 +34,18 @@ export default function New({ handleClick }) {
     setState(defaultState);
   };
   const imageToBase64 = (img) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(img);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(img);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
 
   const saveImage = async (e) => {
     console.log("Inside saveImage", e.target.files[0]);
     if (e.target.files && e.target.files[0]) {
       const savedImage = e.target.files[0];
-      const convertedImage = await imageToBase64(savedImage)
+      const convertedImage = await imageToBase64(savedImage);
       // const parsedImage = convertedImage.split(",")[1];
       setState({ ...state, img_src: convertedImage });
     }
@@ -160,41 +159,46 @@ export default function New({ handleClick }) {
           >
             Draw Date{" "}
           </label>
-          <input
-            onChange={changeHandler}
-            value={state.end_date}
-            name="end_date"
-            className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
-            type="date"
-            id="start"
-            min="2020-01-01"
-            max="2024-12-31"
-          />
-          <button className="dropdown ">
-            <div tabindex="0" className="flex flex-row w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
-              Categories
-            </div>
-            <ul
-              tabindex="0"
-              className="shadow menu dropdown-content bg-base-100 "
-            >
-              <li>
-                <a>Furniture</a>
-              </li>
-              <li>
-                <a>Toys/Games</a>
-              </li>
-              <li>
-                <a>Electronics</a>
-              </li>
-              <li>
-                <a>Home Appliances</a>
-              </li>
-              <li>
-                <a>Books</a>
-              </li>
-            </ul>
-          </button>
+          <div className="flex right-0 s-between w-full flex">
+            <input
+              onChange={changeHandler}
+              value={state.end_date}
+              name="end_date"
+              className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+              type="date"
+              id="start"
+              min="2020-01-01"
+              max="2024-12-31"
+            />
+            <button className="dropdown ml-40">
+              <div
+                tabindex="0"
+                className="w-48 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl "
+              >
+                Select Category
+              </div>
+              <ul
+                tabindex="0"
+                className="shadow menu dropdown-content bg-base-100 "
+              >
+                <li>
+                  <a>Furniture</a>
+                </li>
+                <li>
+                  <a>Toys/Games</a>
+                </li>
+                <li>
+                  <a>Electronics</a>
+                </li>
+                <li>
+                  <a>Home Appliances</a>
+                </li>
+                <li>
+                  <a>Books</a>
+                </li>
+              </ul>
+            </button>
+          </div>
 
           {/*  */}
           <div className="flex justify-center">
@@ -239,9 +243,7 @@ export default function New({ handleClick }) {
                 </div>
               </div>
               <div className="flex justify-center p-2">
-                <button
-                  className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl"
-                >
+                <button className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
                   Create
                 </button>
               </div>
