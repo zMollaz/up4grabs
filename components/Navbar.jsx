@@ -13,7 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar sticky top-0 -z-500 shadow-lg bg-gray-dark text-off-white">
+    <div className="navbar sticky top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div className="flex-none px-2 mx-2">
         <span className="text-lg font-bold">Up4Grabs</span>
       </div>

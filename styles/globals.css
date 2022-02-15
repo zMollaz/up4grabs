@@ -8,6 +8,10 @@
   padding: 4%;
 }
 
+.z-index {
+  z-index: 500;
+}
+
 .icon:hover {
   fill: #DA4567;
 }
