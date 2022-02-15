@@ -13,11 +13,16 @@ export default function New({ handleClick, setDisplay }) {
     description: "",
     img_src: "",
     end_date: "",
-    category_id: "",
+    category_id: null,
     postal_code: "",
   };
 
   const [state, setState] = useState(defaultState);
+
+  // const categoryHandler = (e) => {
+  //    let categoryId;
+  //    if (e.target.value === ) 
+  // }
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -160,14 +165,16 @@ export default function New({ handleClick, setDisplay }) {
               min="2020-01-01"
               max="2024-12-31"
             />
-              <select onChange={changeHandler}
+              <select name="category_id" onChange={changeHandler}
               className=" category-button w-1/2 text-md rounded-md">
-              <option value=" drop-button Select Category">Select Category</option>
-                <option value={state.category_id}>Toys/Games
+              <option disabled selected>Select Category</option>
+              <option value={1}>Furniture
                 </option>
-                <option value={state.category_id}>Electronics</option>
-                <option value={state.category_id}>Home Appliances</option>
-                <option value={state.category_id}>Books</option>
+                <option value={2}>Toys/Games
+                </option>
+                <option value={3}>Electronics</option>
+                <option value={4}>Home Appliances</option>
+                <option value={5}>Books</option>
               </select>
           </div>
 
