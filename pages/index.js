@@ -6,9 +6,8 @@ import prisma from "../lib/prisma";
 import {ListingsContext} from "../context/ListingsContext"
 import useListings from "../hooks/useListings";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const listings = await prisma.listings.findMany();
-  // console.log("inside fetcher", listings);
   return {
     props: { listings },
   };
@@ -17,13 +16,6 @@ export async function getServerSideProps() {
 //use useEffect inside the component when you want to make additional queries to db or api like create
 
 export default function Home(props) {
-  // const {setListings, filteredListings, onSearch} = useContext(ListingsContext)
-  // setListings(props.listings);
- 
-
-  // useEffect(() => {
-    
-  // }, [])
 
   return (
     <ListingsContext.Provider value={useListings(props.listings)}>

@@ -18,11 +18,9 @@ const useListings = (defaultListings) => {
   };
 
   const addListing = (response) => {
-    console.log(111, response.savedListing)
     setListings(prev => [...prev, response.savedListing] )
   }
-  console.log(222, listings.length)
-  console.log(333, filteredListings.length)
+  
   return {
     listings: listings,
     filteredListings: filteredListings,
