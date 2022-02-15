@@ -2,9 +2,13 @@ import Layout from "../../components/Layout";
 import Countdown from "../../components/Countdown";
 import prisma from "../../lib/prisma";
 import Map, { Marker } from "react-map-gl";
-// import {mapboxgl} from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
+// import { useState, useContext } from "react";
+// import { ListingsContext } from "../context/ListingsContext";
+
+// const { users, setUser, onSearch } = useContext(ListingsContext);
+  
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
 
