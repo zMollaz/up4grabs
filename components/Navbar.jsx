@@ -60,9 +60,6 @@ export default function Navbar() {
           </a>
         </div>
       </div>
-      <button onClick={() => onSearch(searchValue)} className="btn btn-">
-      enter
-      </button>
       <div className="flex-1 lg:flex-none">
         <div className="form-control">
           <input
@@ -80,9 +77,12 @@ export default function Navbar() {
             }}
             type="text"
             placeholder="Search"
-            className="input input-ghost h-7"
+            className="mr-5 input input-ghost h-7"
           />
         </div>
+        <button onClick={() => onSearch(searchValue)} className="btn btn-sm mr-4 ">
+      enter
+      </button>
       </div>
     </div>
   );
