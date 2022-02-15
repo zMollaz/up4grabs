@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { ListingsContext } from "../context/ListingsContext";
 
 // pass set display and set state and defaultState as props
-export default function New({ handleClick, setDisplay}) {
-  const {addListing} = useContext(ListingsContext);
+export default function New({ handleClick, setDisplay }) {
+  const { addListing } = useContext(ListingsContext);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const defaultState = {
     title: "",
@@ -160,34 +160,14 @@ export default function New({ handleClick, setDisplay}) {
               min="2020-01-01"
               max="2024-12-31"
             />
-            <button className="dropdown bg-gray-dark ml-40">
-              <div
-                tabindex="0"
-                className="w-48 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl "
-              >
-                Select Category
-              </div>
-              <ul
-                tabindex="0"
-                className="shadow menu dropdown-content bg-base-100 "
-              >
-                <li>
-                  <a>Furniture</a>
-                </li>
-                <li>
-                  <a>Toys/Games</a>
-                </li>
-                <li>
-                  <a>Electronics</a>
-                </li>
-                <li>
-                  <a>Home Appliances</a>
-                </li>
-                <li>
-                  <a>Books</a>
-                </li>
-              </ul>
-            </button>
+              <select className=" category-button w-1/2 text-md rounded-md">
+              <option value=" drop-button Select Category">Select Category</option>
+                <option value="Toys/Games">Toys/Games
+                </option>
+                <option value="Electronics">Electronics</option>
+                <option value="Home Appliances">Home Appliances</option>
+                <option value="Books">Books</option>
+              </select>
           </div>
 
           {/*  */}
