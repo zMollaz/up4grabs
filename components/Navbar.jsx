@@ -23,7 +23,7 @@ export default function Navbar() {
           <Link href="/">
             <a className="btn btn-ghost btn-sm rounded-btn">Home</a>
           </Link>
-          <Link href="/">
+          <Link href="#listings">
             <a className="btn btn-ghost btn-sm rounded-btn">Listings</a>
           </Link>
           <a className="btn btn-ghost btn-sm rounded-btn">

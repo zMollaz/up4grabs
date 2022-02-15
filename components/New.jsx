@@ -149,39 +149,46 @@ export default function New({ handleClick, setDisplay}) {
           >
             Draw Date{" "}
           </label>
-          <input
-            onChange={changeHandler}
-            value={state.end_date}
-            name="end_date"
-            className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
-            type="date"
-            id="start"
-            min="2020-01-01"
-            max="2024-12-31"
-          />
-          <button className="dropdown ">
-            <div tabindex="0" className="flex flex-row w-64 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl ">
-              
-              Categories
-            </div>
-            <ul tabindex="0" class="shadow menu dropdown-content bg-base-100 ">
-              <li>
-                <a>Furniture</a>
-              </li>
-              <li>
-                <a>Toys/Games</a>
-              </li>
-              <li>
-                <a>Electronics</a>
-              </li>
-              <li>
-                <a>Home Appliances</a>
-              </li>
-              <li>
-                <a>Books</a>
-              </li>
-            </ul>
-          </button>
+          <div className="flex right-0 s-between w-full flex">
+            <input
+              onChange={changeHandler}
+              value={state.end_date}
+              name="end_date"
+              className="bg-gray-50 border border-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+              type="date"
+              id="start"
+              min="2020-01-01"
+              max="2024-12-31"
+            />
+            <button className="dropdown ml-40">
+              <div
+                tabindex="0"
+                className="w-48 px-4 py-2 btn px-4 py-2 bg-gray-dark rounded shadow-xl "
+              >
+                Select Category
+              </div>
+              <ul
+                tabindex="0"
+                className="shadow menu dropdown-content bg-base-100 "
+              >
+                <li>
+                  <a>Furniture</a>
+                </li>
+                <li>
+                  <a>Toys/Games</a>
+                </li>
+                <li>
+                  <a>Electronics</a>
+                </li>
+                <li>
+                  <a>Home Appliances</a>
+                </li>
+                <li>
+                  <a>Books</a>
+                </li>
+              </ul>
+            </button>
+          </div>
 
           {/*  */}
           <div className="flex justify-center">
