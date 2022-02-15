@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Listings(props) {
   const { title, img, date, id } = props;
-
+  
   return (
     <Link href={`/listings/${id}`}>
       <a>

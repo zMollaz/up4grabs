@@ -1,13 +1,17 @@
 import ListingItem from "./ListingItem";
 import moment from "moment";
+import { useContext } from 'react';
+import {ListingsContext} from "../context/ListingsContext"
+// import { useState} from "react";
 
-export default function Listings({ listings }) {
-  // console.log("inside component", listings);
+export default function Listings(props) {
+  const {filteredListings} = useContext(ListingsContext)
+
   const myDate = function (date) {
     return moment(date, "").fromNow();
   };
 
-  const parsedListings = listings.map((listing) => {
+  const parsedListings = filteredListings.map((listing) => {
     return (
       <ListingItem
         title={listing.title}

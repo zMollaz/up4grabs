@@ -1,14 +1,23 @@
 import Link from "next/link";
-import { useState } from "react";
+import New from "../components/New";
+import { useState, useContext } from "react";
+import {ListingsContext} from "../context/ListingsContext"
 
-export default function Navbar({ handleClick, onSearch }) {
+export default function Navbar() {
+  const {onSearch} = useContext(ListingsContext);
   const [searchValue, setSearchValue] = useState("");
+  const [display, setDisplay] = useState(false);
+
+  const handleClick = () => {
+    setDisplay((prev) => !prev);
+  };
 
   return (
     <div className="navbar sticky top-0 -z-500 shadow-lg bg-gray-dark text-off-white">
       <div className="flex-none px-2 mx-2">
         <span className="text-lg font-bold">Up4Grabs</span>
       </div>
+      {display && <New handleClick={handleClick} setDisplay={setDisplay}/>}
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden lg:flex">
           <Link href="/">

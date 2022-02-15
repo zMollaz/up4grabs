@@ -1,24 +1,32 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useRouter } from 'next/router';
+import { ListingsContext } from "../context/ListingsContext";
 
-export default function New({ handleClick }) {
+// pass set display and set state and defaultState as props
+export default function New({ handleClick, setDisplay}) {
+  const {addListing} = useContext(ListingsContext);
+
+  const router = useRouter()
+
   const defaultState = {
     title: "",
     description: "",
     img_src: "",
     end_date: "",
-    postal_code: "K1Y4W1",
+    category_id: "3",
+    postal_code: "",
   };
 
   const [state, setState] = useState(defaultState);
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
     const newState = { ...state, [name]: value };
     setState(newState);
   };
-
+  // use a use effect or create a custom hook
   const saveListing = async (e) => {
     e.preventDefault();
-    console.log("inside saveListing", state);
     const response = await fetch("/api/new", {
       body: JSON.stringify(state),
       headers: {
@@ -28,11 +36,12 @@ export default function New({ handleClick }) {
       method: "POST",
     });
 
-    // saveImage(e);
-    // uploadToWebApi(e);
     const newListing = await response.json();
     setState(defaultState);
+    setDisplay(false);
+    addListing(newListing);
   };
+
   const imageToBase64 = (img) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -42,32 +51,13 @@ export default function New({ handleClick }) {
     });
 
   const saveImage = async (e) => {
-    console.log("Inside saveImage", e.target.files[0]);
     if (e.target.files && e.target.files[0]) {
       const savedImage = e.target.files[0];
       const convertedImage = await imageToBase64(savedImage);
-      // const parsedImage = convertedImage.split(",")[1];
-      setState({ ...state, img_src: convertedImage });
+      const parsedImage = convertedImage.split(",")[1];
+      setState({ ...state, img_src: parsedImage });
     }
   };
-
-  //change state into listing before sending it to the backend
-  // const uploadToWebApi = async (listing) => {
-  //   // console.log("Inside uploadToWebApi", listing.img_src);
-  //   const rawImage = await imageToBase64(listing.img_src);
-  //   const parsedImage = rawImage.split(",")[1];
-  //   // console.log(222, parsedImage);
-  //   const body = new FormData();
-  //   body.append("image", parsedImage);
-  //   // console.log(333, Object.fromEntries(body));
-  //   const imageServerWebApi = `https://api.imgbb.com/1/upload?key=44cfa4dc7b5f14fa19e55b846de10cd4`;
-  //   const response = await fetch(imageServerWebApi, {
-  //     method: "POST",
-  //     body,
-  //   });
-  //   const res = await response.json();
-  //   console.log(res);
-  // };
 
   return (
     <div

@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Navbar from "./Navbar";
+import Footer from "../components/Footer";
 
-
-export default function Layout({ children, handleClick, onSearch }) {
+export default function Layout({ children }) {
 
   return (
     <div className="bg-grey h-100">
@@ -13,10 +13,9 @@ export default function Layout({ children, handleClick, onSearch }) {
         <link rel="icon" href="/favicon.ico" />
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v<YOUR_MAPBOX_VERSION>/mapbox-gl.css' rel='stylesheet' />
       </Head>
-      <Navbar handleClick={handleClick} 
-              onSearch={onSearch}
-      />
+      <Navbar/>
       <div>{children}</div>
+      <Footer />
     </div>
   );
 }
