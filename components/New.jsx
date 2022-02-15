@@ -13,7 +13,7 @@ export default function New({ handleClick, setDisplay }) {
     description: "",
     img_src: "",
     end_date: "",
-    category_id: "3",
+    category_id: "",
     postal_code: "",
   };
 
@@ -160,13 +160,14 @@ export default function New({ handleClick, setDisplay }) {
               min="2020-01-01"
               max="2024-12-31"
             />
-              <select className=" category-button w-1/2 text-md rounded-md">
+              <select onChange={changeHandler}
+              className=" category-button w-1/2 text-md rounded-md">
               <option value=" drop-button Select Category">Select Category</option>
-                <option value="Toys/Games">Toys/Games
+                <option value={state.category_id}>Toys/Games
                 </option>
-                <option value="Electronics">Electronics</option>
-                <option value="Home Appliances">Home Appliances</option>
-                <option value="Books">Books</option>
+                <option value={state.category_id}>Electronics</option>
+                <option value={state.category_id}>Home Appliances</option>
+                <option value={state.category_id}>Books</option>
               </select>
           </div>
 
