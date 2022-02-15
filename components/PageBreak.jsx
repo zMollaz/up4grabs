@@ -9,7 +9,7 @@ export default function PageBreak() {
         <div >
           <hr />
         </div>
-        <div className="text-center bg-off-white text-3xl font-extrabold p-4">
+        <div className="text-center text-gray-dark bg-off-white text-3xl font-extrabold p-4">
           Listings
         </div>
         <div >
