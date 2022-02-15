@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
-const useListings = (defaultListings) => {
+const useListings = ({defaultListings, users}) => {
   const [listings, setListings] = useState(defaultListings);
   const [filteredListings, setFilteredListings] = useState(defaultListings);
+  const [user, setUser] = useState(users[0].id);
   
   useEffect(()=> {
     setFilteredListings(listings)
@@ -20,12 +21,15 @@ const useListings = (defaultListings) => {
   const addListing = (response) => {
     setListings(prev => [...prev, response.savedListing] )
   }
-  
+
   return {
     listings: listings,
     filteredListings: filteredListings,
+    user: user,
+    users: users,
     onSearch: onSearch,
     addListing: addListing,
+    setUser: setUser,
   };
 };
 

@@ -7,9 +7,11 @@ import {ListingsContext} from "../context/ListingsContext"
 import useListings from "../hooks/useListings";
 
 export async function getStaticProps() {
-  const listings = await prisma.listings.findMany();
+  const defaultListings = await prisma.listings.findMany();
+  const users = await prisma.user.findMany();
+  console.log(111, users)
   return {
-    props: { listings },
+    props: { defaultListings, users },
   };
 }
 
@@ -18,7 +20,7 @@ export async function getStaticProps() {
 export default function Home(props) {
 
   return (
-    <ListingsContext.Provider value={useListings(props.listings)}>
+    <ListingsContext.Provider value={useListings(props)}>
     <Layout >
       <Header />
       <PageBreak />
