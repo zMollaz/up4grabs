@@ -8,7 +8,7 @@ import axios from "axios";
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const listingItem = await prisma.listings.findUnique({
     where: {
       id: Number(context.params.id),
@@ -23,12 +23,13 @@ export async function getServerSideProps(context) {
   const coordinates = {longitude: extract[0], latitude: extract[1]};
 
   return {
-    props: { listingItem, coordinates },
+    props: { listingItem, coordinates, },
+    revalidate: 10,
   };
 }
 
-export default function listingItem({ listingItem, coordinates }) {
-  const { title, description, img_src, end_date, postal_code } = listingItem;
+export default function listingPage({ listingItem, coordinates }) {
+  const { title, description, img_src, end_date } = listingItem;
 
   return (
     <Layout>
