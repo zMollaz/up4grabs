@@ -4,7 +4,7 @@ import { ListingsContext } from "../context/ListingsContext";
 
 // pass set display and set state and defaultState as props
 export default function New({ handleClick, setDisplay }) {
-  const { addListing } = useContext(ListingsContext);
+  const { addListing, user } = useContext(ListingsContext);
 
   const router = useRouter();
 
@@ -19,11 +19,6 @@ export default function New({ handleClick, setDisplay }) {
 
   const [state, setState] = useState(defaultState);
 
-  // const categoryHandler = (e) => {
-  //    let categoryId;
-  //    if (e.target.value === ) 
-  // }
-
   const changeHandler = (e) => {
     const { name, value } = e.target;
     const newState = { ...state, [name]: value };
@@ -33,7 +28,7 @@ export default function New({ handleClick, setDisplay }) {
   const saveListing = async (e) => {
     e.preventDefault();
     const response = await fetch("/api/new", {
-      body: JSON.stringify(state),
+      body: JSON.stringify({state, user}),
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",

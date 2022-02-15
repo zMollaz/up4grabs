@@ -1,10 +1,10 @@
 import Link from "next/link";
 import New from "../components/New";
 import { useState, useContext } from "react";
-import {ListingsContext} from "../context/ListingsContext"
+import { ListingsContext } from "../context/ListingsContext";
 
 export default function Navbar() {
-  const {onSearch} = useContext(ListingsContext);
+  const { users, user, setUser, onSearch } = useContext(ListingsContext);
   const [searchValue, setSearchValue] = useState("");
   const [display, setDisplay] = useState(false);
 
@@ -12,21 +12,28 @@ export default function Navbar() {
     setDisplay((prev) => !prev);
   };
 
+  const userList = users.map((user) => {
+    return (
+      <option value={user.id} key={user.id}className="user-option">
+        {user.name}
+      </option>
+    );
+  });
+
   return (
     <div className="navbar sticky top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div className="flex-none px-2 mx-2">
-        <span className="text-lg font-bold">Up4Grabs</span>
+        <Link href="/">
+          <a className="text-lg font-bold">Up4Grabs</a>
+        </Link>
       </div>
-      {display && <New handleClick={handleClick} setDisplay={setDisplay}/>}
+      {display && <New handleClick={handleClick} setDisplay={setDisplay} />}
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden lg:flex">
-          <Link href="/">
-            <a className="btn btn-ghost btn-sm rounded-btn">Home</a>
-          </Link>
           <Link href="#listings">
-            <a className="btn btn-ghost btn-sm rounded-btn">Listings</a>
+            <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
           </Link>
-          <a className="btn btn-ghost btn-sm rounded-btn">
+          <a className="btn input input-ghost btn-sm rounded-btn mx-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -42,9 +49,12 @@ export default function Navbar() {
             </svg>
           </a>
 
-          <a onClick={handleClick} className="btn btn-ghost btn-sm rounded-btn">
+          <a
+            onClick={handleClick}
+            className="btn input input-ghost btn-sm rounded-btn"
+          >
             <svg
-              className="h-6 w-6 text-white"
+              className="h-6 w-6 text-white "
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -81,9 +91,45 @@ export default function Navbar() {
             className="mr-5 p-4 input input-ghost h-7"
           />
         </div>
-        <button onClick={() => onSearch(searchValue)} className="btn btn-sm mr-10 ">
-      search
-      </button>
+        <button
+          onClick={() => onSearch(searchValue)}
+          className="btn btn-sm mr-10 input input-ghost "
+        >
+          search
+        </button>
+      </div>
+      <div className="">
+        <div className="">
+          <i className=""></i>
+        </div>
+
+        <div className="flex">
+          <label for="select-user">
+            <svg
+              className="h-6 w-6 text-white mt-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+          </label>
+          <select
+            name="Users"
+            onChange={(e)=> (setUser(e.target.value))}
+            className="ml-1 text-white btn btn-sm input input-ghost"
+          >
+            <option value="0" className="" disabled selected>
+              Switch user
+            </option>
+            {userList}
+          </select>
+        </div>
       </div>
     </div>
   );
