@@ -76,12 +76,12 @@ export default function Navbar() {
               }
             }}
             type="text"
-            placeholder="Search"
-            className="mr-5 input input-ghost h-7"
+            // placeholder="Search"
+            className="mr-5 p-4 input input-ghost h-7"
           />
         </div>
-        <button onClick={() => onSearch(searchValue)} className="btn btn-sm mr-4 ">
-      enter
+        <button onClick={() => onSearch(searchValue)} className="btn btn-sm mr-10 ">
+      search
       </button>
       </div>
     </div>
