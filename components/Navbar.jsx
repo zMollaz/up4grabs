@@ -1,11 +1,11 @@
 import Link from "next/link";
 import New from "../components/New";
-import LikedListings from "../components/LikedListings"
+import LikedListings from "../components/LikedListings";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
 
 export default function Navbar(props) {
-  const { users, user, setUser, onSearch } = useContext(ListingsContext);
+  const { users, user, switchUser, onSearch } = useContext(ListingsContext);
   const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
   const [likesDisplay, setLikesDisplay] = useState(false);
@@ -17,10 +17,10 @@ export default function Navbar(props) {
     setLikesDisplay((prev) => !prev);
   };
 
-  const userList = users.map((user) => {
+  const userList = users.map((oneUser) => {
     return (
-      <option value={user.id} key={user.id} className="user-option">
-        {user.name}
+      <option value={oneUser.id} key={oneUser.id} className="user-option">
+        {oneUser.name}
       </option>
     );
   });
@@ -35,35 +35,37 @@ export default function Navbar(props) {
       {newDisplay && (
         <New handleClick={handleClickNew} setDisplay={setNewDisplay} />
       )}
-      {likesDisplay && (
+      {/* {likesDisplay && (
         <LikedListings
           handleClick={handleClickLikes}
           setDisplay={setLikesDisplay}
         />
-      )}
+      )} */}
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden lg:flex">
           <Link href="#listings">
             <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
           </Link>
-          <a
-            onClick={handleClickLikes}
-            className="btn input input-ghost btn-sm rounded-btn mx-3"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="inline-block w-6 h-6  hover:fill-red hover:text-red stroke-current"
+          <Link href="/users/likes">
+            <a
+              onClick={handleClickLikes}
+              className="btn input input-ghost btn-sm rounded-btn mx-3"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              ></path>
-            </svg>
-          </a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-6 h-6  hover:fill-red hover:text-red stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+              </svg>
+            </a>
+          </Link>
 
           <a
             onClick={handleClickNew}
@@ -137,7 +139,7 @@ export default function Navbar(props) {
           </label>
           <select
             name="Users"
-            onChange={(e) => setUser(e.target.value)}
+            onChange={switchUser}
             className="ml-1 text-white btn btn-sm input input-ghost"
           >
             <option value="0" className="" disabled selected>

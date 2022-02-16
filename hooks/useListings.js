@@ -21,6 +21,9 @@ const useListings = ({defaultListings, users}) => {
   const addListing = (response) => {
     setListings(prev => [...prev, response.savedListing] )
   }
+  const switchUser = (e) => {
+    setUser(e.target.value)
+  }
 
   return {
     listings: listings,
@@ -30,6 +33,7 @@ const useListings = ({defaultListings, users}) => {
     onSearch: onSearch,
     addListing: addListing,
     setUser: setUser,
+    switchUser: switchUser,
   };
 };
 
