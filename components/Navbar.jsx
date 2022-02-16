@@ -3,8 +3,12 @@ import New from "../components/New";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
 
-export default function Navbar() {
-  const { users, user, setUser, onSearch } = useContext(ListingsContext);
+// pass set display and set state and defaultState as props
+
+
+export default function Navbar({users}) {
+  const { user, switchUser } = useContext(ListingsContext);
+  const test = user;
   const [searchValue, setSearchValue] = useState("");
   const [display, setDisplay] = useState(false);
 
@@ -14,7 +18,8 @@ export default function Navbar() {
 
   const userList = users.map((user) => {
     return (
-      <option value={user.id} key={user.id}className="user-option">
+      //bug alert
+      <option value={test} key={user.id}className="user-option">
         {user.name}
       </option>
     );
@@ -121,7 +126,7 @@ export default function Navbar() {
           </label>
           <select
             name="Users"
-            onChange={(e)=> (setUser(e.target.value))}
+            onChange={switchUser}
             className="ml-1 text-white btn btn-sm input input-ghost"
           >
             <option value="0" className="" disabled selected>

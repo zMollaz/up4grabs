@@ -4,10 +4,7 @@ import prisma from "../../lib/prisma";
 import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
-// import { useState, useContext } from "react";
-// import { ListingsContext } from "../context/ListingsContext";
 
-// const { users, setUser, onSearch } = useContext(ListingsContext);
   
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
@@ -19,6 +16,8 @@ export async function getServerSideProps(context) {
     },
   });
 
+  const users = await prisma.user.findMany();
+  
   const response = await axios
     .get(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${listingItem.postal_code}.json?access_token=pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg`
@@ -27,15 +26,15 @@ export async function getServerSideProps(context) {
   const coordinates = {longitude: extract[0], latitude: extract[1]};
 
   return {
-    props: { listingItem, coordinates, },
+    props: { listingItem, coordinates, users,},
   };
 }
 
-export default function listingPage({ listingItem, coordinates }) {
+export default function listingPage({ listingItem, coordinates, users }) {
   const { title, description, img_src, end_date } = listingItem;
 
   return (
-    <Layout>
+    <Layout users={users}>
       <section className="text-gray-700 body-font overflow-hidden bg-white h-full">
         {/* <div className=" px-5 py-18 h-full mx-auto"> */}
         <div className="lg:w-4/5 h-[1000px] mx-auto flex flex-wrap flex-col">
