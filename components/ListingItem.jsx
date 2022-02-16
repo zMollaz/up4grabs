@@ -10,7 +10,7 @@ export default function Listings(props) {
           <header>
             <img src={img} className="rounded-lg object-cover h-60 w-full" />
           </header>
-          <div className="relative p-5 h-44 flex flex-col items-center justify-between">
+          <div className="relative p-5 h-[140px] flex flex-col items-center justify-between">
             <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 text-black">
               {title}
             </h5>

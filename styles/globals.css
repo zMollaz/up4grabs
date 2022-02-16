@@ -16,6 +16,10 @@
   fill: #DA4567;
 }
 
+.mar-t {
+  margin-top: 0px;
+}
+
 .category-button {
   background-color: #1e3b50;
   align-content: center;
