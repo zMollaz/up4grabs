@@ -4,8 +4,10 @@ import LikedListings from "../components/LikedListings";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
 
+
 export default function Navbar(props) {
   const { users, user, switchUser, onSearch } = useContext(ListingsContext);
+
   const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
   // const [likesDisplay, setLikesDisplay] = useState(false);
@@ -23,6 +25,7 @@ export default function Navbar(props) {
     return (
       <option value={oneUser.id}  key={oneUser.id} className="user-option">
         {oneUser.name}
+
       </option>
     );
   });
@@ -31,7 +34,7 @@ export default function Navbar(props) {
     <div className="navbar sticky top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div className="flex-none px-2 mx-2">
         <Link href="/">
-          <a className="text-lg font-bold">Up4Grabs</a>
+          <a className="text-lg mt-2 font-lucky font-bold">Up4Grabs</a>
         </Link>
       </div>
       {newDisplay && (

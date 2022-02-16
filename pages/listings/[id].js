@@ -4,6 +4,7 @@ import prisma from "../../lib/prisma";
 import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
+
 import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
 // import { useState, useContext } from "react";
@@ -26,10 +27,12 @@ export async function getServerSideProps(context) {
   const response = await axios.get(
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${listingItem.postal_code}.json?access_token=pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg`
   );
+
   const extract = response.data.features[0].center;
   const coordinates = { longitude: extract[0], latitude: extract[1] };
 
   return {
+
     props: { listingItem, coordinates, users, defaultListings },
   };
 }
@@ -58,6 +61,7 @@ export default function ListingPage(props) {
                 Like to bid
               </span>
               {/* <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+
                   Button
                 </button> */}
               <button className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">

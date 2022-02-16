@@ -9,14 +9,12 @@ import useListings from "../hooks/useListings";
 export async function getStaticProps() {
   const defaultListings = await prisma.listings.findMany();
   const users = await prisma.user.findMany();
-  console.log(111, users);
+
   return {
     props: { defaultListings, users },
   };
 }
-
-//use useEffect inside the component when you want to make additional queries to db or api like create
-
+//add somehting like Array.isArayy && map function
 export default function Home(props) {
   return (
     <ListingsContext.Provider value={useListings(props)}>

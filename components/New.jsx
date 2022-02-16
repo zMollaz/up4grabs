@@ -1,12 +1,9 @@
 import { useState, useContext } from "react";
-import { useRouter } from "next/router";
 import { ListingsContext } from "../context/ListingsContext";
 
 // pass set display and set state and defaultState as props
 export default function New({ handleClick, setDisplay }) {
   const { addListing, user } = useContext(ListingsContext);
-
-  const router = useRouter();
 
   const defaultState = {
     title: "",
@@ -94,7 +91,7 @@ export default function New({ handleClick, setDisplay }) {
           <div>
             <label
               htmlFor="title"
-              className="block mt-6 text-sm font-medium text-gray-dark  "
+              className="block mt-6 font-bold text-sm font-medium text-gray-dark  "
             >
               Title
             </label>
@@ -103,14 +100,14 @@ export default function New({ handleClick, setDisplay }) {
               onChange={changeHandler}
               name="title"
               className="bg-white border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="..."
+              placeholder="What's Up4Grabs?"
               required=""
             />
           </div>
           <div>
             <label
               htmlFor="description"
-              className="block mb-2 text-sm font-medium text-gray-dark  "
+              className="block mb-2 font-bold text-sm font-medium text-gray-dark  "
             >
               Description
             </label>
@@ -119,7 +116,7 @@ export default function New({ handleClick, setDisplay }) {
               onChange={changeHandler}
               type="text"
               name="description"
-              placeholder="..."
+              placeholder="Include important details about what's Up4Grabs! Do you need this item gone by a certain date? Dimensions? Weight? Pick up or meet-up only? New or used condition? Let other Grabbers know!"
               className="bg-gray-50 border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required=""
             />
@@ -128,28 +125,28 @@ export default function New({ handleClick, setDisplay }) {
           {/*  */}
           <div>
             <label
-              htmlFor="title"
-              className="block mt-6 text-sm font-medium text-gray-dark  "
+              htmlFor="postal_code"
+              className="block mt-6 font-bold text-sm font-medium text-gray-dark  "
             >
-              Postal code
+              Postal Code
             </label>
             <input
               onChange={changeHandler}
               value={state.postal_code}
               name="postal_code"
               className="bg-gray-50 border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="..."
+              placeholder="Let other Grabbers know the whereabouts of your Grab."
               required=""
             />
           </div>
           {/*  */}
           <label
-            htmlFor="start"
-            className="flow-root mt-2 text-sm font-medium text-gray-dark  "
+            htmlFor="end_date"
+            className="flow-root mt-2 font-bold text-sm font-medium text-gray-dark  "
           >
-            Draw Date{" "}
-          </label>
-          <div className="flex right-0 s-between w-full flex">
+            Draw Date
+          </label> 
+          <div className="flex right-0 top-0 s-between w-full">
             <input
               onChange={changeHandler}
               value={state.end_date}
@@ -161,7 +158,7 @@ export default function New({ handleClick, setDisplay }) {
               max="2024-12-31"
             />
               <select name="category_id" onChange={changeHandler}
-              className=" category-button w-1/2 text-md rounded-md">
+              className="font-bold category-button w-1/2 text-md rounded-md">
               <option disabled selected>Select Category</option>
               <option value={1}>Furniture
                 </option>
@@ -177,7 +174,7 @@ export default function New({ handleClick, setDisplay }) {
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">
               <div className="">
-                <label className="inline-block mb-2 text-gray-dark">
+                <label className="inline-block font-bold mb-2 text-gray-dark">
                   File Upload
                 </label>
                 <div className="flex items-center justify-center w-full">

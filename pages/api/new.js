@@ -29,7 +29,7 @@ export default async function formHandler(req, res) {
     category_id: categoryToInteger,
     start_date: startDate,
   };
-
+  
   const savedListing = await prisma.listings.create({
     data: newListing,
   });
