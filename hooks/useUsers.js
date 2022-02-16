@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import cookie from "cookie-cutter";
+
+const defaultUser = {id:0}
 
 const useUsers = () => {
+  const [user, setUser] = useState(defaultUser);
+  const [users, setUsers] = useState([]);
   const switchUser = (id) => {
+  cookie.set("id", id, {path:"/listings"})
   const user = users.find(user => user.id === Number(id))
-  setUser(user);
+  setUser(user || defaultUser);
   };
 
   useEffect(() => {
@@ -15,12 +21,15 @@ const useUsers = () => {
     })
   },[]) 
 
+  useEffect(() => {
+    const cookieId = Number(cookie.get("id")) || 0
+    switchUser(cookieId)
+  },[users]) 
+
 
   const getUsers = async () => {
     return axios.get("/api/users/users");
   };
-  const [user, setUser] = useState({id:0});
-  const [users, setUsers] = useState([]);
   return { user, users, switchUser };
 };
 
