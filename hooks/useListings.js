@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 
-const useListings = (data) => {
-  const [listings, setListings] = useState(data.defaultListings);
-  const [filteredListings, setFilteredListings] = useState(data.defaultListings);
-  const [user, setUser] = useState(data.users[0].id);
-  const [users, setUsers] = useState(data.users)
+const useListings = ({defaultListings, users}) => {
+  const [listings, setListings] = useState(defaultListings);
+  const [filteredListings, setFilteredListings] = useState(defaultListings);
+  const [user, setUser] = useState('1');
   
   useEffect(()=> {
     setFilteredListings(listings)
@@ -23,6 +22,10 @@ const useListings = (data) => {
     setListings(prev => [...prev, response.savedListing] )
   }
 
+  const switchUser = (e) => {
+    setUser(e.target.value)
+  }
+
   return {
     listings: listings,
     filteredListings: filteredListings,
@@ -31,6 +34,7 @@ const useListings = (data) => {
     onSearch: onSearch,
     addListing: addListing,
     setUser: setUser,
+    switchUser: switchUser,
   };
 };
 

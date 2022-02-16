@@ -2,7 +2,6 @@ import ListingItem from "./ListingItem";
 import moment from "moment";
 import { useContext } from 'react';
 import {ListingsContext} from "../context/ListingsContext"
-// import { useState} from "react";
 
 export default function Listings(props) {
   const {filteredListings} = useContext(ListingsContext)

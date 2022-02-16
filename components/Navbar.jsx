@@ -1,26 +1,31 @@
 import Link from "next/link";
 import New from "../components/New";
+import LikedListings from "../components/LikedListings";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
 
-// pass set display and set state and defaultState as props
 
+export default function Navbar(props) {
+  const { users, user, switchUser, onSearch } = useContext(ListingsContext);
 
-export default function Navbar({users}) {
-  const { user, switchUser } = useContext(ListingsContext);
-  const test = user;
   const [searchValue, setSearchValue] = useState("");
-  const [display, setDisplay] = useState(false);
+  const [newDisplay, setNewDisplay] = useState(false);
+  // const [likesDisplay, setLikesDisplay] = useState(false);
+  // const [loggedUser, setLoggedUser] = useState("1");
 
-  const handleClick = () => {
-    setDisplay((prev) => !prev);
+
+  const handleClickNew = () => {
+    setNewDisplay((prev) => !prev);
   };
+  // const handleClickLikes = () => {
+  //   setLikesDisplay((prev) => !prev);
+  // };
 
-  const userList = users.map((user) => {
+  const userList = users.map((oneUser) => {
     return (
-      //bug alert
-      <option value={test} key={user.id}className="user-option">
-        {user.name}
+      <option value={oneUser.id}  key={oneUser.id} className="user-option">
+        {oneUser.name}
+
       </option>
     );
   });
@@ -32,30 +37,43 @@ export default function Navbar({users}) {
           <a className="text-lg mt-2 font-lucky font-bold">Up4Grabs</a>
         </Link>
       </div>
-      {display && <New handleClick={handleClick} setDisplay={setDisplay} />}
+      {newDisplay && (
+        <New handleClick={handleClickNew} setDisplay={setNewDisplay} />
+      )}
+      {/* {likesDisplay && (
+        <LikedListings
+          handleClick={handleClickLikes}
+          setDisplay={setLikesDisplay}
+        />
+      )} */}
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden lg:flex">
           <Link href="#listings">
             <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
           </Link>
-          <a className="btn input input-ghost btn-sm rounded-btn mx-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="inline-block w-6 h-6 stroke-current"
+          <Link href="/users/likes">
+            <a
+              // onClick={handleClickLikes}
+              className="btn input input-ghost btn-sm rounded-btn mx-3"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              ></path>
-            </svg>
-          </a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-6 h-6  hover:fill-red hover:text-red stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+              </svg>
+            </a>
+          </Link>
 
           <a
-            onClick={handleClick}
+            onClick={handleClickNew}
             className="btn input input-ghost btn-sm rounded-btn"
           >
             <svg
@@ -109,7 +127,7 @@ export default function Navbar({users}) {
         </div>
 
         <div className="flex">
-          <label for="select-user">
+          <label htmlFor="select-user">
             <svg
               className="h-6 w-6 text-white mt-1"
               fill="none"
@@ -129,7 +147,7 @@ export default function Navbar({users}) {
             onChange={switchUser}
             className="ml-1 text-white btn btn-sm input input-ghost"
           >
-            <option value="0" className="" disabled selected>
+            <option value="0" className="" disabled >
               Switch user
             </option>
             {userList}
