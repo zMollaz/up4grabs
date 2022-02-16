@@ -2,7 +2,7 @@ import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "../components/Footer";
 
-export default function Layout({ children }) {
+export default function Layout({ children, users }) {
   return (
     <div className="bg-grey h-full">
       <Head>
@@ -18,7 +18,7 @@ export default function Layout({ children }) {
           rel="stylesheet"
         />
       </Head>
-      <Navbar />
+      <Navbar users={users}/>
       <div>{children}</div>
       <Footer />
     </div>

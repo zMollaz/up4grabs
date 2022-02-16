@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 
-const useListings = ({defaultListings, users}) => {
-  const [listings, setListings] = useState(defaultListings);
-  const [filteredListings, setFilteredListings] = useState(defaultListings);
-  const [user, setUser] = useState(users[0].id);
+const useListings = (data) => {
+  const [listings, setListings] = useState(data.defaultListings);
+  const [filteredListings, setFilteredListings] = useState(data.defaultListings);
+  const [user, setUser] = useState(data.users[0].id);
+  const [users, setUsers] = useState(data.users)
   
   useEffect(()=> {
     setFilteredListings(listings)
