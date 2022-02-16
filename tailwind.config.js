@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme")
+
 module.exports = {
   purge: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -31,7 +33,9 @@ module.exports = {
       'red' : '#ff6961',
     },
     fontFamily: {
-      sans: ['Teko', 'sans-serif', ],
+      lucky : ["Luckiest Guy"],
+      zen : ["Zen Kaku Gothic New"],
+      sans: ['Graphik', 'sans-serif', ],
       serif: ['Merriweather', 'serif'],
     },
     extend: {},
