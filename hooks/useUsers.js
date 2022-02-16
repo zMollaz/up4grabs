@@ -30,7 +30,7 @@ const useUsers = () => {
   const getUsers = async () => {
     return axios.get("/api/users/users");
   };
-  return { user, users, switchUser };
+  return { user, users, switchUser }; // this is what's in the context app.js
 };
 
 export default useUsers;
