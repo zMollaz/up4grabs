@@ -1,20 +1,25 @@
 import Link from "next/link";
 import New from "../components/New";
+import LikedListings from "../components/LikedListings"
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const { users, user, setUser, onSearch } = useContext(ListingsContext);
   const [searchValue, setSearchValue] = useState("");
-  const [display, setDisplay] = useState(false);
+  const [newDisplay, setNewDisplay] = useState(false);
+  const [likesDisplay, setLikesDisplay] = useState(false);
 
-  const handleClick = () => {
-    setDisplay((prev) => !prev);
+  const handleClickNew = () => {
+    setNewDisplay((prev) => !prev);
+  };
+  const handleClickLikes = () => {
+    setLikesDisplay((prev) => !prev);
   };
 
   const userList = users.map((user) => {
     return (
-      <option value={user.id} key={user.id}className="user-option">
+      <option value={user.id} key={user.id} className="user-option">
         {user.name}
       </option>
     );
@@ -27,18 +32,29 @@ export default function Navbar() {
           <a className="text-lg font-bold">Up4Grabs</a>
         </Link>
       </div>
-      {display && <New handleClick={handleClick} setDisplay={setDisplay} />}
+      {newDisplay && (
+        <New handleClick={handleClickNew} setDisplay={setNewDisplay} />
+      )}
+      {likesDisplay && (
+        <LikedListings
+          handleClick={handleClickLikes}
+          setDisplay={setLikesDisplay}
+        />
+      )}
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden lg:flex">
           <Link href="#listings">
             <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
           </Link>
-          <a className="btn input input-ghost btn-sm rounded-btn mx-3">
+          <a
+            onClick={handleClickLikes}
+            className="btn input input-ghost btn-sm rounded-btn mx-3"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              className="inline-block w-6 h-6 stroke-current"
+              className="inline-block w-6 h-6  hover:fill-red hover:text-red stroke-current"
             >
               <path
                 strokeLinecap="round"
@@ -50,7 +66,7 @@ export default function Navbar() {
           </a>
 
           <a
-            onClick={handleClick}
+            onClick={handleClickNew}
             className="btn input input-ghost btn-sm rounded-btn"
           >
             <svg
@@ -121,7 +137,7 @@ export default function Navbar() {
           </label>
           <select
             name="Users"
-            onChange={(e)=> (setUser(e.target.value))}
+            onChange={(e) => setUser(e.target.value)}
             className="ml-1 text-white btn btn-sm input input-ghost"
           >
             <option value="0" className="" disabled selected>

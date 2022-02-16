@@ -18,6 +18,7 @@ export async function getServerSideProps(context) {
       id: Number(context.params.id),
     },
   });
+  const users = await prisma.user.findMany();
 
   const response = await axios
     .get(
@@ -27,15 +28,15 @@ export async function getServerSideProps(context) {
   const coordinates = {longitude: extract[0], latitude: extract[1]};
 
   return {
-    props: { listingItem, coordinates, },
+    props: { listingItem, coordinates, users},
   };
 }
 
-export default function listingPage({ listingItem, coordinates }) {
+export default function ListingPage({ listingItem, coordinates, users }) {
   const { title, description, img_src, end_date } = listingItem;
 
   return (
-    <Layout>
+    <Layout users={users}>
       <section className="text-gray-700 body-font overflow-hidden bg-white h-full">
         {/* <div className=" px-5 py-18 h-full mx-auto"> */}
         <div className="lg:w-4/5 h-[1000px] mx-auto flex flex-wrap flex-col">

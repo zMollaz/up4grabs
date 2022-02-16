@@ -21,7 +21,7 @@ export default function Home(props) {
 
   return (
     <ListingsContext.Provider value={useListings(props)}>
-    <Layout >
+    <Layout users={props.users}>
       <Header />
       <PageBreak />
       <Listings />
