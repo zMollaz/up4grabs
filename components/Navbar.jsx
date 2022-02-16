@@ -8,18 +8,20 @@ export default function Navbar(props) {
   const { users, user, switchUser, onSearch } = useContext(ListingsContext);
   const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
-  const [likesDisplay, setLikesDisplay] = useState(false);
+  // const [likesDisplay, setLikesDisplay] = useState(false);
+  // const [loggedUser, setLoggedUser] = useState("1");
+
 
   const handleClickNew = () => {
     setNewDisplay((prev) => !prev);
   };
-  const handleClickLikes = () => {
-    setLikesDisplay((prev) => !prev);
-  };
+  // const handleClickLikes = () => {
+  //   setLikesDisplay((prev) => !prev);
+  // };
 
   const userList = users.map((oneUser) => {
     return (
-      <option value={oneUser.id} key={oneUser.id} className="user-option">
+      <option value={oneUser.id}  key={oneUser.id} className="user-option">
         {oneUser.name}
       </option>
     );
@@ -48,7 +50,7 @@ export default function Navbar(props) {
           </Link>
           <Link href="/users/likes">
             <a
-              onClick={handleClickLikes}
+              // onClick={handleClickLikes}
               className="btn input input-ghost btn-sm rounded-btn mx-3"
             >
               <svg
@@ -122,7 +124,7 @@ export default function Navbar(props) {
         </div>
 
         <div className="flex">
-          <label for="select-user">
+          <label htmlFor="select-user">
             <svg
               className="h-6 w-6 text-white mt-1"
               fill="none"
@@ -142,7 +144,7 @@ export default function Navbar(props) {
             onChange={switchUser}
             className="ml-1 text-white btn btn-sm input input-ghost"
           >
-            <option value="0" className="" disabled selected>
+            <option value="0" className="" disabled >
               Switch user
             </option>
             {userList}

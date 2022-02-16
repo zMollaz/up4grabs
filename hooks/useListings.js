@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const useListings = ({defaultListings, users}) => {
   const [listings, setListings] = useState(defaultListings);
   const [filteredListings, setFilteredListings] = useState(defaultListings);
-  const [user, setUser] = useState(users[0].id);
+  const [user, setUser] = useState('1');
   
   useEffect(()=> {
     setFilteredListings(listings)
@@ -21,6 +21,7 @@ const useListings = ({defaultListings, users}) => {
   const addListing = (response) => {
     setListings(prev => [...prev, response.savedListing] )
   }
+
   const switchUser = (e) => {
     setUser(e.target.value)
   }
