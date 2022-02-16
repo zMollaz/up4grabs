@@ -8,7 +8,7 @@ const useUsers = () => {
   const [user, setUser] = useState(defaultUser);
   const [users, setUsers] = useState([]);
   const switchUser = (id) => {
-  cookie.set("id", id, {path:"/listings"})
+  cookie.set("id", id, {path:"/"})
   const user = users.find(user => user.id === Number(id))
   setUser(user || defaultUser);
   };
