@@ -100,7 +100,7 @@ export default function New({ handleClick, setDisplay }) {
               onChange={changeHandler}
               name="title"
               className="bg-white border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="..."
+              placeholder="What are you putting Up4Grabs?"
               required=""
             />
           </div>
@@ -116,7 +116,7 @@ export default function New({ handleClick, setDisplay }) {
               onChange={changeHandler}
               type="text"
               name="description"
-              placeholder="..."
+              placeholder="Include important details about your Grab! Do you need this item gone by a certain date? Dimensions? Weight? Pick up or meet-up only? New or used condition? Let other Grabbers know!"
               className="bg-gray-50 border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required=""
             />
@@ -135,7 +135,7 @@ export default function New({ handleClick, setDisplay }) {
               value={state.postal_code}
               name="postal_code"
               className="bg-gray-50 border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="..."
+              placeholder="Let other Grabbers know whereabouts they can claim your Grab"
               required=""
             />
           </div>

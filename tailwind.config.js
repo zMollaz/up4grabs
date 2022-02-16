@@ -33,8 +33,8 @@ module.exports = {
       'red' : '#ff6961',
     },
     fontFamily: {
-      "lucky" : ["Luckiest Guy"],
-      "zen" : ["Zen Kaku Gothic New"],
+      lucky : ["Luckiest Guy"],
+      zen : ["Zen Kaku Gothic New"],
       sans: ['Graphik', 'sans-serif', ],
       serif: ['Merriweather', 'serif'],
     },
