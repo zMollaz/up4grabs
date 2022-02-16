@@ -14,7 +14,7 @@ export default function Layout({ children, users }) {
           rel="stylesheet"
         />
       </Head>
-      <Navbar users={users}/>
+      <Navbar/>
       <div>{children}</div>
       <Footer />
     </div>

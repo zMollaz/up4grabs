@@ -3,10 +3,12 @@ import New from "../components/New";
 import LikedListings from "../components/LikedListings";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
+import UsersContext from "../context/UsersContext";
 
 
 export default function Navbar(props) {
-  const { users, user, switchUser, onSearch } = useContext(ListingsContext);
+  const {onSearch} = useContext(ListingsContext);
+  const { users, user, switchUser} = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
 
   const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
@@ -144,8 +146,10 @@ export default function Navbar(props) {
           </label>
           <select
             name="Users"
-            onChange={switchUser}
+            onChange={(e) => {switchUser(e.target.value)
+            }}
             className="ml-1 text-white btn btn-sm input input-ghost"
+            value={user.id}
           >
             <option value="0" className="" disabled >
               Switch user
