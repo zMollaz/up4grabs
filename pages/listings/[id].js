@@ -7,7 +7,8 @@ import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
 import "mapbox-gl/dist/mapbox-gl.css";
 import UsersContext from "../../context/UsersContext";
-import { useContext } from "react";
+import { useContext , useRef, useState } from "react";
+
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
@@ -18,6 +19,12 @@ export async function getServerSideProps(context) {
       id: Number(context.params.id),
     },
   });
+  const biddings = await prisma.biddings.findMany({
+    where: {
+      listing_id: Number(context.params.id),
+    },
+  });
+
   const users = await prisma.user.findMany();
   const defaultListings = await prisma.listings.findMany();
   const listingId = Number(context.params.id)
@@ -29,7 +36,7 @@ export async function getServerSideProps(context) {
   const coordinates = { longitude: extract[0], latitude: extract[1] };
 
   return {
-    props: { listingItem, coordinates, users, defaultListings, listingId },
+    props: { listingItem, coordinates, users, defaultListings, listingId, biddings },
   };
 }
 
@@ -37,14 +44,20 @@ export default function ListingPage(props) {
 
   const { title, description, img_src, end_date } = props.listingItem;
   const { user } = useContext(UsersContext);
+  const [disabled, setDisabled] = useState(true)
+  const [color, setColor] = useState("none")
+  
+  let btnRef = useRef();
+  
   const handleLike = async () => {
     const response = await axios.post('/api/likes', {
       user_id : user.id,
       listing_id : props.listingId
     })
-    console.log("HELLO", props.listingId)
-    console.log(response)
+    setColor("#DA4567")
+    setDisabled(true);
   }
+
   return (
     <ListingsContext.Provider value={useListings(props)}>
       <Layout>
@@ -63,12 +76,12 @@ export default function ListingPage(props) {
               <span className="title-font font-bold font-medium text-2xl text-gray-dark">
                 Like to bid
               </span>
-              <button onClick={handleLike} className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
+              <button onClick={handleLike}  className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
                 <svg
               
                   className=" icon h-7 w-7 text-red"
                   viewBox="0 0 24 24"
-                  fill="none"
+                  fill={color}
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
@@ -87,7 +100,7 @@ export default function ListingPage(props) {
                 {title}
               </h1>
               <div className="flex mb-4">
-                <Countdown end_date={end_date} />
+                <Countdown end_date={end_date} biddings={props.biddings} users={props.users}/>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-light">
                   <a className="text-gray-dark">
                     <svg
@@ -133,7 +146,7 @@ export default function ListingPage(props) {
               initialViewState={{
                 longitude: props.coordinates.longitude,
                 latitude: props.coordinates.latitude,
-                zoom: 14,
+                zoom: 13,
               }}
               style={{
                 width: 400,
