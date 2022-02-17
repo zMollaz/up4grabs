@@ -6,6 +6,9 @@ import axios from "axios";
 import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
 import "mapbox-gl/dist/mapbox-gl.css";
+import UsersContext from "../../context/UsersContext";
+import { useContext } from "react";
+import { useRouter } from 'next/router'
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
@@ -18,7 +21,7 @@ export async function getServerSideProps(context) {
   });
   const users = await prisma.user.findMany();
   const defaultListings = await prisma.listings.findMany();
-
+  const listingId = Number(context.params.id)
   const response = await axios.get(
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${listingItem.postal_code}.json?access_token=pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg`
   );
@@ -27,13 +30,21 @@ export async function getServerSideProps(context) {
   const coordinates = { longitude: extract[0], latitude: extract[1] };
 
   return {
-    props: { listingItem, coordinates, users, defaultListings },
+    props: { listingItem, coordinates, users, defaultListings, listingId },
   };
 }
 
 export default function ListingPage(props) {
-  const { title, description, img_src, end_date } = props.listingItem;
 
+  const { title, description, img_src, end_date } = props.listingItem;
+  const { user } = useContext(UsersContext);
+  const handleLike = async () => {
+    const response = await axios.post('/api/likes', {
+      user_id : user.id,
+      listing_id : props.listingId
+    })
+    console.log("HELLO", props.listingId)
+  }
   return (
     <ListingsContext.Provider value={useListings(props)}>
       <Layout>
