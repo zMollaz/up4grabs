@@ -6,6 +6,9 @@ import axios from "axios";
 import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
 import "mapbox-gl/dist/mapbox-gl.css";
+import UsersContext from "../../context/UsersContext";
+import { useContext } from "react";
+import { useRouter } from 'next/router'
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
@@ -18,7 +21,7 @@ export async function getServerSideProps(context) {
   });
   const users = await prisma.user.findMany();
   const defaultListings = await prisma.listings.findMany();
-
+  const listingId = Number(context.params.id)
   const response = await axios.get(
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${listingItem.postal_code}.json?access_token=pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg`
   );
@@ -27,13 +30,22 @@ export async function getServerSideProps(context) {
   const coordinates = { longitude: extract[0], latitude: extract[1] };
 
   return {
-    props: { listingItem, coordinates, users, defaultListings },
+    props: { listingItem, coordinates, users, defaultListings, listingId },
   };
 }
 
 export default function ListingPage(props) {
-  const { title, description, img_src, end_date } = props.listingItem;
 
+  const { title, description, img_src, end_date } = props.listingItem;
+  const { user } = useContext(UsersContext);
+  const handleLike = async () => {
+    const response = await axios.post('/api/likes', {
+      user_id : user.id,
+      listing_id : props.listingId
+    })
+    console.log("HELLO", props.listingId)
+    console.log(response)
+  }
   return (
     <ListingsContext.Provider value={useListings(props)}>
       <Layout>
@@ -49,11 +61,12 @@ export default function ListingPage(props) {
               <div className="relative"></div>
             </div>
             <div className="flex w-[300px]">
-              <span className="title-font font-medium text-2xl text-gray-dark">
+              <span className="title-font font-bold font-medium text-2xl text-gray-dark">
                 Like to bid
               </span>
-              <button className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
+              <button onClick={handleLike} className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
                 <svg
+              
                   className=" icon h-7 w-7 text-red"
                   viewBox="0 0 24 24"
                   fill="none"
@@ -71,7 +84,7 @@ export default function ListingPage(props) {
               <h2 className="text-sm title-font text-gray-dark tracking-widest">
                 Up4Grabs
               </h2>
-              <h1 className="text-gray-dark text-3xl title-font font-medium mb-1">
+              <h1 className="text-gray-dark font-bold text-3xl title-font font-medium mb-1">
                 {title}
               </h1>
               <div className="flex mb-4">
