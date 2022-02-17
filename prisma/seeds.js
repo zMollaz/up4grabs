@@ -103,7 +103,7 @@ const main = async () => {
           "Vintage wall unit from 1970 in excellent condition. Two piece wall unit, six shelves, one light up glass cabinet, three drawers, and a liquor cabinet Holds a 32 inch TV.",
         img_src: "https://i.ibb.co/9Nj1nPn/tv-shelf.jpg",
         start_date: "2022-02-02",
-        end_date: "2022-02-18",
+        end_date: "2022-02-17",
         postal_code: "M2N",
       },
 

@@ -21,15 +21,17 @@ const useUsers = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [users]);
 
   useEffect(() => {
     const cookieId = Number(cookie.get("id")) || 0;
     switchUser(cookieId);
-  }, [users]);
+  }, []);
 
   const getUsers = async () => {
-    return axios.get("/api/users");
+    const users = axios.get("/api/users");
+    
+    return users
   };
   return { user, users, switchUser }; // this is what's in the context app.js
 };

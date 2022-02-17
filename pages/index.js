@@ -18,7 +18,7 @@ export async function getStaticProps() {
 export default function Home(props) {
   return (
     <ListingsContext.Provider value={useListings(props)}>
-      <Layout>
+      <Layout >
         <Header />
         <PageBreak />
         <Listings />

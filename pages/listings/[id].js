@@ -19,6 +19,12 @@ export async function getServerSideProps(context) {
       id: Number(context.params.id),
     },
   });
+  const biddings = await prisma.biddings.findMany({
+    where: {
+      listing_id: Number(context.params.id),
+    },
+  });
+
   const users = await prisma.user.findMany();
   const defaultListings = await prisma.listings.findMany();
   const listingId = Number(context.params.id)
@@ -30,7 +36,7 @@ export async function getServerSideProps(context) {
   const coordinates = { longitude: extract[0], latitude: extract[1] };
 
   return {
-    props: { listingItem, coordinates, users, defaultListings, listingId },
+    props: { listingItem, coordinates, users, defaultListings, listingId, biddings },
   };
 }
 
@@ -38,14 +44,14 @@ export default function ListingPage(props) {
 
   const { title, description, img_src, end_date } = props.listingItem;
   const { user } = useContext(UsersContext);
+
   const handleLike = async () => {
     const response = await axios.post('/api/likes', {
       user_id : user.id,
       listing_id : props.listingId
     })
-    console.log("HELLO", props.listingId)
-    console.log(response)
   }
+
   return (
     <ListingsContext.Provider value={useListings(props)}>
       <Layout>
@@ -88,7 +94,7 @@ export default function ListingPage(props) {
                 {title}
               </h1>
               <div className="flex mb-4">
-                <Countdown end_date={end_date} />
+                <Countdown end_date={end_date} biddings={props.biddings} users={props.users}/>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-light">
                   <a className="text-gray-dark">
                     <svg
@@ -134,7 +140,7 @@ export default function ListingPage(props) {
               initialViewState={{
                 longitude: props.coordinates.longitude,
                 latitude: props.coordinates.latitude,
-                zoom: 14,
+                zoom: 13,
               }}
               style={{
                 width: 400,
