@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import cookie from "cookie-cutter";
 
-const defaultUser = { id: 0 };
+const defaultUser = { id: 1 };
 
 const useUsers = () => {
   const [user, setUser] = useState(defaultUser);

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 export default function Countdown({ end_date, biddings, users }) {
   const getCountdown = () => {
     const year = new Date().getFullYear() + 1;

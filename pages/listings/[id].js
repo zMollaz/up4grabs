@@ -7,8 +7,8 @@ import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
 import "mapbox-gl/dist/mapbox-gl.css";
 import UsersContext from "../../context/UsersContext";
-import { useContext } from "react";
-import { useRouter } from 'next/router'
+import { useContext , useRef, useState } from "react";
+
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
@@ -44,12 +44,18 @@ export default function ListingPage(props) {
 
   const { title, description, img_src, end_date } = props.listingItem;
   const { user } = useContext(UsersContext);
-
+  const [disabled, setDisabled] = useState(true)
+  const [color, setColor] = useState("none")
+  
+  let btnRef = useRef();
+  
   const handleLike = async () => {
     const response = await axios.post('/api/likes', {
       user_id : user.id,
       listing_id : props.listingId
     })
+    setColor("#DA4567")
+    setDisabled(true);
   }
 
   return (
@@ -70,12 +76,12 @@ export default function ListingPage(props) {
               <span className="title-font font-bold font-medium text-2xl text-gray-dark">
                 Like to bid
               </span>
-              <button onClick={handleLike} className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
+              <button onClick={handleLike}  className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
                 <svg
               
                   className=" icon h-7 w-7 text-red"
                   viewBox="0 0 24 24"
-                  fill="none"
+                  fill={color}
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
