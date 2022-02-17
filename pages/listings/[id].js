@@ -2,15 +2,10 @@ import Layout from "../../components/Layout";
 import Countdown from "../../components/Countdown";
 import prisma from "../../lib/prisma";
 import Map, { Marker } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
-
 import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
-// import { useState, useContext } from "react";
-// import { ListingsContext } from "../context/ListingsContext";
-
-// const { users, setUser, onSearch } = useContext(ListingsContext);
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
@@ -32,7 +27,6 @@ export async function getServerSideProps(context) {
   const coordinates = { longitude: extract[0], latitude: extract[1] };
 
   return {
-
     props: { listingItem, coordinates, users, defaultListings },
   };
 }
@@ -42,11 +36,9 @@ export default function ListingPage(props) {
 
   return (
     <ListingsContext.Provider value={useListings(props)}>
-      <Layout >
+      <Layout>
         <section className="text-gray-700 body-font overflow-hidden bg-white h-full">
-          {/* <div className=" px-5 py-18 h-full mx-auto"> */}
           <div className="lg:w-4/5 h-[1000px] mx-auto flex flex-wrap flex-col">
-            {/* <div className="lg:w-4/5 mx-auto flex flex-wrap"> */}
             <img
               alt="ecommerce"
               className=" w-[430px] sticky self-start mt-12 object-contain rounded border border-gray-200"
@@ -60,10 +52,6 @@ export default function ListingPage(props) {
               <span className="title-font font-medium text-2xl text-gray-dark">
                 Like to bid
               </span>
-              {/* <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-
-                  Button
-                </button> */}
               <button className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
                 <svg
                   className=" icon h-7 w-7 text-red"
@@ -80,7 +68,6 @@ export default function ListingPage(props) {
               </button>
             </div>
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              {/* <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0"> */}
               <h2 className="text-sm title-font text-gray-dark tracking-widest">
                 Up4Grabs
               </h2>
@@ -153,7 +140,6 @@ export default function ListingPage(props) {
               />
             </Map>
           </div>
-          {/* </div> */}
         </section>
       </Layout>
     </ListingsContext.Provider>

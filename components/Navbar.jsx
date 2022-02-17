@@ -1,33 +1,25 @@
 import Link from "next/link";
 import New from "../components/New";
-import LikedListings from "../components/LikedListings";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
 import UsersContext from "../context/UsersContext";
 
-
 export default function Navbar(props) {
-  const {onSearch} = useContext(ListingsContext);
-  const { users, user, switchUser} = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
+  const { onSearch } = useContext(ListingsContext);
+  const { users, user, switchUser } = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
 
   const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
-  // const [likesDisplay, setLikesDisplay] = useState(false);
-  // const [loggedUser, setLoggedUser] = useState("1");
 
 
   const handleClickNew = () => {
     setNewDisplay((prev) => !prev);
   };
-  // const handleClickLikes = () => {
-  //   setLikesDisplay((prev) => !prev);
-  // };
 
   const userList = users.map((oneUser) => {
     return (
-      <option value={oneUser.id}  key={oneUser.id} className="user-option">
+      <option value={oneUser.id} key={oneUser.id} className="user-option">
         {oneUser.name}
-
       </option>
     );
   });
@@ -42,22 +34,14 @@ export default function Navbar(props) {
       {newDisplay && (
         <New handleClick={handleClickNew} setDisplay={setNewDisplay} />
       )}
-      {/* {likesDisplay && (
-        <LikedListings
-          handleClick={handleClickLikes}
-          setDisplay={setLikesDisplay}
-        />
-      )} */}
+
       <div className="flex-1 px-2 mx-2">
         <div className="items-stretch hidden lg:flex">
           <Link href="#listings">
             <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
           </Link>
           <Link href="/users/likes">
-            <a
-              // onClick={handleClickLikes}
-              className="btn input input-ghost btn-sm rounded-btn mx-3"
-            >
+            <a className="btn input input-ghost btn-sm rounded-btn mx-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -113,7 +97,7 @@ export default function Navbar(props) {
             }}
             type="text"
             // placeholder="Search"
-            className="mr-5 p-4 input input-ghost h-7"
+            className="mr-5 p-4  btn btn-sm input input-ghost h-7"
           />
         </div>
         <button
@@ -146,12 +130,13 @@ export default function Navbar(props) {
           </label>
           <select
             name="Users"
-            onChange={(e) => {switchUser(e.target.value)
+            onChange={(e) => {
+              switchUser(e.target.value);
             }}
             className="ml-1 text-white btn btn-sm input input-ghost"
             value={user.id}
           >
-            <option value="0" className="" disabled >
+            <option value="0" className="" disabled>
               Switch user
             </option>
             {userList}

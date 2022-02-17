@@ -1,19 +1,18 @@
 import Layout from "../../components/Layout";
 import Listings from "../../components/Listings";
 import prisma from "../../lib/prisma";
-import {ListingsContext} from "../../context/ListingsContext";
+import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
 
 export async function getStaticProps() {
   const defaultListings = await prisma.listings.findMany();
   const users = await prisma.user.findMany();
-  console.log(111, users)
+
   return {
     props: { defaultListings, users },
   };
 }
 export default function Likes(props) {
-
   return (
     <ListingsContext.Provider value={useListings(props)}>
       <Layout>
@@ -24,7 +23,6 @@ export default function Likes(props) {
           <div className="absolute inset-0  w-full  h-full md:h-auto">
             <div className="flex w-full h-screen absolute opacity-75 bg-t-gray">
               <button
-                // onClick={handleClick}
                 type="button"
                 className="text-black hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center  absolute right-0 top-0"
               >
