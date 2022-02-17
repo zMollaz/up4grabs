@@ -49,7 +49,7 @@ export default function ListingPage(props) {
               <div className="relative"></div>
             </div>
             <div className="flex w-[300px]">
-              <span className="title-font font-medium text-2xl text-gray-dark">
+              <span className="title-font font-bold font-medium text-2xl text-gray-dark">
                 Like to bid
               </span>
               <button className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
@@ -71,7 +71,7 @@ export default function ListingPage(props) {
               <h2 className="text-sm title-font text-gray-dark tracking-widest">
                 Up4Grabs
               </h2>
-              <h1 className="text-gray-dark text-3xl title-font font-medium mb-1">
+              <h1 className="text-gray-dark font-bold text-3xl title-font font-medium mb-1">
                 {title}
               </h1>
               <div className="flex mb-4">
