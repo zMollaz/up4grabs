@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 
-const useListings = ({defaultListings, users}) => {
+const useListings = ({defaultListings, users, defaultLikes}) => {
   const [listings, setListings] = useState(defaultListings);
   const [filteredListings, setFilteredListings] = useState(defaultListings);
   const [user, setUser] = useState('1');
+  const [bidding, setBidding] = useState(false);
+  const [likes, setLikes] = useState(defaultLikes);
   
   useEffect(()=> {
     setFilteredListings(listings)
@@ -35,6 +37,8 @@ const useListings = ({defaultListings, users}) => {
     addListing: addListing,
     setUser: setUser,
     switchUser: switchUser,
+    bidding: bidding,
+    setBidding: setBidding,
   };
 };
 

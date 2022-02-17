@@ -8,7 +8,6 @@ import useListings from "../../hooks/useListings";
 import "mapbox-gl/dist/mapbox-gl.css";
 import UsersContext from "../../context/UsersContext";
 import { useContext } from "react";
-import { useRouter } from 'next/router'
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";

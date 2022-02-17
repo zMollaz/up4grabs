@@ -4,13 +4,18 @@ import { useContext } from 'react';
 import {ListingsContext} from "../context/ListingsContext"
 
 export default function Listings(props) {
-  const {filteredListings} = useContext(ListingsContext)
+  const {filteredListings, bidding} = useContext(ListingsContext)
 
   const myDate = function (date) {
     return moment(date, "").fromNow();
   };
 
-  const parsedListings = filteredListings.map((listing) => {
+  if (bidding) {
+    const selectedListings = biddings
+  }
+
+  const selectedListings = filteredListings
+  const parsedListings = selectedListings.map((listing) => {
     return (
       <ListingItem
         title={listing.title}

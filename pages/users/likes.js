@@ -3,16 +3,28 @@ import Listings from "../../components/Listings";
 import prisma from "../../lib/prisma";
 import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
+// import cookie from "cookie-cutter";
+// const cookie = require('cookie-cutter');
 
 export async function getStaticProps() {
+  // const user = cookie.get("id")
   const defaultListings = await prisma.listings.findMany();
-  const users = await prisma.user.findMany();
-
+  const defaultLikes = await prisma.biddings.findMany({
+    where: {
+      user_id: 2,
+    },
+    include: {
+      listing_id: true,
+    },
+  })
+  console.log(2233, defaultLikes)
   return {
-    props: { defaultListings, users },
+    props: { defaultListings, defaultLikes },
   };
 }
+
 export default function Likes(props) {
+  
   return (
     <ListingsContext.Provider value={useListings(props)}>
       <Layout>
