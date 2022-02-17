@@ -52,8 +52,9 @@ export default function ListingPage(props) {
               <span className="title-font font-bold font-medium text-2xl text-gray-dark">
                 Like to bid
               </span>
-              <button className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
+              <button onClick={handleLike} className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
                 <svg
+              
                   className=" icon h-7 w-7 text-red"
                   viewBox="0 0 24 24"
                   fill="none"
