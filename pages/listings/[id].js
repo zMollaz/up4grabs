@@ -44,6 +44,7 @@ export default function ListingPage(props) {
       listing_id : props.listingId
     })
     console.log("HELLO", props.listingId)
+    console.log(response)
   }
   return (
     <ListingsContext.Provider value={useListings(props)}>
