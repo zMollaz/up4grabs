@@ -2,11 +2,11 @@ import Link from "next/link";
 import New from "../components/New";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
-import UsersContext from "../context/UsersContext";
+import {UsersContext} from "../context/UsersContext";
 
 export default function Navbar(props) {
-  const { onSearch, setBidding } = useContext(ListingsContext);
-  const { users, user, switchUser } = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
+  const { onSearch, setLikes } = useContext(ListingsContext);
+  const { users, user, switchUser, loaded } = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
   const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
 
@@ -16,7 +16,7 @@ export default function Navbar(props) {
   };
 
   const handleClickLikes = () => {
-    setBidding((prev) => !prev);
+    setLikes((prev) => !prev);
   };
 
   const userList = users.map((oneUser) => {
@@ -131,7 +131,7 @@ export default function Navbar(props) {
               />
             </svg>
           </label>
-          <select
+         {loaded && (<select
             name="Users"
             onChange={(e) => {
               switchUser(e.target.value);
@@ -143,7 +143,7 @@ export default function Navbar(props) {
               Switch user
             </option>
             {userList}
-          </select>
+          </select>)}
         </div>
       </div>
     </div>

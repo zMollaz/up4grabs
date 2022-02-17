@@ -39,6 +39,8 @@ const useListings = ({defaultListings, users, defaultLikes}) => {
     switchUser: switchUser,
     bidding: bidding,
     setBidding: setBidding,
+    likes: likes,
+    setLikes: setLikes,
   };
 };
 
