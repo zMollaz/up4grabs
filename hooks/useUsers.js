@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import cookie from "cookie-cutter";
 
-const defaultUser = { id: 0 };
+const defaultUser = { id: 1 };
 
 const useUsers = () => {
   const [user, setUser] = useState(defaultUser);
@@ -21,15 +21,17 @@ const useUsers = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [users]);
 
   useEffect(() => {
     const cookieId = Number(cookie.get("id")) || 0;
     switchUser(cookieId);
-  }, [users]);
+  }, []);
 
   const getUsers = async () => {
-    return axios.get("/api/users");
+    const users = axios.get("/api/users");
+    
+    return users
   };
   return { user, users, switchUser }; // this is what's in the context app.js
 };

@@ -5,7 +5,7 @@ import { ListingsContext } from "../context/ListingsContext";
 import UsersContext from "../context/UsersContext";
 
 export default function Navbar(props) {
-  const { onSearch } = useContext(ListingsContext);
+  const { onSearch, setBidding } = useContext(ListingsContext);
   const { users, user, switchUser } = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
 
   const [searchValue, setSearchValue] = useState("");
@@ -14,6 +14,10 @@ export default function Navbar(props) {
 
   const handleClickNew = () => {
     setNewDisplay((prev) => !prev);
+  };
+
+  const handleClickLikes = () => {
+    setBidding((prev) => !prev);
   };
 
   const userList = users.map((oneUser) => {
@@ -41,7 +45,7 @@ export default function Navbar(props) {
             <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
           </Link>
           <Link href="/users/likes">
-            <a className="btn input input-ghost btn-sm rounded-btn mx-3">
+            <a onClick={handleClickLikes} className="btn input input-ghost btn-sm rounded-btn mx-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
