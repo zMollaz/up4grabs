@@ -22,9 +22,11 @@ export default function Countdown({ end_date, biddings, users }) {
   const [countdown, setCountdown] = useState(getCountdown());
 
   useEffect(() => {
-    setTimeout(() => {
+    let timer = setTimeout(() => {
       setCountdown(getCountdown());
     }, 1000);
+
+    return () => clearTimeout();
   });
 
   const data = [];
@@ -56,13 +58,13 @@ export default function Countdown({ end_date, biddings, users }) {
   useEffect(() => {
     setWinner(randomWinner(biddings, users));
 
-    axios.post("/api/email")
-    .then((response) => {console.log(response)})
-    .catch((error) => console.log(error))
+    // axios.post("/api/email")
+    // .then((response) => {console.log(response)})
+    // .catch((error) => console.log(error))
 
   }, []);
 
-  const timeRemaining = false;
+  const timeRemaining = true;
 
   return (
     <>

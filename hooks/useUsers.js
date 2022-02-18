@@ -18,7 +18,6 @@ const useUsers = () => {
     }
       cookie.set("id", uId, { path: "/" });
       const user = users.find((user) => user.id === Number(uId));
-      console.log(user);
       setUser(user || defaultUser);
 
   };

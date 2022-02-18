@@ -1,5 +1,4 @@
 import Layout from "../../components/Layout";
-import Countdown from "../../components/Countdown";
 import prisma from "../../lib/prisma";
 import Map, { Marker } from "react-map-gl";
 import axios from "axios";
@@ -8,7 +7,12 @@ import useListings from "../../hooks/useListings";
 import "mapbox-gl/dist/mapbox-gl.css";
 import {UsersContext} from "../../context/UsersContext";
 import { useContext, useState } from "react";
+import dynamic from 'next/dynamic'
 
+const DynamicComponentWithNoSSR = dynamic(
+  () => import('../../components/Countdown'),
+  { ssr: false }
+)
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg";
@@ -99,7 +103,8 @@ export default function ListingPage(props) {
                 {title}
               </h1>
               <div className="flex mb-4">
-                <Countdown end_date={end_date} biddings={props.biddings} users={props.users}/>
+                {/* <Countdown end_date={end_date} biddings={props.biddings} users={props.users}/> */}
+                <DynamicComponentWithNoSSR end_date={end_date} biddings={props.biddings} users={props.users}/>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-light">
                   <a className="text-gray-dark">
                     <svg
