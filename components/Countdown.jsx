@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import {UsersContext} from "../context/UsersContext";
 
 export default function Countdown({ end_date, biddings, users }) {
   const getCountdown = () => {
@@ -31,6 +32,8 @@ export default function Countdown({ end_date, biddings, users }) {
       </span>
     );
   });
+  // const { users } = useContext(UsersContext); 
+
   const [winner, setWinner] = useState("")
   const randomWinner = (biddings, users) => {
     console.log(111, biddings)

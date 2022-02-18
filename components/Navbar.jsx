@@ -16,8 +16,6 @@ export default function Navbar(props) {
     
   };
 
-
-
   const userList = users.map((oneUser) => {
     return (
       <option value={oneUser.id} key={oneUser.id} className="user-option">
