@@ -11,7 +11,7 @@ const useUsers = () => {
   const [users, setUsers] = useState([]);
 
   const switchUser = (id) => {
-    console.log(323, id);
+
     let uId = id;
     if (!uId) {
       uId = 1;
