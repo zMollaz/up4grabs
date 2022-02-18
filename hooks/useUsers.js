@@ -5,14 +5,11 @@ import cookie from "cookie-cutter";
 const defaultUser = { id: 1 };
 
 const useUsers = () => {
-   
-  const [defaultId, setDefaultId] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-  // const currentId = cookie.get("id")
-  // console.log(888, currentId)
-  // const currentUser = users.find((user) => user.id === currentID);
+  
+     const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState(defaultUser);
   const [users, setUsers] = useState([]);
+
   const switchUser = (id) => {
     console.log(323, id);
     let uId = id;
@@ -38,7 +35,7 @@ const useUsers = () => {
   }, [users]);
   
   useEffect(() => {
-    const cookieId = Number(cookie.get("id")) || 0;
+    const cookieId = Number(cookie.get("id")) || 1;
     switchUser(cookieId);
   }, [loaded]);
 

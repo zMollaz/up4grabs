@@ -7,7 +7,7 @@ import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
 import "mapbox-gl/dist/mapbox-gl.css";
 import {UsersContext} from "../../context/UsersContext";
-import { useContext , useRef, useState } from "react";
+import { useContext, useState } from "react";
 
 
 const MAPBOX_TOKEN =
@@ -28,9 +28,6 @@ export async function getServerSideProps(context) {
 
   const users = await prisma.user.findMany();
   const defaultListings = await prisma.listings.findMany();
-  console.log("biddings", biddings);
-  // console.log("defaultListings", defaultListings);
-  // console.log("users", users);
   const listingId = Number(context.params.id)
   const response = await axios.get(
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${listingItem.postal_code}.json?access_token=pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg`
@@ -48,10 +45,8 @@ export default function ListingPage(props) {
 
   const { title, description, img_src, end_date } = props.listingItem;
   const { user, users } = useContext(UsersContext);
-  const [disabled, setDisabled] = useState(true)
   const [color, setColor] = useState("none")
   
-  let btnRef = useRef();
   
   const handleLike = async () => {
     const response = await axios.post('/api/likes', {
@@ -59,7 +54,7 @@ export default function ListingPage(props) {
       listing_id : props.listingId
     })
     setColor("#DA4567")
-    setDisabled(true);
+
   }
 
   return (

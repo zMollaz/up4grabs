@@ -19,7 +19,7 @@ export default async function formHandler(req, res) {
   }
   const retrievedState = req.body.state;
   const categoryToInteger = Number(retrievedState.category_id)
-  const user = Number(req.body.user);
+  const user = req.body.user.id;
   const imageUrl = await uploadToWebApi(retrievedState);
   const startDate = moment().format("YYYY/MM/DD");
   const newListing = {

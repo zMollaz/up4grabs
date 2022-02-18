@@ -1,36 +1,34 @@
 import ListingItem from "./ListingItem";
 import moment from "moment";
 import { useContext, useEffect, useState } from 'react';
-import {ListingsContext} from "../context/ListingsContext"
-import {UsersContext} from "../context/UsersContext"
-
+import {ListingsContext} from "../context/ListingsContext";
+import {UsersContext} from "../context/UsersContext";
 
 export default function Listings(props) {
-  const {filteredListings, likes} = useContext(ListingsContext)
+  const {filteredListings, likes, bidding, setBidding} = useContext(ListingsContext)
   const {user} = useContext(UsersContext)
-  const [view, setView] = useState(filteredListings)
+  // const [view, setView] = useState(filteredListings)
 
   const myDate = function (date) {
     return moment(date, "").fromNow();
   };
 
-const getUserListings = (id, listings, likes) => {
-  const filteredLikes = likes.filter(like => like.user_id === id)
-  console.log(555, filteredListings)
-  const listingsArr = filteredLikes.map(like => like.listing_id)
-  console.log(666, listingsArr)
-  const userListings = filteredListings.filter(listing => listingsArr.includes(listing.id))
-  console.log(777, userListings)
-  setView(userListings);
-}
+// const getUserListings = (id, listings, likes) => {
+//   const filteredLikes = likes.filter(like => like.user_id === id)
+//   const listingsArr = filteredLikes.map(like => like.listing_id)
+//   const userListings = listings.filter(listing => listingsArr.includes(listing.id))
+//   setView(userListings);
+// }
+// // add a state that updates when a user clicks a bid 
+// // and make the useEffect depend on that state to reload
+// useEffect(() => {
+//   if (bidding) {
+//     getUserListings(user.id, filteredListings, likes)
+//     }
 
-useEffect(() => {
-  if (likes) {
-    getUserListings(user.id, filteredListings, likes)
-    }
-  }, [])
+//   }, [user])
 
-  const parsedListings = view.map((listing) => {
+  const parsedListings = filteredListings.map((listing) => {
     return (
       <ListingItem
         title={listing.title}
