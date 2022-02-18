@@ -1,14 +1,13 @@
-const sgMail = require('@sendgrid/mail')
-require('dotenv').config()
+const sgMail = require("@sendgrid/mail");
+require("dotenv").config();
 // const { apiKey } = require('../../config.js');
-const apiKey = process.env.SENDGRID_API_KEY
+const apiKey = process.env.SENDGRID_API_KEY;
 
-sgMail.setApiKey(apiKey)
+sgMail.setApiKey(apiKey);
 // console.log(apiKey)
 
-
 const message = {
-  to: 'up4grabs.app@gmail.com',
+  to: 'mikko.delosreyes12@gmail.com',
   from: 'up4grabs.app1@gmail.com',
   subject: "You're a winner baby!",
   text: "You've won an item from Bobby Lee",
@@ -19,4 +18,3 @@ sgMail
   .send(message)
   .then((response) => console.log('Email sent!'))
   .catch((error) => console.log(error.message));
-
