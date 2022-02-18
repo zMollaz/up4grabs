@@ -9,28 +9,25 @@ export default async function emailHandler(req, res) {
   if (req.method === "POST") {
     const apiKey = process.env.SENDGRID_API_KEY;
     sgMail.setApiKey(apiKey);
-    // console.log(apiKey)
-console.log("HELLOO", req.body)
 
-const message = (to, listing_title, user_name ) => ({
-      to: 'mikko.delosreyes12@gmail.com',
+    const message = {
+      to: "mikko.delosreyes12@gmail.com",
+      // to: req.body.winner.email,
       from: "up4grabs.app1@gmail.com",
-      // subject: 'WINNER!',
-      // text: 'and easy to do anywhere, even with Node.js',
-      // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
       isMultiple: false,
-      data: {listing_title, user_name},
-      template_id: 'd-9c1463d498324294b040e2b08e5c3313',
+      dynamicTemplateData: {
+        winner: req.body.winner.name,
+        listingTitle: req.body.listingTitle,
+      },
+      template_id: "d-9c1463d498324294b040e2b08e5c3313",
+    };
 
-})
-
-const newParam = message(req.body.itemWinner.email, req.body.listingTitle, req.body.itemWinner.name)
-console.log("123", newParam)
+    console.log("123", message);
 
     sgMail
-      .send(newParam)
-      .then((response) => console.log(111, "Email sent!"))
-      .catch((error) => console.log(222, error.message, JSON.stringify(error.response?.body?.errors || "{}")));
+      .send(message)
+      .then((response) => console.log("Email sent!"))
+      .catch((error) => console.log(error.message));
 
     // res.json({ response });
   }

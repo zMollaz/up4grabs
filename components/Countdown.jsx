@@ -41,7 +41,7 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
   // const { users } = useContext(UsersContext);
 
   const [winner, setWinner] = useState("");
-  const randomWinner = (biddings, users) => {
+  const randomWinner = (biddings, users, listing) => {
     console.log(111, biddings);
     console.log(222, users);
     const bidders = biddings.map((bidding) => bidding.user_id);
@@ -50,29 +50,24 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
     // console.log(444, winnerId);
     const winnerName = users.filter((user) => user.id === winnerId);
     // console.log(555, winnerName);
-    const winner = winnerName[0]
+    const itemWinner = winnerName[0]
+    const winner = winnerName[0]?.name
     // console.log(666, winner);
+  
+    const data = {
+      winner: itemWinner,
+      listingTitle: listing.title
+    };
+
+    axios.post("/api/email", data)
+    .then((response) => {console.log(response)})
+    .catch((error) => console.log(error))
     return winner;
   };
   
   useEffect(() => {
-    setWinner(randomWinner(biddings, users));
-
-    //axios.post("/api/email")
-    //.then((response) => {console.log(response)})
-
-    console.log("!!!", listingItem)
-    axios({
-      method: 'post',
-      url: '/api/email',
-      data: {
-        itemWinner: winner,
-        listingTitle: listingItem.title
-      }
-    }).then((response) => {console.log(response)})
-
-    .catch((error) => console.log(error))
-
+    setWinner(randomWinner(biddings, users, listingItem));
+    
   }, []);
 
   const timeRemaining = false;
@@ -85,7 +80,7 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
         </div>
       ) : (
         <div className="flex py-2 border-gray-200 font-bold text-green text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
-          Winner is {winner?.name}
+          Winner is {winner}
         </div>
       )}
     </>
