@@ -1,12 +1,15 @@
 import ListingItem from "./ListingItem";
-import moment from "moment";
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { useContext } from 'react';
 import {ListingsContext} from "../context/ListingsContext";
 
 export default function Listings(props) {
   const {filteredListings} = useContext(ListingsContext)
+  
   const myDate = function (date) {
-    return moment(date, "").fromNow();
+    dayjs.extend(relativeTime)
+    return dayjs(date).fromNow();
   };
 
 // const getUserListings = (id, listings, likes) => {

@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import {UsersContext} from "../context/UsersContext";
+import { useState, useEffect } from "react";
+
 
 export default function Countdown({ end_date, biddings, users }) {
   const getCountdown = () => {

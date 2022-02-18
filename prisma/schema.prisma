@@ -29,8 +29,8 @@ model Listings {
   title       String?
   description String?
   img_src     String?
-  start_date  DateTime @default(now())
-  end_date    DateTime?
+  start_date  String?
+  end_date    String?
   postal_code String?
 }
 

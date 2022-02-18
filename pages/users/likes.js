@@ -1,8 +1,9 @@
 import ListingItem from "../../components/ListingItem";
-import moment from "moment";
-import { useContext} from "react";
 import Layout from "../../components/Layout";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import prisma from "../../lib/prisma";
+import { useContext, useEffect, useState } from "react";
 import { UsersContext } from "../../context/UsersContext";
 
 export async function getServerSideProps() {
@@ -15,18 +16,25 @@ export async function getServerSideProps() {
 }
 
 export default function UserLikes({ listings, likes }) {
+
   const { user } = useContext(UsersContext);
+  const [view, setView] = useState(listings);
   const myDate = function (date) {
-    return moment(date, "").fromNow();
+    dayjs.extend(relativeTime);
+    return dayjs(date).fromNow();
   };
 
   const filteredLikes = likes.filter((like) => like.user_id === user.id);
-  const listingsArr = filteredLikes.map((like) => like.listing_id);
-  const userListings = listings.filter((listing) =>
-    listingsArr.includes(listing.id)
-  );
 
-  const parsedListings = userListings.map((listing) => {
+  useEffect(() => {
+      const listingsArr = filteredLikes.map((like) => like.listing_id);
+      const userListings = listings.filter((listing) =>
+        listingsArr.includes(listing.id)
+      );
+      setView(userListings);
+  }, [user]);
+
+  const parsedListings = view.map((listing) => {
     return (
       <ListingItem
         title={listing.title}
@@ -46,7 +54,11 @@ export default function UserLikes({ listings, likes }) {
       >
         <div className="relative inset-0  w-full  h-full md:h-auto">
           <div className="bg-off-white h-full pr-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 ">
-            {parsedListings}
+            {filteredLikes.length > 0 ? (
+              parsedListings
+            ) : (
+              <h1>You currently have no biddings to display</h1>
+            )}
           </div>
         </div>
       </div>
