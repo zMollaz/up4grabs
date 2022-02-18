@@ -278,17 +278,17 @@ const main = async () => {
     skipDuplicates: true,
   });
 
-  await prisma.biddings.createMany({
-    data: [
-      { user_id: 1, listing_id: 20 },
-      { user_id: 1, listing_id: 19 },
-      { user_id: 1, listing_id: 18 },
-      { user_id: 2, listing_id: 5 },
-      { user_id: 2, listing_id: 4 },
-      { user_id: 2, listing_id: 3 },
-    ],
-    skipDuplicates: true,
-  });
+  // await prisma.biddings.createMany({
+  //   data: [
+  //     { user_id: 1, listing_id: 20 },
+  //     { user_id: 1, listing_id: 19 },
+  //     { user_id: 1, listing_id: 18 },
+  //     { user_id: 2, listing_id: 5 },
+  //     { user_id: 2, listing_id: 4 },
+  //     { user_id: 2, listing_id: 3 },
+  //   ],
+  //   skipDuplicates: true,
+  // });
 
   await prisma.conversation.createMany({
     data: [{ sender_id: 1, receiver_id: 2 }],

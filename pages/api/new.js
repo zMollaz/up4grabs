@@ -1,5 +1,5 @@
 import axios from "axios";
-import moment from "moment";
+import dayjs from 'dayjs';
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
@@ -19,15 +19,16 @@ export default async function formHandler(req, res) {
   }
   const retrievedState = req.body.state;
   const categoryToInteger = Number(retrievedState.category_id)
-  const user = Number(req.body.user);
+  const user = req.body.user.id;
   const imageUrl = await uploadToWebApi(retrievedState);
-  const startDate = moment().format("YYYY/MM/DD");
+  const endDate = dayjs().format("YYYY-MM-DD-HH-mm-ss");
+  console.log(565, endDate)
   const newListing = {
     ...retrievedState,
     img_src: imageUrl,
     user_id: user,
     category_id: categoryToInteger,
-    start_date: startDate,
+    end_date: endDate,
   };
   
   const savedListing = await prisma.listings.create({

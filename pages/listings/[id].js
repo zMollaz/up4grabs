@@ -6,8 +6,8 @@ import axios from "axios";
 import { ListingsContext } from "../../context/ListingsContext";
 import useListings from "../../hooks/useListings";
 import "mapbox-gl/dist/mapbox-gl.css";
-import UsersContext from "../../context/UsersContext";
-import { useContext , useRef, useState } from "react";
+import {UsersContext} from "../../context/UsersContext";
+import { useContext, useState } from "react";
 
 
 const MAPBOX_TOKEN =
@@ -19,6 +19,7 @@ export async function getServerSideProps(context) {
       id: Number(context.params.id),
     },
   });
+  
   const biddings = await prisma.biddings.findMany({
     where: {
       listing_id: Number(context.params.id),
@@ -43,11 +44,9 @@ export async function getServerSideProps(context) {
 export default function ListingPage(props) {
 
   const { title, description, img_src, end_date } = props.listingItem;
-  const { user } = useContext(UsersContext);
-  const [disabled, setDisabled] = useState(true)
+  const { user, users } = useContext(UsersContext);
   const [color, setColor] = useState("none")
   
-  let btnRef = useRef();
   
   const handleLike = async () => {
     const response = await axios.post('/api/likes', {
@@ -55,7 +54,7 @@ export default function ListingPage(props) {
       listing_id : props.listingId
     })
     setColor("#DA4567")
-    setDisabled(true);
+
   }
 
   return (

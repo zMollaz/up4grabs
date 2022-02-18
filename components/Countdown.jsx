@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+
 export default function Countdown({ end_date, biddings, users }) {
   const getCountdown = () => {
     const year = new Date().getFullYear() + 1;
@@ -34,6 +35,8 @@ export default function Countdown({ end_date, biddings, users }) {
       </span>
     );
   });
+  // const { users } = useContext(UsersContext); 
+
   const [winner, setWinner] = useState("")
   const randomWinner = (biddings, users) => {
     console.log(111, biddings)
@@ -44,7 +47,7 @@ export default function Countdown({ end_date, biddings, users }) {
     console.log(444, winnerId)
     const winnerName = users.filter(user => user.id === winnerId);
     console.log(555, winnerName)
-    const winner = winnerName[0].name;
+    const winner = winnerName[0]?.name;
     console.log(666, winner)
     return winner;
   }

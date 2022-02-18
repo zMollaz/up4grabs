@@ -1,16 +1,17 @@
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
+import { UsersContext } from "../context/UsersContext";
 
 // pass set display and set state and defaultState as props
 export default function New({ handleClick, setDisplay }) {
-  const { addListing, user } = useContext(ListingsContext);
-
+  const { addListing } = useContext(ListingsContext);
+  const { user } = useContext(UsersContext);
+  
   const defaultState = {
     title: "",
     description: "",
     img_src: "",
     end_date: "",
-    category_id: null,
     postal_code: "",
   };
 
@@ -35,7 +36,7 @@ export default function New({ handleClick, setDisplay }) {
 
     const newListing = await response.json();
     setState(defaultState);
-    setDisplay(false);
+    setDisplay(prev => !prev);
     addListing(newListing);
   };
 
