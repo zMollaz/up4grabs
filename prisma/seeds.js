@@ -271,6 +271,7 @@ const main = async () => {
           "Books from Kate Hewitt, Jen Sincero, and Delia Owens. Soft Covers, great condition.",
         img_src: "https://i.ibb.co/8PLzjhs/Misc-Books.jpg",
         start_date: "2022-02-10",
+       
         end_date: "2022-02-24",
         postal_code: "M6K",
       },

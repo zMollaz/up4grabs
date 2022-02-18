@@ -58,6 +58,9 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
   useEffect(() => {
     setWinner(randomWinner(biddings, users));
 
+    //axios.post("/api/email")
+    //.then((response) => {console.log(response)})
+
     console.log("!!!", listingItem)
     axios({
       method: 'post',
@@ -67,6 +70,7 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
         listingTitle: listingItem.title
       }
     }).then((response) => {console.log(response)})
+
     .catch((error) => console.log(error))
 
   }, []);

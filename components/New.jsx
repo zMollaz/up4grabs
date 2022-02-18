@@ -6,7 +6,7 @@ import { UsersContext } from "../context/UsersContext";
 export default function New({ handleClick, setDisplay }) {
   const { addListing } = useContext(ListingsContext);
   const { user } = useContext(UsersContext);
-  
+
   const defaultState = {
     title: "",
     description: "",
@@ -22,11 +22,12 @@ export default function New({ handleClick, setDisplay }) {
     const newState = { ...state, [name]: value };
     setState(newState);
   };
+  
   // use a use effect or create a custom hook
   const saveListing = async (e) => {
     e.preventDefault();
     const response = await fetch("/api/new", {
-      body: JSON.stringify({state, user}),
+      body: JSON.stringify({ state, user }),
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -36,7 +37,7 @@ export default function New({ handleClick, setDisplay }) {
 
     const newListing = await response.json();
     setState(defaultState);
-    setDisplay(prev => !prev);
+    setDisplay((prev) => !prev);
     addListing(newListing);
   };
 
@@ -63,7 +64,6 @@ export default function New({ handleClick, setDisplay }) {
       className={`max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
     >
       <div className="absolute inset-0  w-full  h-full md:h-auto">
-        {/* <div className="flex justify-center items-center rounded-lg shadow w-screen h-screen"> */}
         <div className="flex w-full h-screen absolute opacity-75 bg-t-gray">
           <button
             onClick={handleClick}
@@ -122,8 +122,6 @@ export default function New({ handleClick, setDisplay }) {
               required=""
             />
           </div>
-
-          {/*  */}
           <div>
             <label
               htmlFor="postal_code"
@@ -140,13 +138,12 @@ export default function New({ handleClick, setDisplay }) {
               required=""
             />
           </div>
-          {/*  */}
           <label
             htmlFor="end_date"
             className="flow-root mt-2 font-bold text-sm font-medium text-gray-dark  "
           >
             Draw Date
-          </label> 
+          </label>
           <div className="flex right-0 top-0 s-between w-full">
             <input
               onChange={changeHandler}
@@ -158,20 +155,21 @@ export default function New({ handleClick, setDisplay }) {
               min="2020-01-01"
               max="2024-12-31"
             />
-              <select name="category_id" onChange={changeHandler}
-              className="font-bold category-button w-1/2 text-md rounded-md">
-              <option disabled selected>Select Category</option>
-              <option value={1}>Furniture
-                </option>
-                <option value={2}>Toys/Games
-                </option>
-                <option value={3}>Electronics</option>
-                <option value={4}>Home Appliances</option>
-                <option value={5}>Books</option>
-              </select>
+            <select
+              name="category_id"
+              onChange={changeHandler}
+              className="font-bold category-button w-1/2 text-md rounded-md"
+            >
+              <option disabled selected>
+                Select Category
+              </option>
+              <option value={1}>Furniture</option>
+              <option value={2}>Toys/Games</option>
+              <option value={3}>Electronics</option>
+              <option value={4}>Home Appliances</option>
+              <option value={5}>Books</option>
+            </select>
           </div>
-
-          {/*  */}
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">
               <div className="">
@@ -199,10 +197,6 @@ export default function New({ handleClick, setDisplay }) {
                         Attach a file
                       </p>
                     </div>
-
-                    {/* <input  */}
-                    {/* onChange={(e) => saveImage(e)} */}
-
                     <input
                       onChange={saveImage}
                       // value={state.img_src}
@@ -220,10 +214,8 @@ export default function New({ handleClick, setDisplay }) {
               </div>
             </div>
           </div>
-          {/*  */}
         </form>
       </div>
-      {/* </div> */}
     </div>
   );
 }
