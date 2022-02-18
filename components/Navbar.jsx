@@ -2,22 +2,18 @@ import Link from "next/link";
 import New from "../components/New";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
-import UsersContext from "../context/UsersContext";
+import {UsersContext} from "../context/UsersContext";
 
 export default function Navbar(props) {
-  const { onSearch, setBidding } = useContext(ListingsContext);
-  const { users, user, switchUser } = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
-
-  const [searchValue, setSearchValue] = useState("");
+  const { onSearch, searchValue, setSearchValue } = useContext(ListingsContext);
+  const { users, user, switchUser, loaded } = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
+  // const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
 
 
   const handleClickNew = () => {
     setNewDisplay((prev) => !prev);
-  };
-
-  const handleClickLikes = () => {
-    setBidding((prev) => !prev);
+    
   };
 
   const userList = users.map((oneUser) => {
@@ -45,7 +41,7 @@ export default function Navbar(props) {
             <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
           </Link>
           <Link href="/users/likes">
-            <a onClick={handleClickLikes} className="btn input input-ghost btn-sm rounded-btn mx-3">
+            <a className="btn input input-ghost btn-sm rounded-btn mx-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -116,7 +112,7 @@ export default function Navbar(props) {
           <i className=""></i>
         </div>
 
-        <div className="flex">
+        <div className="flex flex-row">
           <label htmlFor="select-user">
             <svg
               className="h-6 w-6 text-white mt-1"
@@ -132,19 +128,19 @@ export default function Navbar(props) {
               />
             </svg>
           </label>
-          <select
+         {loaded && (<select
             name="Users"
             onChange={(e) => {
               switchUser(e.target.value);
             }}
-            className="ml-1 text-white btn btn-sm input input-ghost"
+            className=" text-white w-[250px] btn btn-sm input input-ghost"
             value={user.id}
           >
             <option value="0" className="" disabled>
               Switch user
             </option>
             {userList}
-          </select>
+          </select>)}
         </div>
       </div>
     </div>

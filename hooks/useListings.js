@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 
-const useListings = ({defaultListings, users}) => {
+const useListings = ({defaultListings, defaultLikes}) => {
   const [listings, setListings] = useState(defaultListings);
   const [filteredListings, setFilteredListings] = useState(defaultListings);
-  const [user, setUser] = useState('1');
+  const [bidding, setBidding] = useState(false);
+  const [likes, setLikes] = useState(defaultLikes);
+  const [searchValue, setSearchValue] = useState("");
   
   useEffect(()=> {
     setFilteredListings(listings)
@@ -22,19 +24,19 @@ const useListings = ({defaultListings, users}) => {
     setListings(prev => [...prev, response.savedListing] )
   }
 
-  const switchUser = (e) => {
-    setUser(e.target.value)
-  }
 
   return {
     listings: listings,
     filteredListings: filteredListings,
-    user: user,
-    users: users,
+    setFilteredListings:setFilteredListings,
     onSearch: onSearch,
     addListing: addListing,
-    setUser: setUser,
-    switchUser: switchUser,
+    bidding: bidding,
+    setBidding: setBidding,
+    likes: likes,
+    setLikes: setLikes,
+    searchValue: searchValue,
+    setSearchValue: setSearchValue,
   };
 };
 

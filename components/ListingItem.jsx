@@ -6,7 +6,7 @@ export default function Listings(props) {
   return (
     <Link href={`/listings/${id}`}>
       <a>
-        <div className="bg-off-white w-full shadow-md hover:shadow-2xl m-4 rounded-lg border-gray-200">
+        <div className="bg-off-white w-full shadow-md hover:shadow-2xl mx-4 rounded-lg border-gray-200">
           <header>
             <img src={img} className="rounded-lg object-cover h-60 w-full" />
           </header>
@@ -15,22 +15,8 @@ export default function Listings(props) {
               {title}
             </h5>
 
-            <footer className=" card-footer absolute bottom-0 flex right-0 s-between w-full">
-              <div>
-                <svg
-                  className=" icon h-7 w-7 text-red"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  {" "}
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-              </div>
-              <div className="bg-gray-light w-5/12 rounded-lg overflow-hidden shadow-lg text-center text-black self-end ">
+            <footer className=" card-footer absolute bottom-0 flex flex-col right-0 s-between w-full">
+              <div className="bg-gray-light w-xs p-1/2 rounded-lg overflow-hidden shadow-lg text-center text-black self-end ">
                 {date}
               </div>
             </footer>
