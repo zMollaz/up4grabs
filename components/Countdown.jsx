@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import axios from "axios";
 
 export default function Countdown({ end_date, biddings, users }) {
   const getCountdown = () => {
@@ -35,67 +35,46 @@ export default function Countdown({ end_date, biddings, users }) {
       </span>
     );
   });
-  // const { users } = useContext(UsersContext); 
+  
+  // const { users } = useContext(UsersContext);
 
-  const [winner, setWinner] = useState("")
+  const [winner, setWinner] = useState("");
   const randomWinner = (biddings, users) => {
-    console.log(111, biddings)
-    console.log(222, users)
-    const bidders = biddings.map(bidding => bidding.user_id)
-    console.log(333, bidders)
+    // console.log(111, biddings);
+    // console.log(222, users);
+    const bidders = biddings.map((bidding) => bidding.user_id);
+    // console.log(333, bidders);
     const winnerId = bidders[Math.floor(Math.random() * bidders.length)];
-    console.log(444, winnerId)
-    const winnerName = users.filter(user => user.id === winnerId);
-    console.log(555, winnerName)
+    // console.log(444, winnerId);
+    const winnerName = users.filter((user) => user.id === winnerId);
+    // console.log(555, winnerName);
     const winner = winnerName[0]?.name;
-    console.log(666, winner)
+    // console.log(666, winner);
     return winner;
-  }
+  };
   
   useEffect(() => {
-    setWinner(randomWinner(biddings, users))
-  },[])
-  
+    setWinner(randomWinner(biddings, users));
+
+    axios.post("/api/email")
+    .then((response) => {console.log(response)})
+    .catch((error) => console.log(error))
+
+  }, []);
+
   const timeRemaining = false;
- 
-  const sgMail = require("@sendgrid/mail");
-require("dotenv").config();
-// const { apiKey } = require('../../config.js');
 
-const sendMail = () => {
-  const apiKey = process.env.SENDGRID_API_KEY;
-
-  sgMail.setApiKey(apiKey);
-  // console.log(apiKey)
-  
-  const message = {
-    to: 'mikko.delosreyes12@gmail.com',
-    from: 'up4grabs.app1@gmail.com',
-    subject: "You're a winner baby!",
-    text: "You've won an item from Bobby Lee",
-    html: "<h1>You've won an item from Bobby Lee</h1>"
-  }
-  
-  
-  sgMail
-    .send(message)
-    .then((response) => console.log('Email sent!'))
-    .catch((error) => console.log(error.message));
-}
-
-sendMail()
-console.log("HELLO", sendMail())
-
-  
   return (
     <>
       {timeRemaining ? (
         <div className="flex py-2 border-gray-200 text-red text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
           {data} until draw!
         </div>
-      ) : (<div className="flex py-2 border-gray-200 font-bold text-green text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
-      Winner is {winner}
-    </div>)}
+      ) : (
+        <div className="flex py-2 border-gray-200 font-bold text-green text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
+          Winner is {winner}
+        </div>
+      )}
     </>
   );
 }
