@@ -1,14 +1,10 @@
 import ListingItem from "./ListingItem";
 import moment from "moment";
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import {ListingsContext} from "../context/ListingsContext";
-import {UsersContext} from "../context/UsersContext";
 
 export default function Listings(props) {
-  const {filteredListings, likes, bidding, setBidding} = useContext(ListingsContext)
-  const {user} = useContext(UsersContext)
-  // const [view, setView] = useState(filteredListings)
-
+  const {filteredListings} = useContext(ListingsContext)
   const myDate = function (date) {
     return moment(date, "").fromNow();
   };

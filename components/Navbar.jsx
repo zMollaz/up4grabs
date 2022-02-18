@@ -112,7 +112,7 @@ export default function Navbar(props) {
           <i className=""></i>
         </div>
 
-        <div className="flex">
+        <div className="flex flex-row">
           <label htmlFor="select-user">
             <svg
               className="h-6 w-6 text-white mt-1"
@@ -133,7 +133,7 @@ export default function Navbar(props) {
             onChange={(e) => {
               switchUser(e.target.value);
             }}
-            className="ml-1 text-white btn btn-sm input input-ghost"
+            className=" text-white w-[250px] btn btn-sm input input-ghost"
             value={user.id}
           >
             <option value="0" className="" disabled>
