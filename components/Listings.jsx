@@ -12,21 +12,6 @@ export default function Listings(props) {
     return dayjs(date).fromNow();
   };
 
-// const getUserListings = (id, listings, likes) => {
-//   const filteredLikes = likes.filter(like => like.user_id === id)
-//   const listingsArr = filteredLikes.map(like => like.listing_id)
-//   const userListings = listings.filter(listing => listingsArr.includes(listing.id))
-//   setView(userListings);
-// }
-// // add a state that updates when a user clicks a bid 
-// // and make the useEffect depend on that state to reload
-// useEffect(() => {
-//   if (bidding) {
-//     getUserListings(user.id, filteredListings, likes)
-//     }
-
-//   }, [user])
-
   const parsedListings = filteredListings.map((listing) => {
     return (
       <ListingItem

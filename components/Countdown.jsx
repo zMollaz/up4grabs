@@ -57,10 +57,9 @@ export default function Countdown({ end_date, biddings, users }) {
   
   useEffect(() => {
     setWinner(randomWinner(biddings, users));
-
-    // axios.post("/api/email")
-    // .then((response) => {console.log(response)})
-    // .catch((error) => console.log(error))
+    axios.post("/api/email")
+    .then((response) => {console.log(response)})
+    .catch((error) => console.log(error))
 
   }, []);
 
