@@ -41,7 +41,7 @@ export default function Countdown({ end_date, biddings, users }) {
     console.log(444, winnerId)
     const winnerName = users.filter(user => user.id === winnerId);
     console.log(555, winnerName)
-    const winner = winnerName[0].name;
+    const winner = winnerName[0]?.name;
     console.log(666, winner)
     return winner;
   }

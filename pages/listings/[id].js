@@ -19,6 +19,7 @@ export async function getServerSideProps(context) {
       id: Number(context.params.id),
     },
   });
+  
   const biddings = await prisma.biddings.findMany({
     where: {
       listing_id: Number(context.params.id),
@@ -27,6 +28,9 @@ export async function getServerSideProps(context) {
 
   const users = await prisma.user.findMany();
   const defaultListings = await prisma.listings.findMany();
+  console.log("biddings", biddings);
+  // console.log("defaultListings", defaultListings);
+  // console.log("users", users);
   const listingId = Number(context.params.id)
   const response = await axios.get(
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${listingItem.postal_code}.json?access_token=pk.eyJ1IjoiYWVsbW9sbGF6IiwiYSI6ImNremJpcmY4ZDJlbjIyb28yZWt3NjF5MmMifQ.03oFENowylydeoRfp732qg`
