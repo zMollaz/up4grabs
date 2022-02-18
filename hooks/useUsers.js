@@ -26,6 +26,7 @@ const useUsers = () => {
     getUsers()
     .then((response) => {
       setUsers(response.data.users);
+  
       setLoaded(true)
     })
     .catch((error) => {

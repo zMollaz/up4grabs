@@ -104,7 +104,7 @@ export default function ListingPage(props) {
               </h1>
               <div className="flex mb-4">
                 {/* <Countdown end_date={end_date} biddings={props.biddings} users={props.users}/> */}
-                <DynamicComponentWithNoSSR end_date={end_date} biddings={props.biddings} users={props.users}/>
+                <DynamicComponentWithNoSSR end_date={end_date} biddings={props.biddings} users={props.users} listingItem={props.listingItem}/>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-light">
                   <a className="text-gray-dark">
                     <svg
