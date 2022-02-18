@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bottom-0 fixed items-center p-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
+    <footer className="bottom-0 sticky items-center p-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
       <div className="items-center grid-flow-col">
         <svg
           className="h-12 w-12 text-white"

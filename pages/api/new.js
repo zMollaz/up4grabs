@@ -21,13 +21,16 @@ export default async function formHandler(req, res) {
   const categoryToInteger = Number(retrievedState.category_id)
   const user = req.body.user.id;
   const imageUrl = await uploadToWebApi(retrievedState);
-  const endDate = dayjs().format("YYYY-MM-DD-HH-mm-ss");
-  console.log(565, endDate)
+  const endDate = dayjs(retrievedState.end_date).format("YYYY-MM-DDTHH:mm:ss");
+  const startDate = dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ss')
+  console.log(111, startDate)
+  console.log(222, endDate)
   const newListing = {
     ...retrievedState,
     img_src: imageUrl,
     user_id: user,
     category_id: categoryToInteger,
+    start_date: startDate,
     end_date: endDate,
   };
   
