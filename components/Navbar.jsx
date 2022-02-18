@@ -97,7 +97,7 @@ export default function Navbar(props) {
             }}
             type="text"
             // placeholder="Search"
-            className="mr-5 p-4  btn btn-sm input input-ghost h-7"
+            className="mr-5 p-4 text-white btn btn-sm input input-ghost h-7"
           />
         </div>
         <button
