@@ -143,7 +143,7 @@ export default function ListingPage(props) {
               </button>
               </span>
             {/* </div> */}
-            </div>
+           
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <div className="flex"></div>
               <div className="relative"></div>
@@ -160,7 +160,7 @@ export default function ListingPage(props) {
                 height: 300,
                 alignSelf: "end",
                 position: "relative",
-                marginLeft: "80px",
+                marginLeft: "0px",
                 marginTop: "40px",
               }}
               mapStyle="mapbox://styles/mapbox/streets-v9"
@@ -171,6 +171,7 @@ export default function ListingPage(props) {
                 longitude={props.coordinates.longitude}
               />
             </Map>
+            </div>
           </div>
           </div>
         </section>
