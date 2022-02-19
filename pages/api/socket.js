@@ -8,9 +8,9 @@ const SocketHandler = (req, res) => {
     const io = new Server(res.socket.server);
     res.socket.server.io = io;
     io.on("connection", (socket) => {
-      socket.on("sent", (msg) => {
-        console.log("Recieved at the back", msg)
-        socket.broadcast.emit("return", msg);
+      socket.on("sent", (messagesArr) => {
+        console.log("Recieved at the back", messagesArr)
+        socket.broadcast.emit("return", messagesArr);
       });
     });
   }
