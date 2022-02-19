@@ -69,7 +69,7 @@ export default function ListingPage(props) {
           <div className="lg:w-4/5  mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
-              className=" w-[430px] sticky self-start mt-12 object-contain rounded border border-gray-200"
+              className=" w-[430px] sticky self-start object-contain rounded border border-gray-200"
               src={img_src}
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
