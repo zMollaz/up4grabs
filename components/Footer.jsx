@@ -1,16 +1,14 @@
-import Chat from '../components/Chat'
+import Chat from "../components/Chat";
 import { useState } from "react";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 
-const DynamicComponentWithNoSSR = dynamic(
-  () => import('../components/Chat'),
-  { ssr: false }
-)
+const DynamicComponentWithNoSSR = dynamic(() => import("../components/Chat"), {
+  ssr: false,
+});
 
 export default function Footer({ setTimeUp }) {
-
   const [chatDisplay, setChatDisplay] = useState(false);
-  
+
   const handleClickChat = () => {
     setChatDisplay((prev) => !prev);
   };
@@ -44,9 +42,28 @@ export default function Footer({ setTimeUp }) {
         </svg>
         <p>Up4Grabs © 2022 - All rights reserved</p>
       </div>
-      {chatDisplay && (<DynamicComponentWithNoSSR handleClick={handleClickChat} setDisplay={setChatDisplay}/>)}
+      {chatDisplay && (
+        <DynamicComponentWithNoSSR
+          handleClick={handleClickChat}
+          setDisplay={setChatDisplay}
+        />
+      )}
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        <span onClick={handleClickChat} className="text-white ">Chat</span>
+        <span onClick={handleClickChat} className="text-white ">
+          <svg
+            class="h-8 w-8 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+            />
+          </svg>
+        </span>
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
