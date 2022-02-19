@@ -24,7 +24,7 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
   };
   const [countdown, setCountdown] = useState(getCountdown());
   
-  
+  //countdown
   useEffect(() => {
     let timer = setTimeout(() => {
       setCountdown(getCountdown());
