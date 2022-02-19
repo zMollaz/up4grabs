@@ -1,3 +1,4 @@
+import Chat from '../components/Chat'
 import { useEffect, useState } from "react";
 import io from "Socket.IO-client";
 
@@ -15,14 +16,21 @@ export default function Footer({ setTimeUp }) {
     });
 
     socket.on("update-input", (msg) => {
-      setMessage(msg);
+      setText(msg);
     });
   };
 
-  const [message, setMessage] = useState("");
+  const [text, setText] = useState("");
+  const [message, setMessage] = useState([]);
+  const [chatDisplay, setChatDisplay] = useState(false);
 
+
+  const handleClickChat = () => {
+    setChatDisplay((prev) => !prev);
+    
+  };
   const changeHandler = (e) => {
-    setMessage(e.target.value);
+    setText(e.target.value);
     socket.emit("input-change", e.target.value);
   };
 
@@ -55,9 +63,10 @@ export default function Footer({ setTimeUp }) {
         </svg>
         <p>Up4Grabs © 2022 - All rights reserved</p>
       </div>
+      {chatDisplay && (<Chat handleClick={handleClickChat} setDisplay={setChatDisplay}/>)}
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        <span className="text-white ">Chat</span>
-        <input onChange={changeHandler} value={message} className="text-black"></input>
+        <span onClick={handleClickChat} className="text-white ">Chat</span>
+        <input onChange={changeHandler} value={text} className="text-black"></input>
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
