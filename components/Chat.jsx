@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Chat({ handleClick, setDisplay }) {
   return (
-    <div className="container">
+    <div className=" absolute container w-3/12">
       <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
         <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
           <input
