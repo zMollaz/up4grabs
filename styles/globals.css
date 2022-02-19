@@ -32,6 +32,11 @@
   background-color: #1e3b50;
 }
 
+.chat {
+  position: fixed;
+  bottom: 10%;
+  right: 13%;
+}
 
 
 /* html,
