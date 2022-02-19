@@ -19,7 +19,7 @@ const main = async () => {
       {name: "Sanson Hubble", email: "noura4403@gmail.com", password: "password" },
       {name: "Kelvin Leyzell", email: "noura4403@gmail.com", password: "password" },
     ],
-    skipDuplicates: true,
+    skipDuplicates: false,
   });
 
   await prisma.categories.createMany({

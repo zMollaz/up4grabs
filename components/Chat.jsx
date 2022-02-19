@@ -50,9 +50,14 @@ export default function Chat({ handleClick, setDisplay }) {
   };
 
   return (
-    <div className="container">
-      <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-        {/* <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+    //<div className="container">
+     // <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+       // {/* <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+
+    <div className=" chat absolute container w-3">
+      <div className=" border d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
+        <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+
           <input
             className="fs-5 fw-semibold text-black bg-red"
             // value={username}
@@ -61,7 +66,7 @@ export default function Chat({ handleClick, setDisplay }) {
         </div> */}
         <div
           className="list-group list-group-flush border-bottom scrollarea"
-          style={{ minHeight: "500px" }}
+          style={{ minHeight: "250px" }}
         >
           {messages.map((message) => {
             console.log(121, message);
@@ -77,9 +82,9 @@ export default function Chat({ handleClick, setDisplay }) {
           })}
         </div>
       </div>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className="border-text-area">
         <input
-          className="form-control text-black"
+          className="pl-6 form-control text-black"
           placeholder="Write a message"
           value={text}
           onChange={changeHandler}

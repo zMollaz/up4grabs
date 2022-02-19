@@ -10,7 +10,7 @@ datasource db {
 model User {
   id       Int            @id @default(autoincrement())
   name     String?
-  email    String         @unique
+  email    String?         
   password String?
   Sender   Conversation[] @relation("sender_id")
   Receiver Conversation[] @relation("receiver_id")
