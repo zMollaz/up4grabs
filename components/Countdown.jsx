@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Countdown({ end_date, biddings, users, listingItem }) {
+ 
+  //try formatting time below to seconds maybe ??
+  
+  const timeRemaining = new Date(end_date) - new Date();
   const getCountdown = () => {
     const year = new Date().getFullYear() + 1;
-    const timeRemaining = new Date(end_date) - new Date();
     let countdown = {};
     if (timeRemaining > 0) {
       countdown = {
@@ -20,7 +23,8 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
     //insert into the correct email fields in mail.js.
   };
   const [countdown, setCountdown] = useState(getCountdown());
-
+  
+  
   useEffect(() => {
     let timer = setTimeout(() => {
       setCountdown(getCountdown());
@@ -41,6 +45,7 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
   // const { users } = useContext(UsersContext);
 
   const [winner, setWinner] = useState("");
+
   const randomWinner = (biddings, users, listing) => {
     console.log(111, biddings);
     console.log(222, users);
@@ -66,15 +71,18 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
   };
   
   useEffect(() => {
+    if (timeRemaining <= 0)
     setWinner(randomWinner(biddings, users, listingItem));
-    
+    // setTimeUp(prev => !prev)
+    console.log(333, timeRemaining)
+    //might need clean up because of memory leak
   }, []);
 
-  const timeRemaining = false;
+  const timeUp = true;
 
   return (
     <>
-      {timeRemaining ? (
+      {timeUp ? (
         <div className="flex py-2 border-gray-200 text-red text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
           {data} until draw!
         </div>
