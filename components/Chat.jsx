@@ -3,7 +3,7 @@ import React from "react";
 export default function Chat({ handleClick, setDisplay }) {
   return (
     <div className=" chat absolute container w-3">
-      <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+      <div className=" border d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
         <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
           <input
             className="fs-5 fw-semibold"
@@ -13,7 +13,7 @@ export default function Chat({ handleClick, setDisplay }) {
         </div>
         <div
           className="list-group list-group-flush border-bottom scrollarea"
-          style={{ minHeight: "500px" }}
+          style={{ minHeight: "250px" }}
         >
           {/* {messages.map((message) => {
             return (
@@ -29,9 +29,9 @@ export default function Chat({ handleClick, setDisplay }) {
       </div>
 
       {/* <form onSubmit={submit}> */}
-      <form >
+      <form className="border-text-area">
         <input
-          className="form-control"
+          className="pl-6 form-control"
           placeholder="Write a message"
           // value={message}
           // onChange={(e) => setMessage(e.target.value)}
