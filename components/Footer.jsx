@@ -1,30 +1,36 @@
-import { useEffect } from 'react'
-import io from 'Socket.IO-client'
-let socket
+import { useEffect, useState } from "react";
+import io from "Socket.IO-client";
 
+let socket;
 
+export default function Footer({ setTimeUp }) {
 
-
-
-
-
-export default function Footer({setTimeUp}) {
-  
-  useEffect(() => socketInitializer(), [])
-
+  useEffect(() => socketInitializer(), []);
   const socketInitializer = async () => {
-    await fetch('/api/socket')
-    socket = io()
+    await fetch("/api/socket");
+    socket = io();
 
-    socket.on('connect', () => {
-      console.log('connected')
-    })
-  }
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+
+    socket.on("update-input", (msg) => {
+      setMessage(msg);
+    });
+  };
+
+  const [message, setMessage] = useState("");
+
+  const changeHandler = (e) => {
+    setMessage(e.target.value);
+    socket.emit("input-change", e.target.value);
+  };
+
   return (
     <footer className="bottom-0 sticky items-center p-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
       <div className="items-center grid-flow-col">
         <svg
-          onClick={() => setTimeUp(prev => !prev)}
+          onClick={() => setTimeUp((prev) => !prev)}
           className="h-12 w-12 text-white"
           width="24"
           height="24"
@@ -50,6 +56,8 @@ export default function Footer({setTimeUp}) {
         <p>Up4Grabs © 2022 - All rights reserved</p>
       </div>
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+        <span className="text-white ">Chat</span>
+        <input onChange={changeHandler} value={message} className="text-black"></input>
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
