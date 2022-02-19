@@ -121,12 +121,8 @@ export default function ListingPage(props) {
                   </a>
                 </span>
               </div>
-              <p className="leading-relaxed text-gray-dark">{description}</p>
-            </div>
-            {/* <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <div className="flex"></div>
-              <div className="relative"></div>
-            </div> */}
+              <p className="leading-relaxed border-b-2 border-gray-light mb-b text-gray-dark ">{description}</p>
+              
             <div className="flex w-[300px]">
               <span className="title-font font-bold font-medium text-2xl text-gray-dark">
                 Like to bid
@@ -147,6 +143,11 @@ export default function ListingPage(props) {
                 </svg>
               </button>
             </div>
+            </div>
+            {/* <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <div className="flex"></div>
+              <div className="relative"></div>
+            </div> */}
             
             {/* <Map
               initialViewState={{
