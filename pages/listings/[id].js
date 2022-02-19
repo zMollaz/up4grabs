@@ -64,37 +64,14 @@ export default function ListingPage(props) {
   return (
     <ListingsContext.Provider value={useListings(props)}>
       <Layout setTimeUp={setTimeUp}>
-        <section className="text-gray-700 body-font overflow-hidden bg-white h-full">
-          <div className="lg:w-4/5 h-[1000px] mx-auto flex flex-wrap flex-col">
+        <section className="text-gray-700 body-font overflow-hidden bg-white">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="lg:w-4/5  mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
               className=" w-[430px] sticky self-start mt-12 object-contain rounded border border-gray-200"
               src={img_src}
             />
-            <div className="flex mt-6 items-center w-[430px] pb-5 border-b-2 border-gray-dark mb-5">
-              <div className="flex"></div>
-              <div className="relative"></div>
-            </div>
-            <div className="flex w-[300px]">
-              <span className="title-font font-bold font-medium text-2xl text-gray-dark">
-                Like to bid
-              </span>
-              <button onClick={handleLike}  className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
-                <svg
-              
-                  className=" icon h-7 w-7 text-red"
-                  viewBox="0 0 24 24"
-                  fill={color}
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  {" "}
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-              </button>
-            </div>
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-dark tracking-widest">
                 Up4Grabs
@@ -146,7 +123,32 @@ export default function ListingPage(props) {
               </div>
               <p className="leading-relaxed text-gray-dark">{description}</p>
             </div>
-            <Map
+            {/* <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <div className="flex"></div>
+              <div className="relative"></div>
+            </div> */}
+            <div className="flex w-[300px]">
+              <span className="title-font font-bold font-medium text-2xl text-gray-dark">
+                Like to bid
+              </span>
+              <button onClick={handleLike}  className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
+                <svg
+              
+                  className=" icon h-7 w-7 text-red"
+                  viewBox="0 0 24 24"
+                  fill={color}
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {" "}
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* <Map
               initialViewState={{
                 longitude: props.coordinates.longitude,
                 latitude: props.coordinates.latitude,
@@ -167,7 +169,8 @@ export default function ListingPage(props) {
                 latitude={props.coordinates.latitude}
                 longitude={props.coordinates.longitude}
               />
-            </Map>
+            </Map> */}
+          </div>
           </div>
         </section>
       </Layout>
