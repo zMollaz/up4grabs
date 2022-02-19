@@ -123,14 +123,13 @@ export default function ListingPage(props) {
               </div>
               <p className="leading-relaxed pb-5 border-b-2 border-gray-light mb-5 mt-6 text-gray-dark ">{description}</p>
               
-            <div className="flex w-[300px]">
-              <span className="title-font font-bold font-medium text-2xl text-gray-dark">
+            {/* <div className="flex w-[300px]"> */}
+              <span className="title-font w-full font-bold font-medium text-2xl text-gray-dark">
                 Like to bid
-              </span>
-              <button onClick={handleLike}  className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start justify-center text-gray-500 ml-4">
+              <button onClick={handleLike}  className="rounded-full w-[200px] h-10 bg-gray-200 p-0 border-0 inline-flex items-start align-middle justify-between text-gray-500 ml-4">
                 <svg
               
-                  className=" icon h-7 w-7 text-red"
+                  className=" mt-1 icon h-7 w-7 text-red"
                   viewBox="0 0 24 24"
                   fill={color}
                   stroke="currentColor"
@@ -142,7 +141,8 @@ export default function ListingPage(props) {
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
               </button>
-            </div>
+              </span>
+            {/* </div> */}
             </div>
             {/* <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <div className="flex"></div>
