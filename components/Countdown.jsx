@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Countdown({ end_date, biddings, users, listingItem }) {
+ 
+  //try formatting time below to seconds maybe ??
+  
+  const timeRemaining = new Date(end_date) - new Date();
   const getCountdown = () => {
     const year = new Date().getFullYear() + 1;
-    const timeRemaining = new Date(end_date) - new Date();
     let countdown = {};
     if (timeRemaining > 0) {
       countdown = {
@@ -20,7 +23,8 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
     //insert into the correct email fields in mail.js.
   };
   const [countdown, setCountdown] = useState(getCountdown());
-
+  
+  
   useEffect(() => {
     let timer = setTimeout(() => {
       setCountdown(getCountdown());
@@ -41,7 +45,8 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
   // const { users } = useContext(UsersContext);
 
   const [winner, setWinner] = useState("");
-  const randomWinner = (biddings, users) => {
+
+  const randomWinner = (biddings, users, listing) => {
     console.log(111, biddings);
     console.log(222, users);
     const bidders = biddings.map((bidding) => bidding.user_id);
@@ -50,42 +55,40 @@ export default function Countdown({ end_date, biddings, users, listingItem }) {
     // console.log(444, winnerId);
     const winnerName = users.filter((user) => user.id === winnerId);
     // console.log(555, winnerName);
-    const winner = winnerName[0]
+    const itemWinner = winnerName[0]
+    const winner = winnerName[0]?.name
     // console.log(666, winner);
+  
+    const data = {
+      winner: itemWinner,
+      listingTitle: listing.title
+    };
+
+    axios.post("/api/email", data)
+    .then((response) => {console.log(response)})
+    .catch((error) => console.log(error))
     return winner;
   };
   
   useEffect(() => {
-    setWinner(randomWinner(biddings, users));
-
-    //axios.post("/api/email")
-    //.then((response) => {console.log(response)})
-
-    console.log("!!!", listingItem)
-    axios({
-      method: 'post',
-      url: '/api/email',
-      data: {
-        itemWinner: winner,
-        listingTitle: listingItem.title
-      }
-    }).then((response) => {console.log(response)})
-
-    .catch((error) => console.log(error))
-
+    if (timeRemaining <= 0)
+    setWinner(randomWinner(biddings, users, listingItem));
+    // setTimeUp(prev => !prev)
+    console.log(333, timeRemaining)
+    //might need clean up because of memory leak
   }, []);
 
-  const timeRemaining = false;
+  const timeUp = true;
 
   return (
     <>
-      {timeRemaining ? (
+      {timeUp ? (
         <div className="flex py-2 border-gray-200 text-red text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
           {data} until draw!
         </div>
       ) : (
         <div className="flex py-2 border-gray-200 font-bold text-green text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
-          Winner is {winner?.name}
+          Winner is {winner}
         </div>
       )}
     </>
