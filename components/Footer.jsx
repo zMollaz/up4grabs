@@ -1,37 +1,18 @@
 import Chat from '../components/Chat'
-import { useEffect, useState } from "react";
-import io from "Socket.IO-client";
+import { useState } from "react";
+import dynamic from 'next/dynamic'
 
-let socket;
+const DynamicComponentWithNoSSR = dynamic(
+  () => import('../components/Chat'),
+  { ssr: false }
+)
 
 export default function Footer({ setTimeUp }) {
 
-  useEffect(() => socketInitializer(), []);
-  const socketInitializer = async () => {
-    await fetch("/api/socket");
-    socket = io();
-
-    socket.on("connect", () => {
-      console.log("connected");
-    });
-
-    socket.on("update-input", (msg) => {
-      setText(msg);
-    });
-  };
-
-  const [text, setText] = useState("");
-  const [message, setMessage] = useState([]);
   const [chatDisplay, setChatDisplay] = useState(false);
-
-
+  
   const handleClickChat = () => {
     setChatDisplay((prev) => !prev);
-    
-  };
-  const changeHandler = (e) => {
-    setText(e.target.value);
-    socket.emit("input-change", e.target.value);
   };
 
   return (
@@ -63,10 +44,9 @@ export default function Footer({ setTimeUp }) {
         </svg>
         <p>Up4Grabs © 2022 - All rights reserved</p>
       </div>
-      {chatDisplay && (<Chat handleClick={handleClickChat} setDisplay={setChatDisplay}/>)}
+      {chatDisplay && (<DynamicComponentWithNoSSR handleClick={handleClickChat} setDisplay={setChatDisplay}/>)}
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
         <span onClick={handleClickChat} className="text-white ">Chat</span>
-        <input onChange={changeHandler} value={text} className="text-black"></input>
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"

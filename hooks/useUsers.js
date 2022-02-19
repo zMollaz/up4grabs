@@ -32,7 +32,7 @@ const useUsers = () => {
     .catch((error) => {
       console.error(error);
     });
-  }, [users]);
+  }, [user.id]);
   
   useEffect(() => {
     const cookieId = Number(cookie.get("id")) || 1;
