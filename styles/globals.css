@@ -12,6 +12,10 @@
   z-index: 500;
 }
 
+.left {
+  margin-left: 250px;
+}
+
 .icon:hover {
   fill: #DA4567;
 }
