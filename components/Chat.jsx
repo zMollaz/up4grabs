@@ -27,7 +27,8 @@ export default function Chat({ handleClick, setDisplay }) {
     socketInitializer();
 
     return () => {
-      // socket.disconnect(); // gives an error after some time, invistigaet later
+      socket.disconnect(); // gives an error after some time, invistigaet later
+      console.log("disconnected")
     };
   }, []);
 
@@ -64,7 +65,6 @@ export default function Chat({ handleClick, setDisplay }) {
               return (
                 <div className="flex flex-col m-2">
                   <div className="d-flex w-fit align-items-center justify-content-between">
-                    {/* <strong className="mb-1">{message.username}</strong> */}
                     <strong className="mb-1">@ {message.sender}</strong>
                   </div>
                   <div className=" mb-1 small">{message.content}</div>
@@ -74,7 +74,6 @@ export default function Chat({ handleClick, setDisplay }) {
               return (
                 <div className="flex flex-col items-end m-2">
                   <div className="d-flex w-fit align-items-center justify-content-between">
-                    {/* <strong className="mb-1">{message.username}</strong> */}
                     <strong className="mb-1">@ {message.sender}</strong>
                   </div>
                   <div className=" mb-1 small">{message.content}</div>
