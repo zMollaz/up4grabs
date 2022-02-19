@@ -35,7 +35,7 @@ export default function Chat({ handleClick, setDisplay }) {
   };
 
   const submitHandler = (e) => {
-    
+
     e.preventDefault();
     setMessages((prev) => {
       const newMessages = [...prev, text];
@@ -58,14 +58,14 @@ export default function Chat({ handleClick, setDisplay }) {
       <div className=" border d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
         <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
 
-          <input
-            className="fs-5 fw-semibold text-black bg-red"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
-          />
-        </div> */}
+          {/* <input
+            className="fs-5 fw-semibold text-black "
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          /> */}
+        </div> 
         <div
-          className="list-group list-group-flush border-bottom scrollarea"
+          className="list-group list-group-flush w-[250px] border-bottom scrollarea"
           style={{ minHeight: "250px" }}
         >
           {messages.map((message) => {
