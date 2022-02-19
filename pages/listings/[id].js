@@ -121,7 +121,7 @@ export default function ListingPage(props) {
                   </a>
                 </span>
               </div>
-              <p className="leading-relaxed border-b-2 border-gray-light mb-b text-gray-dark ">{description}</p>
+              <p className="leading-relaxed pb-5 border-b-2 border-gray-light mb-5 mt-6 text-gray-dark ">{description}</p>
               
             <div className="flex w-[300px]">
               <span className="title-font font-bold font-medium text-2xl text-gray-dark">
