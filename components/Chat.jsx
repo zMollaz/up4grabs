@@ -51,18 +51,9 @@ export default function Chat({ handleClick, setDisplay }) {
   };
 
   return (
-    //<div className="container">
-    // <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-    // <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-
     <div className="rounded chat absolute container w-3">
       <div className=" border d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
         <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-          {/* <input
-            className="fs-5 fw-semibold text-black "
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          /> */}
         </div>
         <div
           className="list-group list-group-flush text-black w-[250px] border-bottom scrollarea"
