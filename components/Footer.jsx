@@ -1,4 +1,25 @@
+import { useEffect } from 'react'
+import io from 'Socket.IO-client'
+let socket
+
+
+
+
+
+
+
 export default function Footer({setTimeUp}) {
+  
+  useEffect(() => socketInitializer(), [])
+
+  const socketInitializer = async () => {
+    await fetch('/api/socket')
+    socket = io()
+
+    socket.on('connect', () => {
+      console.log('connected')
+    })
+  }
   return (
     <footer className="bottom-0 sticky items-center p-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
       <div className="items-center grid-flow-col">
