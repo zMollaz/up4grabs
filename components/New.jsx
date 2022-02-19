@@ -86,7 +86,7 @@ export default function New({ handleClick, setDisplay }) {
         </div>
         <form
           onSubmit={saveListing}
-          className="w-5/12 overflow-auto px-4 pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
+          className="left w-5/12 overflow-auto px-4 items-center pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
           action="#"
         >
           <div>
