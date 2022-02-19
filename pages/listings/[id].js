@@ -144,12 +144,12 @@ export default function ListingPage(props) {
               </span>
             {/* </div> */}
             </div>
-            {/* <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <div className="flex"></div>
               <div className="relative"></div>
-            </div> */}
+            </div>
             
-            {/* <Map
+            <Map
               initialViewState={{
                 longitude: props.coordinates.longitude,
                 latitude: props.coordinates.latitude,
@@ -170,7 +170,7 @@ export default function ListingPage(props) {
                 latitude={props.coordinates.latitude}
                 longitude={props.coordinates.longitude}
               />
-            </Map> */}
+            </Map>
           </div>
           </div>
         </section>
