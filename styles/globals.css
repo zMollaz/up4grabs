@@ -32,7 +32,22 @@
   background-color: #1e3b50;
 }
 
+.chat {
+  position: fixed;
+  bottom: 10%;
+  right: 13%;
+  border-radius: 5%;
+}
 
+.border {
+  border-radius: 2%;
+  border: solid #1e3b50 2px;
+}
+
+.border-text-area {
+  border-radius: 6%;
+  border: solid #1e3b50 2px;
+}
 
 /* html,
 body {
