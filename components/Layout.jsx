@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "../components/Footer";
-
+import Chat from "../components/Chat";
 export default function Layout({ children, setTimeUp }) {
   return (
     <div className="font-zen bg-grey w-full h-full">

@@ -1,9 +1,44 @@
-export default function Footer({setTimeUp}) {
+import Chat from '../components/Chat'
+import { useEffect, useState } from "react";
+import io from "Socket.IO-client";
+
+let socket;
+
+export default function Footer({ setTimeUp }) {
+
+  useEffect(() => socketInitializer(), []);
+  const socketInitializer = async () => {
+    await fetch("/api/socket");
+    socket = io();
+
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+
+    socket.on("update-input", (msg) => {
+      setText(msg);
+    });
+  };
+
+  const [text, setText] = useState("");
+  const [message, setMessage] = useState([]);
+  const [chatDisplay, setChatDisplay] = useState(false);
+
+
+  const handleClickChat = () => {
+    setChatDisplay((prev) => !prev);
+    
+  };
+  const changeHandler = (e) => {
+    setText(e.target.value);
+    socket.emit("input-change", e.target.value);
+  };
+
   return (
     <footer className="bottom-0 sticky items-center p-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
       <div className="items-center grid-flow-col">
         <svg
-          onClick={() => setTimeUp(prev => !prev)}
+          onClick={() => setTimeUp((prev) => !prev)}
           className="h-12 w-12 text-white"
           width="24"
           height="24"
@@ -28,7 +63,10 @@ export default function Footer({setTimeUp}) {
         </svg>
         <p>Up4Grabs © 2022 - All rights reserved</p>
       </div>
+      {chatDisplay && (<Chat handleClick={handleClickChat} setDisplay={setChatDisplay}/>)}
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+        <span onClick={handleClickChat} className="text-white ">Chat</span>
+        <input onChange={changeHandler} value={text} className="text-black"></input>
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
