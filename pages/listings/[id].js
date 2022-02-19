@@ -144,10 +144,10 @@ export default function ListingPage(props) {
               </span>
             {/* </div> */}
            
-            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            {/* <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <div className="flex"></div>
               <div className="relative"></div>
-            </div>
+            </div> */}
             
             <Map
               initialViewState={{
@@ -161,7 +161,7 @@ export default function ListingPage(props) {
                 alignSelf: "end",
                 position: "relative",
                 marginLeft: "0px",
-                marginTop: "40px",
+                marginTop: "10px",
               }}
               mapStyle="mapbox://styles/mapbox/streets-v9"
               mapboxAccessToken={MAPBOX_TOKEN}
