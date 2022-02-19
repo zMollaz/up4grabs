@@ -1,8 +1,9 @@
-export default function Footer() {
+export default function Footer({setTimeUp}) {
   return (
     <footer className="bottom-0 sticky items-center p-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
       <div className="items-center grid-flow-col">
         <svg
+          onClick={() => setTimeUp(prev => !prev)}
           className="h-12 w-12 text-white"
           width="24"
           height="24"

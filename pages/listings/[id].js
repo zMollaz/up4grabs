@@ -50,7 +50,7 @@ export default function ListingPage(props) {
   const { title, description, img_src, end_date } = props.listingItem;
   const { user, users } = useContext(UsersContext);
   const [color, setColor] = useState("none")
-  
+  const [timeUp, setTimeUp] = useState(false)
   
   const handleLike = async () => {
     const response = await axios.post('/api/likes', {
@@ -63,7 +63,7 @@ export default function ListingPage(props) {
 
   return (
     <ListingsContext.Provider value={useListings(props)}>
-      <Layout>
+      <Layout setTimeUp={setTimeUp}>
         <section className="text-gray-700 body-font overflow-hidden bg-white h-full">
           <div className="lg:w-4/5 h-[1000px] mx-auto flex flex-wrap flex-col">
             <img
@@ -104,7 +104,7 @@ export default function ListingPage(props) {
               </h1>
               <div className="flex mb-4">
                 {/* <Countdown end_date={end_date} biddings={props.biddings} users={props.users}/> */}
-                <DynamicComponentWithNoSSR end_date={end_date} biddings={props.biddings} users={props.users} listingItem={props.listingItem}/>
+                <DynamicComponentWithNoSSR user={user} timeUp={timeUp} setTimeUp={setTimeUp} end_date={end_date} biddings={props.biddings} users={props.users} listingItem={props.listingItem}/>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-light">
                   <a className="text-gray-dark">
                     <svg

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "../components/Footer";
 
-export default function Layout({ children }) {
+export default function Layout({ children, setTimeUp }) {
   return (
     <div className="font-zen bg-grey w-full h-full">
       <Head>
@@ -16,7 +16,7 @@ export default function Layout({ children }) {
       </Head>
       <Navbar />
       <div>{children}</div>
-      <Footer />
+      <Footer setTimeUp={setTimeUp}/>
     </div>
   );
 }
