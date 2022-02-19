@@ -16,7 +16,7 @@ export default async function emailHandler(req, res) {
       from: "up4grabs.app1@gmail.com",
       isMultiple: false,
       dynamicTemplateData: {
-        winner: req.body.winner.name,
+        winner: req.body.winner?.name,
         listingTitle: req.body.listingTitle,
       },
       template_id: "d-9c1463d498324294b040e2b08e5c3313",
