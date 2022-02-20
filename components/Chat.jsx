@@ -53,29 +53,32 @@ export default function Chat({ handleClick, setDisplay }) {
 
   return (
     <div className="rounded chat absolute container w-3">
-      <div className=" border d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
+      <div className=" border overflow-auto d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
         <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
         </div>
         <div
           className="list-group list-group-flush text-black w-[250px] border-bottom scrollarea"
-          style={{ minHeight: "250px" }}
+          style={{ 
+            minHeight: "250px",
+            maxHeight: "250px"
+           }}
         >
           {messages.map((message) => {
-            const position = message.sender === user.name ? "items-start" : "items-end"
+            const position = message.sender === user.name ? "speech-receiver" : " speech-sender"
               return (
                 <div className={`flex flex-col ${position} m-2`}>
                   <div className="d-flex w-fit align-items-center justify-content-between">
-                    <strong className="mb-1">@ {message.sender}</strong>
+                    <strong className="mb-1">@{message.sender}</strong>
                   </div>
-                  <div className=" mb-1 small">{message.content}</div>
+                  <div className="mb-1 break-words w-full items-end small">{message.content}</div>
                 </div>
               );
           })}
         </div>
       </div>
-      <form onSubmit={submitHandler} className="border-text-area">
+      <form onSubmit={submitHandler} className="border-text-area w-[255px]">
         <input
-          className="pl-6 form-control text-black rounded"
+          className="w-[250px] form-control overflow-auto text-black rounded"
           placeholder="Write a message"
           value={text}
           onChange={changeHandler}
