@@ -4,7 +4,7 @@
 
 .speech-sender {
   width: fit-content;
-  align-items: flex-start;
+  align-items: flex-end;
   max-width: 150px;
 	position: relative;
 	background: #40a1dd;
@@ -30,7 +30,7 @@
 }
 
 .speech-receiver {
-  align-items: flex-end;
+  align-items: flex-start;
   width: fit-content;
   max-width: 150px;
 	position: relative;
