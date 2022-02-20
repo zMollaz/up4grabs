@@ -4,10 +4,12 @@
 
 .speech-sender {
   width: fit-content;
-  max-width: 250px;
+  align-items: flex-start;
+  max-width: 150px;
 	position: relative;
 	background: #40a1dd;
 	border-radius: .4em;
+  margin-left: 70px;
   
 }
 
@@ -25,11 +27,13 @@
 	border-right: 0;
 	margin-left: -8.5px;
 	margin-bottom: -17px;
+  padding-bottom: 8.5px;
 }
 
 .speech-receiver {
+  align-items: flex-end;
   width: fit-content;
-  max-width: 250px;
+  max-width: 150px;
 	position: relative;
 	background: #3cc83e;
 	border-radius: .4em;
@@ -48,6 +52,7 @@
 	border-left: 0;
 	margin-left: -8.5px;
 	margin-bottom: -17px;
+  padding-bottom: 8.5px;
 }
 
 .card-footer {
