@@ -6,7 +6,7 @@ const defaultUser = { id: 1 };
 
 const useUsers = () => {
   
-     const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState(defaultUser);
   const [users, setUsers] = useState([]);
 

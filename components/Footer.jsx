@@ -1,13 +1,13 @@
 import Chat from "../components/Chat";
 import { useState } from "react";
 import dynamic from "next/dynamic";
-
 const DynamicComponentWithNoSSR = dynamic(() => import("../components/Chat"), {
   ssr: false,
 });
 
-export default function Footer({ setTimeUp }) {
+export default function Footer({ setTimeUp, winner }) {
   const [chatDisplay, setChatDisplay] = useState(false);
+  const showChat = winner?.name; // && user.id === winner?.id; need to add poster
 
   const handleClickChat = () => {
     setChatDisplay((prev) => !prev);
@@ -48,22 +48,26 @@ export default function Footer({ setTimeUp }) {
           setDisplay={setChatDisplay}
         />
       )}
+
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        <span onClick={handleClickChat} className="text-white ">
-          <svg
-            className="h-8 w-8 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-            />
-          </svg>
-        </span>
+        {showChat && (
+          <span onClick={handleClickChat} className="text-white ">
+            <svg
+              className="h-8 w-8 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+              />
+            </svg>
+          </span>
+        )}
+
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
