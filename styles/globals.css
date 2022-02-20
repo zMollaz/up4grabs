@@ -4,6 +4,7 @@
 
 .speech-sender {
   width: fit-content;
+  max-width: 250px;
 	position: relative;
 	background: #40a1dd;
 	border-radius: .4em;
@@ -28,10 +29,10 @@
 
 .speech-receiver {
   width: fit-content;
+  max-width: 250px;
 	position: relative;
 	background: #3cc83e;
 	border-radius: .4em;
-  word-wrap: break-word
 }
 
 .speech-receiver:after {
