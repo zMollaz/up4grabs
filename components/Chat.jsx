@@ -53,21 +53,24 @@ export default function Chat({ handleClick, setDisplay }) {
 
   return (
     <div className="rounded chat absolute container w-3">
-      <div className=" border d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
+      <div className=" border  overflow-auto d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
         <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
         </div>
         <div
           className="list-group list-group-flush text-black w-[250px] border-bottom scrollarea"
-          style={{ minHeight: "250px" }}
+          style={{ 
+            minHeight: "250px",
+            maxHeight: "250px"
+           }}
         >
           {messages.map((message) => {
-            const position = message.sender === user.name ? "items-start speech-sender" : "items-end speech-receiver"
+            const position = message.sender === user.name ? "items-end speech-sender" : "items-start speech-receiver"
               return (
                 <div className={`flex flex-col ${position} m-2`}>
                   <div className="d-flex w-fit align-items-center justify-content-between">
                     <strong className="mb-1">@{message.sender}</strong>
                   </div>
-                  <div className="mb-1 word-wrap w-3/4 small">{message.content}</div>
+                  <div className="mb-1 break-words w-3/4 small">{message.content}</div>
                 </div>
               );
           })}
