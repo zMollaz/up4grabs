@@ -10,7 +10,6 @@ export default function Countdown({
   timeUp,
   setTimeUp,
 }) {
-  //try formatting time below to seconds maybe ??
 
   const timeRemaining = new Date(end_date) - new Date();
   const getCountdown = () => {
@@ -25,9 +24,6 @@ export default function Countdown({
       };
     }
     return countdown;
-    //after winner is selected, send a post request with winner's user-id
-    //in the route query the user information
-    //insert into the correct email fields in mail.js.
   };
   const [countdown, setCountdown] = useState(getCountdown());
 
@@ -48,26 +44,20 @@ export default function Countdown({
     );
   });
 
-  // const { users } = useContext(UsersContext);
-
   const [winner, setWinner] = useState("");
 
   const randomWinner = (biddings, users, listing) => {
     const bidders = biddings.map((bidding) => bidding.user_id);
-    // console.log(333, bidders);
     const winnerId = bidders[Math.floor(Math.random() * bidders.length)];
-    // console.log(444, winnerId);
     const winnerName = users.filter((user) => user.id === winnerId);
-    // console.log(555, winnerName);
     const itemWinner = winnerName[0];
     const winner = winnerName[0]?.name;
-    // console.log(666, winner);
-
     const data = {
       winner: itemWinner,
       listingTitle: listing.title,
+      listingImage: listing.img_src,
     };
-
+    console.log(222, data)
     if (winner) {
       axios
         .post("/api/email", data)
