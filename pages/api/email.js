@@ -19,6 +19,7 @@ export default async function emailHandler(req, res) {
       dynamicTemplateData: {
         winner: req.body.winner?.name,
         listingTitle: req.body.listingTitle,
+        listingImage: req.body.listingImage,
       },
       // template_id: "d-9c1463d498324294b040e2b08e5c3313",  //template 1
       template_id: "d-9b54ba70537b492192ade1c98b7df59b",     //template 2

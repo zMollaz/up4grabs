@@ -60,26 +60,16 @@ export default function Chat({ handleClick, setDisplay }) {
           className="list-group list-group-flush text-black w-[250px] border-bottom scrollarea"
           style={{ minHeight: "250px" }}
         >
-          {messages.map((message, index) => {
-            if (index % 2 === 0) {
+          {messages.map((message) => {
+            const position = message.sender === user.name ? "items-start" : "items-end"
               return (
-                <div className="flex flex-col m-2">
+                <div className={`flex flex-col ${position} m-2`}>
                   <div className="d-flex w-fit align-items-center justify-content-between">
                     <strong className="mb-1">@ {message.sender}</strong>
                   </div>
                   <div className=" mb-1 small">{message.content}</div>
                 </div>
               );
-            } else {
-              return (
-                <div className="flex flex-col items-end m-2">
-                  <div className="d-flex w-fit align-items-center justify-content-between">
-                    <strong className="mb-1">@ {message.sender}</strong>
-                  </div>
-                  <div className=" mb-1 small">{message.content}</div>
-                </div>
-              );
-            }
           })}
         </div>
       </div>
