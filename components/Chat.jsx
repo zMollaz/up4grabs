@@ -63,8 +63,8 @@ export default function Chat({ handleClick, setDisplay }) {
           {messages.map((message) => {
             const position = message.sender === user.name ? "items-start" : "items-end"
               return (
-                <div className={`flex flex-col ${position} m-2`}>
-                  <div className="d-flex w-fit align-items-center justify-content-between">
+                <div className={` speech-bubble flex flex-col ${position} m-2`}>
+                  <div className="object-contain d-flex w-fit align-items-center justify-content-between">
                     <strong className="mb-1">@ {message.sender}</strong>
                   </div>
                   <div className=" mb-1 small">{message.content}</div>
