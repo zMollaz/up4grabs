@@ -9,8 +9,7 @@
 	position: relative;
 	background: #40a1dd;
 	border-radius: .4em;
-  margin-left: 70px;
-  
+  margin-left: 110px;
 }
 
 
@@ -91,7 +90,7 @@
 .chat {
   position: fixed;
   bottom: 10%;
-  right: 13%;
+  right: 17%;
   border-radius: 5%;
   margin-right: 50px;
 }
