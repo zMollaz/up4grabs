@@ -65,9 +65,9 @@ export default function Chat({ handleClick, setDisplay }) {
               return (
                 <div className={`flex flex-col ${position} m-2`}>
                   <div className="d-flex w-fit align-items-center justify-content-between">
-                    <strong className="mb-1">@ {message.sender}</strong>
+                    <strong className="mb-1">@{message.sender}</strong>
                   </div>
-                  <div className=" mb-1 small">{message.content}</div>
+                  <div className="mb-1 word-wrap w-3/4 small">{message.content}</div>
                 </div>
               );
           })}
