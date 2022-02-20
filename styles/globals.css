@@ -7,7 +7,7 @@
   align-items: flex-end;
   max-width: 150px;
 	position: relative;
-	background: #40a1dd;
+	background: #3cc83e;
 	border-radius: .4em;
   margin-left: 110px;
 }
@@ -21,7 +21,7 @@
 	width: 0;
 	height: 0;
   border: 17px solid transparent;
-	border-top-color: #40a1dd;
+	border-top-color: #3cc83e;
 	border-bottom: 0;
 	border-right: 0;
 	margin-left: -8.5px;
@@ -34,7 +34,7 @@
   width: fit-content;
   max-width: 150px;
 	position: relative;
-	background: #3cc83e;
+	background: #40a1dd;
 	border-radius: .4em;
 }
 
@@ -46,7 +46,7 @@
 	width: 0;
 	height: 0;
   border: 17px solid transparent;
-	border-top-color: #3cc83e;
+	border-top-color: #40a1dd;
 	border-bottom: 0;
 	border-left: 0;
 	margin-left: -8.5px;
