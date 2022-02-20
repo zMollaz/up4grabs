@@ -17,16 +17,16 @@
 	content: '';
 	position: absolute;
 	bottom: 0;
-	left: 80%;
+	left: 90%;
 	width: 0;
 	height: 0;
-  border: 17px solid transparent;
+  border: 10px solid transparent;
 	border-top-color: #3cc83e;
 	border-bottom: 0;
 	border-right: 0;
 	margin-left: -8.5px;
-	margin-bottom: -17px;
-  padding-bottom: 8.5px;
+	margin-bottom: -20px;
+  padding-bottom: 12px;
 }
 
 .speech-receiver {
@@ -39,19 +39,19 @@
 }
 
 .speech-receiver:after {
-	content: '';
+  content: '';
 	position: absolute;
 	bottom: 0;
-	left: 20%;
+	left: 16%;
 	width: 0;
 	height: 0;
-  border: 17px solid transparent;
+  border: 10px solid transparent;
 	border-top-color: #40a1dd;
 	border-bottom: 0;
 	border-left: 0;
 	margin-left: -8.5px;
-	margin-bottom: -17px;
-  padding-bottom: 8.5px;
+	margin-bottom: -20px;
+  padding-bottom: 12px;
 }
 
 .card-footer {
