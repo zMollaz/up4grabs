@@ -105,6 +105,14 @@
   border: solid #1e3b50 2px;
 }
 
+.mobile-dropDown {
+  position: absolute;
+  top: 117px;
+  background-color: #1e3b50;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
 /* html,
 body {
   padding: 0;
