@@ -20,7 +20,7 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
       <div className="items-center grid-flow-col">
         <svg
           onClick={() => setTimeUp((prev) => !prev)}
-          className="h-12 w-12 text-white"
+          className="sm:h-1 flex lg:h-12 w-12 text-white"
           width="24"
           height="24"
           viewBox="0 0 24 24"
