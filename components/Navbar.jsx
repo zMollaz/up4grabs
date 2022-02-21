@@ -2,7 +2,7 @@ import Link from "next/link";
 import New from "../components/New";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
-import {UsersContext} from "../context/UsersContext";
+import { UsersContext } from "../context/UsersContext";
 
 export default function Navbar(props) {
   const { onSearch, searchValue, setSearchValue } = useContext(ListingsContext);
@@ -10,10 +10,8 @@ export default function Navbar(props) {
   // const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
 
-
   const handleClickNew = () => {
     setNewDisplay((prev) => !prev);
-    
   };
 
   const userList = users.map((oneUser) => {
@@ -26,27 +24,29 @@ export default function Navbar(props) {
 
   return (
     <div className="navbar sticky top-0 z-index shadow-lg bg-gray-dark text-off-white">
-      <div className="flex-none px-2 mx-2">
+      <div className="">
         <Link href="/">
-          <a className="text-lg mt-2 font-lucky font-bold">Up4Grabs</a>
+          <a className="lg:text-lg mt-2 font-lucky font-bold ">Up4Grabs</a>
         </Link>
       </div>
       {newDisplay && (
         <New handleClick={handleClickNew} setDisplay={setNewDisplay} />
       )}
 
-      <div className="flex-1 px-2 mx-2">
-        <div className="items-stretch hidden lg:flex">
+      <div className="lg:px-2 lg:mx-2">
+        <div className="lg:flex">
           <Link href="#listings">
-            <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
+            <a className="btn lg:btn-sm input input-ghost rounded-btn">
+              Listings
+            </a>
           </Link>
           <Link href="/users/likes">
-            <a className="btn input input-ghost btn-sm rounded-btn mx-3">
+            <a className="btn lg:btn-sm input input-ghost rounded-btn lg:mx-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                className="inline-block w-6 h-6  hover:fill-red hover:text-red stroke-current"
+                className="lg:w-6 lg:h-6  hover:fill-red hover:text-red stroke-current"
               >
                 <path
                   strokeLinecap="round"
@@ -60,10 +60,10 @@ export default function Navbar(props) {
 
           <a
             onClick={handleClickNew}
-            className="btn input input-ghost btn-sm rounded-btn"
+            className="btn lg:btn-sm input input-ghost rounded-btn"
           >
             <svg
-              className="h-6 w-6 text-white "
+              className="lg:h-6 lg:w-6 text-white "
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -79,8 +79,8 @@ export default function Navbar(props) {
           </a>
         </div>
       </div>
-      <div className="flex-1 lg:flex-none">
-        <div className="form-control">
+      <div className="">
+        <div className="">
           <input
             defaultValue={searchValue}
             onChange={(e) => {
@@ -97,25 +97,34 @@ export default function Navbar(props) {
             }}
             type="text"
             // placeholder="Search"
-            className="mr-5 p-4 text-white btn btn-sm input input-ghost h-7"
+            className="lg:ml-2 lg:mr-2 lg:w-32 btn lg:btn-sm text-white focus:bg-white input input-ghost"
           />
         </div>
-        <button
+        <a
           onClick={() => onSearch(searchValue)}
-          className="btn btn-sm mr-10 input input-ghost "
+          className="btn lg:btn-sm input input-ghost lg:mr-5"
         >
-          search
-        </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="lg:h-6 lg:w-6 "
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </a>
       </div>
       <div className="">
-        <div className="">
-          <i className=""></i>
-        </div>
-
-        <div className="flex flex-row">
-          <label htmlFor="select-user">
+        <div className="flex">
+          <label htmlFor="users">
             <svg
-              className="h-6 w-6 text-white mt-1"
+              className="lg:h-7 lg:w-7 text-white mt-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -128,19 +137,21 @@ export default function Navbar(props) {
               />
             </svg>
           </label>
-         {loaded && (<select
-            name="Users"
-            onChange={(e) => {
-              switchUser(e.target.value);
-            }}
-            className=" text-white w-[250px] btn btn-sm input input-ghost"
-            value={user.id}
-          >
-            <option value="0" className="" disabled>
-              Switch user
-            </option>
-            {userList}
-          </select>)}
+          {loaded && (
+            <select
+              name="users"
+              onChange={(e) => {
+                switchUser(e.target.value);
+              }}
+              className=" text-white lg:w-24 btn lg:btn-sm input input-ghost"
+              value={user.id}
+            >
+              <option value="0" className="" disabled>
+                Switch user
+              </option>
+              {userList}
+            </select>
+          )}
         </div>
       </div>
     </div>
