@@ -146,7 +146,7 @@ const main = async () => {
       {
         user_id: 1,
         category_id: 5,
-        title: "John Green - The Fault in Our Stars",
+        title: "The Fault in Our Stars",
         description:
           "The Fault in Our Stars book by John Green, Hard Cover, great condition.",
         img_src: "https://i.ibb.co/jzQ32z1/John-Green-Books.jpg",
@@ -170,7 +170,7 @@ const main = async () => {
       {
         user_id: 2,
         category_id: 2,
-        title: "Spin Master - Monster Truck",
+        title: "R/C Monster Truck",
         description:
           "The Monster Jam MEGA El Toro RC is the ultimate monster for kids aged 4 and up. Requires 2 AAA batteries (not included) for the remote control. Dimensions (Overall): 17.5 Inches (H) x 28.5 Inches (W) x 18.6 Inches (D).",
         img_src: "https://i.ibb.co/grzVwdG/free-spin-master.jpg",

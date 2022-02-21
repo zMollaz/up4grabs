@@ -19,7 +19,7 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
       <div className="lg:items-end lg:flex">
           <svg
             onClick={() => setTimeUp((prev) => !prev)}
-            className="lg:h-12 lg:w-12 text-white"
+            className="lg:h-8 lg:w-8 text-white lg:pt-1"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -54,7 +54,7 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
         {(showChat || listingOwner) && (
           <span onClick={handleClickChat} className="text-white btn lg:btn-sm input input-ghost">
             <svg
-              className="lg:h-8 lg:w-8 text-white"
+              className="lg:h-6 lg:w-6 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
