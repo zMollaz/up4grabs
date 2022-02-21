@@ -23,7 +23,7 @@ export default function Navbar(props) {
   });
 
   return (
-    <div className="navbar sticky top-0 z-index shadow-lg bg-gray-dark text-off-white">
+    <div className="navbar sticky rounded top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div className="">
         <Link href="/">
           <a className="lg:text-lg mt-2 font-lucky font-bold ">Up4Grabs</a>
