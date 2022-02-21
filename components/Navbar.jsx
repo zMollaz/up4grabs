@@ -9,17 +9,17 @@ export default function Navbar(props) {
   const { users, user, switchUser, loaded } = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
   // const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(true); 
+  const [showDropdown, setShowDropdown] = useState(true);
 
   const handleClickNew = () => {
     setNewDisplay((prev) => !prev);
   };
 
   const handleDropdown = () => {
-     setShowDropdown(!showDropdown);
+    setShowDropdown(!showDropdown);
   };
 
-  const isHidden = showDropdown ? 'hidden' : '';
+  const isHidden = showDropdown ? "hidden" : "";
 
   const userList = users.map((oneUser) => {
     return (
@@ -32,7 +32,10 @@ export default function Navbar(props) {
   return (
     <div className=" relative navbar sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div class="md:hidden flex items-center">
-        <button onClick={handleDropdown} class="outline-none mobile-menu-button">
+        <button
+          onClick={handleDropdown}
+          class="outline-none mobile-menu-button"
+        >
           <svg
             class="w-6 h-6 text-gray-500"
             x-show="!showMenu"
@@ -48,17 +51,36 @@ export default function Navbar(props) {
         </button>
       </div>
       {/* Mobile menu  */}
-      <div class= {`${isHidden} mobile-menu absolute`}>
+      <div class={`${isHidden} mobile-menu flex-col mobile-dropDown`}>
         <ul class="">
           <li>
             <Link href="#listings">
-              <a className="btn input input-ghost btn-sm rounded-btn">
-                Listings
+              <a className=" ml-2.5 mt-0.5 btn input input-ghost btn-sm rounded-btn">
+                <svg
+                  class="w-7 h-7  text-white"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  {" "}
+                  <path stroke="none" d="M0 0h24v24H0z" />{" "}
+                  <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />{" "}
+                  <rect x="9" y="3" width="6" height="4" rx="2" />{" "}
+                  <line x1="9" y1="12" x2="9.01" y2="12" />{" "}
+                  <line x1="13" y1="12" x2="15" y2="12" />{" "}
+                  <line x1="9" y1="16" x2="9.01" y2="16" />{" "}
+                  <line x1="13" y1="16" x2="15" y2="16" />
+                </svg>
               </a>
             </Link>
           </li>
           <Link href="/users/likes">
-            <a className="btn input input-ghost btn-sm rounded-btn mx-3">
+            <a className="mt-1 btn input input-ghost btn-sm rounded-btn mx-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -76,24 +98,24 @@ export default function Navbar(props) {
           </Link>
         </ul>
         <a
-            onClick={handleClickNew}
-            className="btn input input-ghost btn-sm rounded-btn"
+          onClick={handleClickNew}
+          className=" mb-2 mt-1 btn input input-ghost btn-sm rounded-btn"
+        >
+          <svg
+            className="h-6 w-6 text-white "
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <svg
-              className="h-6 w-6 text-white "
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              {" "}
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />{" "}
-              <line x1="12" y1="8" x2="12" y2="16" />{" "}
-              <line x1="8" y1="12" x2="16" y2="12" />
-            </svg>
-          </a>
+            {" "}
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />{" "}
+            <line x1="12" y1="8" x2="12" y2="16" />{" "}
+            <line x1="8" y1="12" x2="16" y2="12" />
+          </svg>
+        </a>
       </div>
 
       {/* large-screen size */}
