@@ -36,7 +36,7 @@ export default function Countdown({
       setCountdown(getCountdown());
     }, 1000);
 
-    return () => clearTimeout();
+    return () => clearTimeout(timer);
   });
 
   const data = [];
@@ -57,7 +57,6 @@ export default function Countdown({
       listingTitle: listing.title,
       listingImage: listing.img_src,
     };
-    // console.log(222, data)
 
     if (itemWinner) {
       axios

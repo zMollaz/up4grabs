@@ -1,17 +1,16 @@
 import Chat from "../components/Chat";
 import { useState, useContext } from "react";
-import {UsersContext} from "../context/UsersContext";
+import { UsersContext } from "../context/UsersContext";
 import dynamic from "next/dynamic";
 const DynamicComponentWithNoSSR = dynamic(() => import("../components/Chat"), {
   ssr: false,
 });
 
 export default function Footer({ setTimeUp, winner, listingItem }) {
-  console.log("listingItem", listingItem)
   const { user, users } = useContext(UsersContext);
   const [chatDisplay, setChatDisplay] = useState(false);
   const showChat = winner?.name === user?.name; // && user.id === winner?.id; need to add poster
-   const listingOwner = listingItem?.user_id === user?.id;
+  const listingOwner = listingItem?.user_id === user?.id;
   const handleClickChat = () => {
     setChatDisplay((prev) => !prev);
   };
@@ -53,7 +52,7 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
       )}
 
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        { (showChat || listingOwner) && (
+        {(showChat || listingOwner) && (
           <span onClick={handleClickChat} className="text-white ">
             <svg
               className="h-8 w-8 text-white"
