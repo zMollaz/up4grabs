@@ -58,6 +58,7 @@ export default function Countdown({
       listingImage: listing.img_src,
     };
     // console.log(222, data)
+
     if (itemWinner) {
       axios
         .post("/api/email", data)
@@ -68,6 +69,7 @@ export default function Countdown({
       return itemWinner;
     }
   };
+
 
   useEffect(() => {
     if (timeUp) {
