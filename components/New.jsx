@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
 import { UsersContext } from "../context/UsersContext";
 
-// pass set display and set state and defaultState as props
 export default function New({ handleClick, setDisplay }) {
   const { addListing } = useContext(ListingsContext);
   const { user } = useContext(UsersContext);
@@ -23,7 +22,6 @@ export default function New({ handleClick, setDisplay }) {
     setState(newState);
   };
   
-  // use a use effect or create a custom hook
   const saveListing = async (e) => {
     e.preventDefault();
     const response = await fetch("/api/new", {
@@ -159,8 +157,9 @@ export default function New({ handleClick, setDisplay }) {
               name="category_id"
               onChange={changeHandler}
               className="font-bold category-button w-1/2 text-md rounded-md"
+              defaultValue={0}
             >
-              <option disabled selected>
+              <option disabled value={0}>
                 Select Category
               </option>
               <option value={1}>Furniture</option>
