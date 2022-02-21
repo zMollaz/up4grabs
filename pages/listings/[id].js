@@ -51,6 +51,7 @@ export default function ListingPage(props) {
   const { user, users } = useContext(UsersContext);
   const [color, setColor] = useState("none")
   const [timeUp, setTimeUp] = useState(false)
+  const [winner, setWinner] = useState({});
   
   const handleLike = async () => {
     const response = await axios.post('/api/likes', {
@@ -63,7 +64,7 @@ export default function ListingPage(props) {
 
   return (
     <ListingsContext.Provider value={useListings(props)}>
-      <Layout setTimeUp={setTimeUp}>
+      <Layout setTimeUp={setTimeUp} winner={winner} listingItem={props.listingItem}>
         <section className="text-gray-700 body-font overflow-hidden bg-white">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-4/5  mx-auto flex flex-wrap">
@@ -81,7 +82,7 @@ export default function ListingPage(props) {
               </h1>
               <div className="flex mb-4">
                 {/* <Countdown end_date={end_date} biddings={props.biddings} users={props.users}/> */}
-                <DynamicComponentWithNoSSR user={user} timeUp={timeUp} setTimeUp={setTimeUp} end_date={end_date} biddings={props.biddings} users={props.users} listingItem={props.listingItem}/>
+                <DynamicComponentWithNoSSR winner={winner} setWinner={setWinner} user={user} timeUp={timeUp} setTimeUp={setTimeUp} end_date={end_date} biddings={props.biddings} users={props.users} listingItem={props.listingItem}/>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-light">
                   <a className="text-gray-dark">
                     <svg

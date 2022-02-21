@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 export default function Countdown({
   end_date,
   biddings,
@@ -9,8 +10,11 @@ export default function Countdown({
   listingItem,
   timeUp,
   setTimeUp,
+  winner,
+  setWinner
 }) {
 
+ 
   const timeRemaining = new Date(end_date) - new Date();
   const getCountdown = () => {
     const year = new Date().getFullYear() + 1;
@@ -44,30 +48,28 @@ export default function Countdown({
     );
   });
 
-  const [winner, setWinner] = useState("");
-
   const randomWinner = (biddings, users, listing) => {
     const bidders = biddings.map((bidding) => bidding.user_id);
     const winnerId = bidders[Math.floor(Math.random() * bidders.length)];
-    const winnerName = users.filter((user) => user.id === winnerId);
-    const itemWinner = winnerName[0];
-    const winner = winnerName[0]?.name;
+    const itemWinner = users.find((user) => user.id === winnerId);
     const data = {
       winner: itemWinner,
       listingTitle: listing.title,
       listingImage: listing.img_src,
     };
-    console.log(222, data)
-    if (winner) {
+    // console.log(222, data)
+
+    if (itemWinner) {
       axios
         .post("/api/email", data)
         .then((response) => {
           console.log(response);
         })
         .catch((error) => console.log(error));
-      return winner;
+      return itemWinner;
     }
   };
+
 
   useEffect(() => {
     if (timeUp) {
@@ -91,7 +93,7 @@ export default function Countdown({
         </div>
       ) : (
         <div className="flex py-2 border-gray-200 font-bold text-green text-xl flex flex-col grid grid-flow-col gap-2 text-center auto-cols-max">
-          Winner is {winner}
+          Winner is {winner?.name}
         </div>
       )}
     </>
