@@ -9,10 +9,17 @@ export default function Navbar(props) {
   const { users, user, switchUser, loaded } = useContext(UsersContext); //with this line can import into any component and access users/ state level step-up
   // const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(true); 
 
   const handleClickNew = () => {
     setNewDisplay((prev) => !prev);
   };
+
+  const handleDropdown = () => {
+     setShowDropdown(!showDropdown);
+  };
+
+  const isHidden = showDropdown ? 'hidden' : '';
 
   const userList = users.map((oneUser) => {
     return (
@@ -23,9 +30,9 @@ export default function Navbar(props) {
   });
 
   return (
-    <div className="navbar sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
+    <div className=" relative navbar sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div class="md:hidden flex items-center">
-        <button class="outline-none mobile-menu-button">
+        <button onClick={handleDropdown} class="outline-none mobile-menu-button">
           <svg
             class="w-6 h-6 text-gray-500"
             x-show="!showMenu"
@@ -41,7 +48,7 @@ export default function Navbar(props) {
         </button>
       </div>
       {/* Mobile menu  */}
-      <div class="hidden mobile-menu">
+      <div class= {`${isHidden} mobile-menu absolute`}>
         <ul class="">
           <li>
             <Link href="#listings">
