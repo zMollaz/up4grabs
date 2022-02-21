@@ -6,15 +6,16 @@ export default async function likeHandler(req, res) {
     return res.status(405).json({ messsage: "Method not allowed" });
   }
   if (req.method === "GET") {
-  const likes = await prisma.biddings.findMany();
+    const likes = await prisma.biddings.findMany();
 
-  res.json({ likes });
-}
-if (req.method === "POST") {
-  const { user_id, listing_id } = req.body;
-  const like = await prisma.biddings.create({data: {user_id, listing_id}})
-  res.json({like});
+    res.json({ likes });
+  }
+  if (req.method === "POST") {
+    const { user_id, listing_id } = req.body;
+    const like = await prisma.biddings.create({
+      data: { user_id, listing_id },
+    });
 
+    res.json({ like });
+  }
 }
-}
-
