@@ -19,7 +19,7 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
       <div className="lg:items-end lg:flex">
           <svg
             onClick={() => setTimeUp((prev) => !prev)}
-            className="lg:h-8 lg:w-8 text-white lg:pt-1"
+            className="lg:h-8 lg:w-8 text-white lg:pt-1 sm:h-1 sm:flex"
             width="24"
             height="24"
             viewBox="0 0 24 24"
