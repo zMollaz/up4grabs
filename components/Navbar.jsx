@@ -2,7 +2,7 @@ import Link from "next/link";
 import New from "../components/New";
 import { useState, useContext } from "react";
 import { ListingsContext } from "../context/ListingsContext";
-import {UsersContext} from "../context/UsersContext";
+import { UsersContext } from "../context/UsersContext";
 
 export default function Navbar(props) {
   const { onSearch, searchValue, setSearchValue } = useContext(ListingsContext);
@@ -10,10 +10,8 @@ export default function Navbar(props) {
   // const [searchValue, setSearchValue] = useState("");
   const [newDisplay, setNewDisplay] = useState(false);
 
-
   const handleClickNew = () => {
     setNewDisplay((prev) => !prev);
-    
   };
 
   const userList = users.map((oneUser) => {
@@ -25,21 +23,33 @@ export default function Navbar(props) {
   });
 
   return (
-    <div className="navbar sticky top-0 z-index shadow-lg bg-gray-dark text-off-white">
-      <div className="flex-none px-2 mx-2">
-        <Link href="/">
-          <a className="text-lg mt-2 font-lucky font-bold">Up4Grabs</a>
-        </Link>
+    <div className="navbar sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
+      <div class="md:hidden flex items-center">
+        <button class="outline-none mobile-menu-button">
+          <svg
+            class="w-6 h-6 text-gray-500"
+            x-show="!showMenu"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
       </div>
-      {newDisplay && (
-        <New handleClick={handleClickNew} setDisplay={setNewDisplay} />
-      )}
-
-      <div className="flex-1 px-2 mx-2">
-        <div className="items-stretch hidden lg:flex">
-          <Link href="#listings">
-            <a className="btn input input-ghost btn-sm rounded-btn">Listings</a>
-          </Link>
+      {/* Mobile menu  */}
+      <div class="hidden mobile-menu">
+        <ul class="">
+          <li>
+            <Link href="#listings">
+              <a className="btn input input-ghost btn-sm rounded-btn">
+                Listings
+              </a>
+            </Link>
+          </li>
           <Link href="/users/likes">
             <a className="btn input input-ghost btn-sm rounded-btn mx-3">
               <svg
@@ -57,13 +67,70 @@ export default function Navbar(props) {
               </svg>
             </a>
           </Link>
-
-          <a
+        </ul>
+        <a
             onClick={handleClickNew}
             className="btn input input-ghost btn-sm rounded-btn"
           >
             <svg
               className="h-6 w-6 text-white "
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {" "}
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />{" "}
+              <line x1="12" y1="8" x2="12" y2="16" />{" "}
+              <line x1="8" y1="12" x2="16" y2="12" />
+            </svg>
+          </a>
+      </div>
+
+      {/* large-screen size */}
+
+      <div className="flex-none px-2 mx-2">
+        <Link href="/">
+          <a className="text-lg mt-2 font-lucky font-bold">Up4Grabs</a>
+        </Link>
+      </div>
+      {newDisplay && (
+        <New handleClick={handleClickNew} setDisplay={setNewDisplay} />
+      )}
+
+      <div className="flex-1 px-2 mx-2">
+        <div className="items-stretch lg:flex">
+          <Link href="#listings">
+            <a className="hidden sm:block btn input input-ghost btn-sm rounded-btn">
+              Listings
+            </a>
+          </Link>
+          <Link href="/users/likes">
+            <a className="hidden sm:block btn input input-ghost btn-sm rounded-btn mx-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="mb-2 inline-block w-6 h-6  hover:fill-red hover:text-red stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+              </svg>
+            </a>
+          </Link>
+
+          <a
+            onClick={handleClickNew}
+            className="hidden sm:block btn input input-ghost btn-sm rounded-btn"
+          >
+            <svg
+              className="mt-0.5 h-6 w-6 text-white "
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -128,19 +195,21 @@ export default function Navbar(props) {
               />
             </svg>
           </label>
-         {loaded && (<select
-            name="Users"
-            onChange={(e) => {
-              switchUser(e.target.value);
-            }}
-            className=" text-white w-[250px] btn btn-sm input input-ghost"
-            value={user.id}
-          >
-            <option value="0" className="" disabled>
-              Switch user
-            </option>
-            {userList}
-          </select>)}
+          {loaded && (
+            <select
+              name="Users"
+              onChange={(e) => {
+                switchUser(e.target.value);
+              }}
+              className=" text-white w-[250px] btn btn-sm input input-ghost"
+              value={user.id}
+            >
+              <option value="0" className="" disabled>
+                Switch user
+              </option>
+              {userList}
+            </select>
+          )}
         </div>
       </div>
     </div>
