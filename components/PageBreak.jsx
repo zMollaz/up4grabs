@@ -4,7 +4,7 @@ export default function PageBreak() {
   return (
 
     
-      <div className="bg-off-white">
+      <div className="bg-off-white lg:pb-3">
         <div className="text-right"></div>
         <div className=""></div>
         <div >

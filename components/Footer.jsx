@@ -1,4 +1,3 @@
-import Chat from "../components/Chat";
 import { useState, useContext } from "react";
 import { UsersContext } from "../context/UsersContext";
 import dynamic from "next/dynamic";
@@ -16,8 +15,8 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
   };
 
   return (
-    <footer className="bottom-0 rounded sticky lg:items-center lg:flex lg:justify-between lg:px-4 lg:py-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
-      <div className="lg:items-center lg:flex">
+    <footer className="bottom-0 rounded sticky  lg:items-end lg:flex lg:justify-between lg:px-4 lg:py-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
+      <div className="lg:items-end lg:flex">
           <svg
             onClick={() => setTimeUp((prev) => !prev)}
             className="lg:h-12 lg:w-12 text-white"
