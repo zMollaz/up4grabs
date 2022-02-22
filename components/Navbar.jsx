@@ -132,7 +132,7 @@ export default function Navbar(props) {
       <div className="flex-1">
         <div className="items-stretch lg:flex">
           <Link href="#listings">
-            <a className="hidden sm:block btn input input-ghost btn-sm rounded-btn">
+            <a className="hidden sm:block md:block btn input input-ghost btn-sm rounded-btn">
               Listings
             </a>
           </Link>
