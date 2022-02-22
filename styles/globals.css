@@ -79,6 +79,8 @@
   margin-bottom: 3px;
   text-align: center;
   margin-left: 40px;
+  height: 45px;
+  width: 190px;
 }
 
 .drop-button {
@@ -118,19 +120,17 @@
   .full-modal {
     width: 100vw;
     height: 100vh;
-  } 
-}
-
-
-@media (min-width: 500px) and (max-width: 767px) {
-  .full-modal {
-    width: 100vw;
-    height: 100vh;
     top:0%;
   } 
 }
- 
- 
+
+
+@media (min-width: 768px)  {
+  .mobile-menu {
+    display: none;
+  }
+}
+
 
 .center {
   position: absolute;
@@ -139,4 +139,10 @@
   height:75%;
   width:50vh;
   transform: translate(-50%, -50%);
+}
+
+.margin {
+padding-top: 25px;
+background-color: #f7f9fb;
+padding-bottom: 75px;
 }

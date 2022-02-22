@@ -34,7 +34,7 @@ export default function Navbar(props) {
       <div class="md:hidden flex items-center">
         <button
           onClick={handleDropdown}
-          class="outline-none mobile-menu-button"
+          class="pr-2 outline-none mobile-menu-button"
         >
           <svg
             className="w-6 h-6 text-gray-500"
@@ -55,7 +55,7 @@ export default function Navbar(props) {
         <ul class="">
           <li>
             <Link href="#listings">
-              <a className=" ml-2.5 mt-0.5 btn input input-ghost btn-sm rounded-btn">
+              <a className="ml-2.5 mt-0.5 btn input input-ghost btn-sm rounded-btn">
                 <svg
                   class="w-7 h-7  text-white"
                   width="24"
@@ -240,7 +240,7 @@ export default function Navbar(props) {
               onChange={(e) => {
                 switchUser(e.target.value);
               }}
-              className=" text-white w-24 btn btn-sm input input-ghost"
+              className=" text-white w-29 btn btn-sm input input-ghost"
               value={user.id}
             >
               <option value="0" className="" disabled>
