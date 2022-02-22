@@ -99,7 +99,7 @@ export default function Navbar(props) {
         </ul>
         <a
           onClick={handleClickNew}
-          className=" mb-2 mt-1 btn input input-ghost btn-sm rounded-btn"
+          className="mb-2 mt-1 btn input input-ghost btn-sm rounded-btn"
         >
           <svg
             className="h-6 w-6 text-white "
