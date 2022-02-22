@@ -199,11 +199,11 @@ export default function Navbar(props) {
         {/* for the search icon copy the starting a tag till the ending a tag  */}
         <a
           onClick={() => onSearch(searchValue)}
-          className="btn lg:btn-sm input input-ghost lg:mr-5"
+          className="btn btn-sm input input-ghost lg:mr-5"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="lg:h-6 lg:w-6 "
+            className="h-6 w-6 "
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -221,7 +221,7 @@ export default function Navbar(props) {
         <div className="flex ">
           <label htmlFor="select-user">
             <svg
-              className="h-6 w-6 text-white mt-1"
+              className="mb-50 h-6 w-6 text-white mt-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
