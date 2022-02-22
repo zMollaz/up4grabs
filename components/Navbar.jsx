@@ -30,19 +30,19 @@ export default function Navbar(props) {
   });
 
   return (
-    <div className=" relative navbar sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
+    <div className="navbar sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div class="md:hidden flex items-center">
         <button
           onClick={handleDropdown}
           class="outline-none mobile-menu-button"
         >
           <svg
-            class="w-6 h-6 text-gray-500"
+            className="w-6 h-6 text-gray-500"
             x-show="!showMenu"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
@@ -120,16 +120,16 @@ export default function Navbar(props) {
 
       {/* large-screen size */}
 
-      <div className="flex-none px-2 mx-2">
+      <div className="flex-none pr-2 mr-2">
         <Link href="/">
-          <a className="text-lg mt-2 font-lucky font-bold">Up4Grabs</a>
+          <a className="text-4xl mt-2 font-lucky font- font-bold">Up4Grabs</a>
         </Link>
       </div>
       {newDisplay && (
         <New handleClick={handleClickNew} setDisplay={setNewDisplay} />
       )}
 
-      <div className="flex-1 px-2 mx-2">
+      <div className="flex-1">
         <div className="items-stretch lg:flex">
           <Link href="#listings">
             <a className="hidden sm:block btn input input-ghost btn-sm rounded-btn">
@@ -193,22 +193,32 @@ export default function Navbar(props) {
             }}
             type="text"
             // placeholder="Search"
-            className="mr-5 p-4 text-white btn btn-sm input input-ghost h-7"
+            className="ml-2 mr-2 w-32 text-white btn btn-sm input input-ghost h-7"
           />
         </div>
-        <button
+        {/* for the search icon copy the starting a tag till the ending a tag  */}
+        <a
           onClick={() => onSearch(searchValue)}
-          className="btn btn-sm mr-10 input input-ghost "
+          className="btn lg:btn-sm input input-ghost lg:mr-5"
         >
-          search
-        </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="lg:h-6 lg:w-6 "
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </a>
       </div>
-      <div className="">
-        <div className="">
-          <i className=""></i>
-        </div>
-
-        <div className="flex flex-row">
+      <div>
+        <div className="flex ">
           <label htmlFor="select-user">
             <svg
               className="h-6 w-6 text-white mt-1"
@@ -226,11 +236,11 @@ export default function Navbar(props) {
           </label>
           {loaded && (
             <select
-              name="Users"
+              name="users"
               onChange={(e) => {
                 switchUser(e.target.value);
               }}
-              className=" text-white w-[250px] btn btn-sm input input-ghost"
+              className=" text-white w-24 btn btn-sm input input-ghost"
               value={user.id}
             >
               <option value="0" className="" disabled>
