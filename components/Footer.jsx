@@ -15,7 +15,7 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
   };
 
   return (
-    <footer className="bottom-0  rounded sticky lg:items-end lg:flex lg:justify-between lg:px-4 lg:py-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
+    <footer className="bottom-0 mt-auto rounded fixed lg:items-end lg:flex lg:justify-between lg:px-4 lg:py-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
       <div className="lg:items-end lg:flex">
           <svg
             onClick={() => setTimeUp((prev) => !prev)}
