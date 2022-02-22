@@ -120,19 +120,17 @@
   .full-modal {
     width: 100vw;
     height: 100vh;
-  } 
-}
-
-
-@media (min-width: 500px) and (max-width: 767px) {
-  .full-modal {
-    width: 100vw;
-    height: 100vh;
     top:0%;
   } 
 }
- 
- 
+
+
+@media (min-width: 768px)  {
+  .mobile-menu {
+    display: none;
+  }
+}
+
 
 .center {
   position: absolute;
