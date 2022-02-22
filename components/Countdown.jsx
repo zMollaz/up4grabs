@@ -75,14 +75,10 @@ export default function Countdown({
 
       setWinner(randomWinner(biddings, users, listingItem));
     }
-    // if (timeRemaining <= 0)
-    // // setWinner(randomWinner(biddings, users, listingItem));
-    // // setTimeUp(prev => !prev)
-    // console.log(333, timeRemaining)
+
     //might need clean up because of memory leak
   }, [timeUp]);
 
-  // const timeUp = true;
 
   return (
     <>

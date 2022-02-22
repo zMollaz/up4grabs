@@ -15,7 +15,7 @@ export default function Layout({ children, setTimeUp, winner, listingItem }) {
         />
       </Head>
       <Navbar />
-      <body className="flex flex-col">{children}</body>
+      <div className="flex flex-col">{children}</div>
       <Footer setTimeUp={setTimeUp} winner={winner} listingItem={listingItem}/>
     </div>
   );
