@@ -30,7 +30,7 @@ export default function Navbar(props) {
   });
 
   return (
-    <div className="navbar sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
+    <div className="navbar rounded sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
       <div class="md:hidden flex items-center">
         <button
           onClick={handleDropdown}
@@ -193,7 +193,7 @@ export default function Navbar(props) {
             }}
             type="text"
             // placeholder="Search"
-            className="ml-2 mr-2 w-32 text-white btn btn-sm input input-ghost h-7"
+            className="ml-2 mr-2 w-32 focus:bg-white text-white btn btn-sm input input-ghost h-7"
           />
         </div>
         {/* for the search icon copy the starting a tag till the ending a tag  */}
