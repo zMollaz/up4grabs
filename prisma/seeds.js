@@ -6,18 +6,18 @@ const main = async () => {
 
   await prisma.user.createMany({
     data: [
-      {name: "Bobby Lee", email: "mikko.delosreyes12@gmail.com", password: "password" },
-      {name: "Yewande Ahmed", email: "mikko.delosreyes12@gmail.com", password: "password" },
-      {name: "Merl Scuse", email: "mikko.delosreyes12@gmail.com", password: "password" },
-      {name: "Royal Jerschke", email: "mikko.delosreyes12@gmail.com", password: "password" },
-      {name: "Guy Capozzi", email: "aelmollaz@gmail.com", password: "password" },
-      {name: "Fanchette Glassup", email: "aelmollaz@gmail.com", password: "password" },
-      {name: "Adeline Garmons", email: "aelmollaz@gmail.com", password: "password" },
-      {name: "Morissa Thurlbeck", email: "aelmollaz@gmail.com", password: "password" },
-      {name: "Colet Cresser", email: "noura4403@gmail.com", password: "password" },
-      {name: "Pierette Simonassi", email: "noura4403@gmail.com", password: "password" },
-      {name: "Sanson Hubble", email: "noura4403@gmail.com", password: "password" },
-      {name: "Kelvin Leyzell", email: "noura4403@gmail.com", password: "password" },
+      {name: "Bobby", email: "mikko.delosreyes12@gmail.com", password: "password" },
+      {name: "Yewande", email: "mikko.delosreyes12@gmail.com", password: "password" },
+      {name: "Merl", email: "mikko.delosreyes12@gmail.com", password: "password" },
+      {name: "Royal", email: "mikko.delosreyes12@gmail.com", password: "password" },
+      {name: "Capozzi", email: "aelmollaz@gmail.com", password: "password" },
+      {name: "Fanchette", email: "aelmollaz@gmail.com", password: "password" },
+      {name: "Adeline", email: "aelmollaz@gmail.com", password: "password" },
+      {name: "Morissa", email: "aelmollaz@gmail.com", password: "password" },
+      {name: "Colet", email: "noura4403@gmail.com", password: "password" },
+      {name: "Pierette", email: "noura4403@gmail.com", password: "password" },
+      {name: "Sanson", email: "noura4403@gmail.com", password: "password" },
+      {name: "Kelvin", email: "noura4403@gmail.com", password: "password" },
     ],
     skipDuplicates: false,
   });
@@ -146,7 +146,7 @@ const main = async () => {
       {
         user_id: 1,
         category_id: 5,
-        title: "John Green - The Fault in Our Stars",
+        title: "The Fault in Our Stars",
         description:
           "The Fault in Our Stars book by John Green, Hard Cover, great condition.",
         img_src: "https://i.ibb.co/jzQ32z1/John-Green-Books.jpg",
@@ -170,7 +170,7 @@ const main = async () => {
       {
         user_id: 2,
         category_id: 2,
-        title: "Spin Master - Monster Truck",
+        title: "R/C Monster Truck",
         description:
           "The Monster Jam MEGA El Toro RC is the ultimate monster for kids aged 4 and up. Requires 2 AAA batteries (not included) for the remote control. Dimensions (Overall): 17.5 Inches (H) x 28.5 Inches (W) x 18.6 Inches (D).",
         img_src: "https://i.ibb.co/grzVwdG/free-spin-master.jpg",
