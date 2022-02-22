@@ -79,6 +79,8 @@
   margin-bottom: 3px;
   text-align: center;
   margin-left: 40px;
+  height: 45px;
+  width: 190px;
 }
 
 .drop-button {
@@ -139,4 +141,10 @@
   height:75%;
   width:50vh;
   transform: translate(-50%, -50%);
+}
+
+.margin {
+padding-top: 25px;
+background-color: #f7f9fb;
+padding-bottom: 75px;
 }

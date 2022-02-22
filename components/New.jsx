@@ -160,7 +160,7 @@ export default function New({ handleClick, setDisplay }) {
             <select
               name="category_id"
               onChange={changeHandler}
-              className="font-bold category-button w-[170px] h-[67px] mt-8 text-md rounded-md"
+              className="font-bold category-button mt-8 text-md rounded-md"
               defaultValue={0}
             >
               <option disabled value={0}>
