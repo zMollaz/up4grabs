@@ -132,12 +132,12 @@ export default function Navbar(props) {
       <div className="flex-1">
         <div className="items-stretch lg:flex">
           <Link href="#listings">
-            <a className="hidden sm:block md:block btn input input-ghost btn-sm rounded-btn">
+            <a className="hidden-mobile btn input input-ghost btn-sm rounded-btn">
               Listings
             </a>
           </Link>
           <Link href="/users/likes">
-            <a className="hidden sm:block btn input input-ghost btn-sm rounded-btn mx-3">
+            <a className="hidden-mobile btn input input-ghost btn-sm rounded-btn mx-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -156,7 +156,7 @@ export default function Navbar(props) {
 
           <a
             onClick={handleClickNew}
-            className="hidden sm:block btn input input-ghost btn-sm rounded-btn"
+            className="hidden-mobile btn input input-ghost btn-sm rounded-btn"
           >
             <svg
               className="mt-0.5 h-6 w-6 text-white "
