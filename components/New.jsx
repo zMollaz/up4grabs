@@ -69,7 +69,7 @@ export default function New({ handleClick, setDisplay }) {
             className="text-black hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center  absolute right-0 top-0"
           >
             <svg
-              className="w-7 h-7 bg-white"
+              className="w-7 h-7 bg-white rounded-lg"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ export default function New({ handleClick, setDisplay }) {
           <div>
             <label
               htmlFor="title"
-              className="block mt-6 font-bold text-sm font-medium text-gray-dark  "
+              className="block mt-6 font-bold text-sm text-gray-dark  "
             >
               Title
             </label>
@@ -98,7 +98,7 @@ export default function New({ handleClick, setDisplay }) {
               value={state.title}
               onChange={changeHandler}
               name="title"
-              className="bg-white border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-white border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="What's Up4Grabs?"
               required=""
             />
@@ -106,7 +106,7 @@ export default function New({ handleClick, setDisplay }) {
           <div>
             <label
               htmlFor="description"
-              className="block mb-2 font-bold text-sm font-medium text-gray-dark  "
+              className="block mb-2 font-bold text-sm text-gray-dark  "
             >
               Description
             </label>
@@ -116,14 +116,14 @@ export default function New({ handleClick, setDisplay }) {
               type="text"
               name="description"
               placeholder="Include important details about what's Up4Grabs! Do you need this item gone by a certain date? Dimensions? Weight? Pick up or meet-up only? New or used condition? Let other Grabbers know!"
-              className="bg-gray-50 border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border-2 text-gray-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required=""
             />
           </div>
           <div>
             <label
               htmlFor="postal_code"
-              className="block mt-6 font-bold text-sm font-medium text-gray-dark  "
+              className="block mt-6 font-bold text-sm  text-gray-dark  "
             >
               Postal Code
             </label>
@@ -131,14 +131,14 @@ export default function New({ handleClick, setDisplay }) {
               onChange={changeHandler}
               value={state.postal_code}
               name="postal_code"
-              className="bg-gray-50 border border-2 text-gray-dark  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 rounded-lg border-2 text-gray-dark  text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Let other Grabbers know the whereabouts of your Grab."
               required=""
             />
           </div>
           <label
             htmlFor="end_date"
-            className="flow-root mt-2 font-bold text-sm font-medium text-gray-dark  "
+            className="flow-root mt-2 font-bold text-sm text-gray-dark  "
           >
             Draw Date
           </label>
@@ -147,7 +147,7 @@ export default function New({ handleClick, setDisplay }) {
               onChange={changeHandler}
               value={state.end_date}
               name="end_date"
-              className="bg-gray-50 border border-2 text-gray-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+              className="bg-gray-50 font-bold rounded-lg border-2 text-gray-dark text-sm focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
               type="date"
               id="start"
               min="2020-01-01"
@@ -176,7 +176,7 @@ export default function New({ handleClick, setDisplay }) {
                   File Upload
                 </label>
                 <div className="flex items-center justify-center w-full">
-                  <label className="flex flex-col w-full h-32 border-4 border-gray-dark border-dashed hover:bg-gray-light hover:border-gray">
+                  <label className="flex flex-col rounded w-full h-32 border-4 border-gray-dark border-dashed hover:bg-gray-light hover:border-gray">
                     <div className="flex flex-col items-center justify-center pt-7">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +192,7 @@ export default function New({ handleClick, setDisplay }) {
                           d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                         />
                       </svg>
-                      <p className="pt-1 text-sm tracking-wider text-gray-dark group-hover:textblack">
+                      <p className="pt-1 text-sm font-bold tracking-wider text-gray-dark group-hover:textblack">
                         Attach a file
                       </p>
                     </div>
@@ -207,7 +207,7 @@ export default function New({ handleClick, setDisplay }) {
                 </div>
               </div>
               <div className="flex justify-center p-2">
-                <button className="w-full px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
+                <button className="w-full font-bold px-4 py-2 text-white bg-gray-dark rounded shadow-xl">
                   Create
                 </button>
               </div>

@@ -206,7 +206,7 @@ const main = async () => {
       {
         user_id: 2,
         category_id: 5,
-        title: "Assortment of Daniell Steele Books",
+        title: "Daniell Steele Books",
         description:
           "12 Danielle Steel books up for grabs. If you’re not familiar, Steel an American writer, best known for her romance novels. She is the bestselling author alive and the fourth-bestselling fiction author of all time, with over 800 million copies sold.",
         img_src: "https://i.ibb.co/Ttk72DM/Danielle-Steel-Books.jpg",
@@ -266,7 +266,7 @@ const main = async () => {
       {
         user_id: 2,
         category_id: 5,
-        title: "Misc Books (Kate Hewitt, Jen Sincero)",
+        title: "Misc Books",
         description:
           "Books from Kate Hewitt, Jen Sincero, and Delia Owens. Soft Covers, great condition.",
         img_src: "https://i.ibb.co/8PLzjhs/Misc-Books.jpg",
