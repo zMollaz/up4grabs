@@ -15,11 +15,11 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
   };
 
   return (
-    <footer className="bottom-0 rounded fixed flex-row lg:items-end lg:flex lg:justify-between lg:px-4 lg:py-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
+    <footer className="bottom-0 rounded fixed flex-row lg:items-end flex lg:justify-between lg:px-4 lg:py-2 footer bg-gray-dark font-bold text-md text-neutral-content ">
       <div className="lg:items-end lg:flex">
           <svg
             onClick={() => setTimeUp((prev) => !prev)}
-            className="lg:h-8 lg:w-8 text-white lg:pt-1"
+            className="lg:h-8 lg:w-8 text-white pt-1"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -41,8 +41,8 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
               transform="rotate(240 12 13)"
             />
           </svg>
-        <p>Up4Grabs © 2022 - All rights reserved</p>
       </div>
+        <p className="mt-1">Up4Grabs © 2022 - All rights reserved</p>
       {chatDisplay && (
         <DynamicComponentWithNoSSR
           handleClick={handleClickChat}
@@ -52,9 +52,9 @@ export default function Footer({ setTimeUp, winner, listingItem }) {
 
       <div className="flex lg:items-center">
         {(showChat || listingOwner) && (
-          <span onClick={handleClickChat} className="text-white btn lg:btn-sm input input-ghost">
+          <span onClick={handleClickChat} className="text-white btn btn-sm input input-ghost">
             <svg
-              className="lg:h-6 lg:w-6 text-white"
+              className="h-6 w-6 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
