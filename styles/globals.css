@@ -63,9 +63,7 @@
   z-index: 500;
 }
 
-.left {
-  margin-left: 250px;
-}
+
 
 .icon:hover {
   fill: #DA4567;
@@ -117,5 +115,28 @@
   .hidden-mobile {
     display: none;
   } 
+  .full-modal {
+    width: 100vw;
+    height: 100vh;
+  } 
+}
+
+
+@media (min-width: 500px) and (max-width: 767px) {
+  .full-modal {
+    width: 100vw;
+    height: 100vh;
+    top:0%;
+  } 
 }
  
+ 
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height:75%;
+  width:50vh;
+  transform: translate(-50%, -50%);
+}

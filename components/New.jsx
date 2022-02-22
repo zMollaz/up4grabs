@@ -59,10 +59,10 @@ export default function New({ handleClick, setDisplay }) {
   return (
     <div
       aria-hidden="true"
-      className={`max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
+      className={`full-modal max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
     >
       <div className="absolute inset-0  w-full  h-full md:h-auto">
-        <div className="flex w-full h-screen absolute opacity-75 bg-t-gray">
+        <div className=" flex w-full h-screen absolute opacity-75 bg-t-gray">
           <button
             onClick={handleClick}
             type="button"
@@ -84,7 +84,7 @@ export default function New({ handleClick, setDisplay }) {
         </div>
         <form
           onSubmit={saveListing}
-          className="left w-5/12 overflow-auto px-4 items-center pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
+          className="center w-5/12 overflow-auto px-4 items-center pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
           action="#"
         >
           <div>
