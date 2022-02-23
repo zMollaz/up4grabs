@@ -12,7 +12,7 @@ export default async function emailHandler(req, res) {
 
     const message = {
       // to: req.body.winner.email,
-      to: "mikko.delosreyes12@gmail.com",
+      to: "luckywinnerup@gmail.com",
       // from: "up4grabs.app1@gmail.com",
       from: "up4grabs.app2@gmail.com",
       isMultiple: false,
