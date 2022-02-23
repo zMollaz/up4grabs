@@ -45,7 +45,9 @@ export default function Countdown({
     );
   });
 
-  const randomWinner = (biddings, users, listing) => {
+  const randomWinner = async (users, listing) => {
+    const response = await axios.get(`/api/likes/${listing.id}`);
+    const biddings = response.data.likes;
     const bidders = biddings.map((bidding) => bidding.user_id);
     const winnerId = bidders[Math.floor(Math.random() * bidders.length)];
     const itemWinner = users.find((user) => user.id === winnerId);
@@ -55,6 +57,7 @@ export default function Countdown({
       listingImage: listing.img_src,
     };
 
+
     if (itemWinner) {
       axios
         .post("/api/email", data)
@@ -62,13 +65,14 @@ export default function Countdown({
           console.log(response);
         })
         .catch((error) => console.log(error));
-      return itemWinner;
-    }
-  };
-
-  useEffect(() => {
+        return itemWinner;
+      }
+    };
+    
+  useEffect(async () => {
     if (timeUp) {
-      setWinner(randomWinner(biddings, users, listingItem));
+      const winner = await randomWinner(users, listingItem)
+      setWinner(winner);
     }
 
     //might need clean up because of memory leak
@@ -113,8 +117,8 @@ export default function Countdown({
                 <path d="M17 4v8a5 5 0 0 1 -10 0v-8" />{" "}
                 <circle cx="5" cy="9" r="2" /> <circle cx="19" cy="9" r="2" />
               </svg>
-              <b class="p-1 text-[#15803D]">Our lucky winner is</b>
-              <p class="p-1 text-[#15803D] font-bold font-lucky mt-1">
+              <b className="p-1 text-[#15803D]">Our lucky winner is</b>
+              <p className="p-1 text-[#15803D] font-bold font-lucky mt-1">
                 {winner?.name}
               </p>
             </div>

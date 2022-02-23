@@ -70,7 +70,6 @@ export default function ListingPage(props) {
       setColor("none");
     }
   };
-
   useEffect(() => likeHistory(), [user]);
 
   const handleLike = async () => {
