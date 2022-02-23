@@ -10,6 +10,7 @@
 	background: #3cc83e;
 	border-radius: .4em;
   margin-left: 110px;
+  filter: drop-shadow(6px 5px 4px #227423);
 }
 
 
@@ -36,6 +37,8 @@
 	position: relative;
 	background: #40a1dd;
 	border-radius: .4em;
+  filter: drop-shadow(6px 5px 4px #245f85);
+
 }
 
 .speech-receiver:after {
@@ -100,9 +103,26 @@
   border: solid #1e3b50 2px;
 }
 
+.border-chat {
+  border-radius: 2%;
+  border: solid #1e3b50 5px;
+}
+
 .border-text-area {
-  border-radius: 6%;
-  border: solid #1e3b50 2px;
+  border-radius: 15%;
+  background-color: #dddddd;
+  /* border: solid #1e3b50 5px; */
+}
+
+.chat-css {
+  position: absolute;
+  bottom: 2%;
+  margin-left: 5px;
+
+}
+
+.margin-bottom {
+  padding-bottom: 100px;
 }
 
 .mobile-dropDown {

@@ -53,8 +53,8 @@ export default function Chat({ handleClick, setDisplay }) {
 
   return (
     <div className="rounded chat absolute container w-3">
-      <div className="align-items-center border overflow-auto d-flex flex-column align-items-stretch flex-shrink-0 bg-gray-light">
-        <div className="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+      <div className="margin-bottom align-items-center border-chat overflow-auto d-flex flex-column align-items-stretch flex-shrink-0 bg-t-gray shadow-md shadow-2xl">
+        <div className="d-flex align-items-center flex-shrink-0 p-2 link-dark text-decoration-none border-bottom">
         </div>
         <div
           className="list-group list-group-flush text-black w-[250px] border-bottom scrollarea"
@@ -63,6 +63,7 @@ export default function Chat({ handleClick, setDisplay }) {
             maxHeight: "250px"
            }}
         >
+        
           {messages.map((message) => {
             const position = message.sender === user.name ? "speech-receiver" : " speech-sender"
               return (
@@ -74,16 +75,20 @@ export default function Chat({ handleClick, setDisplay }) {
                 </div>
               );
           })}
+        <div>
+          <br/>
+          <br/>
         </div>
       </div>
-      <form onSubmit={submitHandler} className="border-text-area w-[255px]">
+      <form onSubmit={submitHandler} className=" chat-css border-text-area shadow-md shadow-2xl">
         <input
-          className="w-[250px] form-control overflow-auto text-black rounded"
-          placeholder="Write a message"
+          className="w-[240px] form-control overflow-auto text-black rounded"
+          placeholder=" Write a message               ➢ "
           value={text}
           onChange={changeHandler}
         />
       </form>
+    </div>
     </div>
   );
 }
