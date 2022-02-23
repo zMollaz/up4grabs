@@ -117,7 +117,7 @@ export default function ListingPage(props) {
                 </button>
               </div>
             </div>
-            <div className="lg:w-[60%] w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <div className="lg:w-[60%] w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 xs:flex xs:flex-col xs:items-center">
               <h2 className="text-sm title-font text-gray-dark tracking-widest">
                 Up4Grabs
               </h2>
