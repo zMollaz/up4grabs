@@ -90,7 +90,7 @@ export default function ListingPage(props) {
         listingItem={props.listingItem}
       >
         <section className="text-gray-700 body-font overflow-hidden bg-white">
-          <div className=" flex ">
+          <div className="lg:flex lg:flex-row lg:items-start xs:flex xs:flex-col xs:items-center pb-[270px]">
             <div className="w-70 ml-4 flex flex-col ">
               <img
                 alt="ecommerce"
