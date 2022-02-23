@@ -90,8 +90,8 @@ export default function ListingPage(props) {
         listingItem={props.listingItem}
       >
         <section className="text-gray-700 body-font overflow-hidden bg-white">
-          <div className="container px-5 py-24 mx-auto">
-            <div className="lg:w-4/5  mx-auto flex flex-wrap">
+          <div className="lg:flex lg:flex-row lg:items-start xs:flex xs:flex-col xs:items-center pb-[270px]">
+            <div className="w-70 ml-4 flex flex-col ">
               <img
                 alt="ecommerce"
                 className=" w-[430px] sticky self-start mt-6 mr-50 object-contain rounded border border-gray-200"
