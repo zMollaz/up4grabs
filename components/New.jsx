@@ -59,10 +59,10 @@ export default function New({ handleClick, setDisplay }) {
   return (
     <div
       aria-hidden="true"
-      className={`max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
+      className={`full-modal max-w-fill overflow-y-auto overflow-x-auto fixed  right-0 left-0 top-4 z-100 justify-center items-center h-modal md:h-full md:inset-0`}
     >
       <div className="absolute inset-0  w-full  h-full md:h-auto">
-        <div className="flex w-full h-screen absolute opacity-75 bg-t-gray">
+        <div className=" flex w-full h-screen absolute opacity-75 bg-t-gray">
           <button
             onClick={handleClick}
             type="button"
@@ -84,7 +84,7 @@ export default function New({ handleClick, setDisplay }) {
         </div>
         <form
           onSubmit={saveListing}
-          className="left w-5/12 overflow-auto px-4 items-center pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
+          className="center w-5/12 overflow-auto px-4 items-center pb-4 space-y-8 rounded-lg lg:px-8 sm:pb-6  bg-white fixed inset-24 "
           action="#"
         >
           <div>
@@ -136,31 +136,35 @@ export default function New({ handleClick, setDisplay }) {
               required=""
             />
           </div>
+          <div className="flex items-center right-0 top-0 s-between w-full">
+          <div>
           <label
             htmlFor="end_date"
             className="flow-root mt-2 font-bold text-sm text-gray-dark  "
-          >
+            >
             Draw Date
           </label>
-          <div className="flex right-0 top-0 s-between w-full">
             <input
               onChange={changeHandler}
               value={state.end_date}
               name="end_date"
-              className="bg-gray-50 font-bold rounded-lg border-2 text-gray-dark text-sm focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+              className="bg-gray-50 font-bold rounded-lg border-2 text-gray-dark text-sm focus:ring-blue-500 focus:border-blue-500 block w-[210px] p-2.5"
               type="date"
               id="start"
               min="2020-01-01"
               max="2024-12-31"
-            />
+              />
+              </div>
+              <div>
+
             <select
               name="category_id"
               onChange={changeHandler}
-              className="font-bold category-button w-1/2 text-md rounded-md"
+              className="font-bold category-button mt-8 text-md rounded-md"
               defaultValue={0}
             >
               <option disabled value={0}>
-                Select Category
+              Category
               </option>
               <option value={1}>Furniture</option>
               <option value={2}>Toys/Games</option>
@@ -168,6 +172,7 @@ export default function New({ handleClick, setDisplay }) {
               <option value={4}>Home Appliances</option>
               <option value={5}>Books</option>
             </select>
+              </div>
           </div>
           <div className="flex justify-center">
             <div className="max-w-2xl rounded-lg bg-gray-50">

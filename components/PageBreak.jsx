@@ -11,7 +11,7 @@ export default function PageBreak() {
           <hr />
         </div>      
         <section id="listings"></section>
-        <div className="text-center text-gray-dark bg-off-white text-3xl font-extrabold p-4">
+        <div className="text-center text-gray-dark bg-off-white text-5xl font-extrabold mt-8 mb-10 p-4">
           What are other Grabbers putting Up4Grabs?
         </div>
         <div >

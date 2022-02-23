@@ -50,10 +50,10 @@ const main = async () => {
       {
         user_id: 1,
         category_id: 2,
-        title: "Zombie Chase Game",
+        title: "Zombie Tsunami Game",
         description:
           "Bought this for my kids, but sadly they don’t really play with it anymore. Thought I’d give it away. Details… you’re trapped inside an amusement park with the janitor-turned-zombie, but the only way out is find a key in the dark, spooky shed. But be careful! At any moment you could get zombified! If you do become a zombie, you’ll be on a new team–go after other players until you catch them all!",
-        img_src: "https://i.ibb.co/0QtNtGq/zombie-chase-game.jpg",
+        img_src: "https://i.ibb.co/MfHR8C7/zombie.jpg",
         start_date: "2022-02-09",
         end_date: "2022-03-07",
         postal_code: "M2N",
@@ -76,8 +76,8 @@ const main = async () => {
         category_id: 4,
         title: "Tea Kettle Stainless Steel",
         description:
-          "Lenox Whistling Tea Kettle Polished Stainless Steel Classic Design Large 2.5 Qt.",
-        img_src: "https://i.ibb.co/9bBM6m1/tea-kettle.jpg",
+          "Revere Ware Whistling Tea Kettle Polished Stainless Steel Classic Design Large 2.5 Qt.",
+        img_src: "https://i.ibb.co/ZSTm0b0/tea-kettle-vintage.webp",
         start_date: "2022-01-29",
         end_date: "2022-03-01",
         postal_code: "M2N",
@@ -113,7 +113,7 @@ const main = async () => {
         title: "18ft. Single Water Slide",
         description:
           "Easy set-up 18 water slide for a smoother, longer, faster, wetter ride. Includes One 18 ft. Water Slide and One Surf Rider Inflatable. Slide: 18 ft. / 5.49 m, Rider inflated: 22 in. x 12 in. / 56 cm x 30 cm x 10 cm. Ages 5 to 12.",
-        img_src: "https://i.ibb.co/sFQJHpG/H20-GO-water-slide.jpg",
+        img_src: "https://i.ibb.co/mCCMBj8/water-slide.jpg",
         start_date: "2022-02-05",
         end_date: "2022-03-15",
         postal_code: "M2N",
@@ -137,7 +137,7 @@ const main = async () => {
         title: "Microwave Oven",
         description:
           "Samsung 28 L Convection Microwave Oven, Fast preheat and 4 cooking stages. Triple Heating System: Trio convection increases efficiency with three distinct heating sources. Power: 1250 watts; Operating voltage: 230 volts.",
-        img_src: "https://i.ibb.co/WKbthSr/microwave.jpg",
+        img_src: "https://i.ibb.co/4F4jQ3h/microwave-oven.jpg",
         start_date: "2022-01-31",
         end_date: "2022-03-12",
         postal_code: "M2N",
@@ -173,7 +173,7 @@ const main = async () => {
         title: "R/C Monster Truck",
         description:
           "The Monster Jam MEGA El Toro RC is the ultimate monster for kids aged 4 and up. Requires 2 AAA batteries (not included) for the remote control. Dimensions (Overall): 17.5 Inches (H) x 28.5 Inches (W) x 18.6 Inches (D).",
-        img_src: "https://i.ibb.co/grzVwdG/free-spin-master.jpg",
+        img_src: "https://i.ibb.co/h2DMDhr/spin-master.jpg",
         start_date: "2022-02-08",
         end_date: "2022-03-01",
         postal_code: "M6K",
@@ -245,7 +245,7 @@ const main = async () => {
         title: "Apple Keyboard",
         description:
           "This is a 2015 Apple Magic Keyboard in excellent working condition with one issue: there is a bit of a bend on the right-bottom of the keyboard. Bluetooth-enabled Mac computer with OS X v10.11 or later. iOS devices running iOS 9.1 or later. Height: 0.16–0.43 inch (0.41–1.09 cm) Width: 10.98 inches (27.9 cm).",
-        img_src: "https://i.ibb.co/84ngVx6/apple-magic-Keyboard.jpg",
+        img_src: "https://i.ibb.co/h2DMDhr/spin-master.jpg",
         start_date: "2022-02-07",
         end_date: "2022-03-15",
         postal_code: "M6K",
@@ -257,7 +257,7 @@ const main = async () => {
         title: "Air Purifier",
         description:
           "Bionaire 99.99% True HEPA Mini Tower Air Purifier with Allergy Plus Filter Operates quietly to help remove up to 99.99% of airborne allergens such as pollen, dust, mold spores, pet dander and smoke to provide relief from irritants in the air. True HEPA filtration captures and traps particles as small as 0.3 microns so you can breathe comfortably.Filters included.",
-        img_src: "https://i.ibb.co/HpBJDY1/air-humidifier.jpg",
+        img_src: "https://i.ibb.co/s9WMRS9/air-purifier-2.jpg",
         start_date: "2022-01-30",
         end_date: "2022-03-12",
         postal_code: "M6K",

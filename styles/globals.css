@@ -63,9 +63,7 @@
   z-index: 500;
 }
 
-.left {
-  margin-left: 250px;
-}
+
 
 .icon:hover {
   fill: #DA4567;
@@ -81,6 +79,8 @@
   margin-bottom: 3px;
   text-align: center;
   margin-left: 40px;
+  height: 45px;
+  width: 190px;
 }
 
 .drop-button {
@@ -89,10 +89,10 @@
 
 .chat {
   position: fixed;
-  bottom: 10%;
-  right: 17%;
+  bottom: 8%;
+  right: 0%;
   border-radius: 5%;
-  margin-right: 50px;
+  margin-right: 270px;
 }
 
 .border {
@@ -107,26 +107,42 @@
 
 .mobile-dropDown {
   position: absolute;
-  top: 117px;
+  top: 64px;
   background-color: #1e3b50;
   border-bottom-left-radius: 10%;
   border-bottom-right-radius: 10%;
 }
 
-/* html,
-body {
-  padding: 0;
-  margin: 0;
-  color:aqua;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@media (min-width: 500px) and (max-width: 768px) {
+  .hidden-mobile {
+    display: none;
+  } 
+  .full-modal {
+    width: 100vw;
+    height: 100vh;
+    top:0%;
+  } 
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+
+@media (min-width: 768px)  {
+  .mobile-menu {
+    display: none;
+  }
 }
 
-* {
-  box-sizing: border-box;
-} */
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height:75%;
+  width:50vh;
+  transform: translate(-50%, -50%);
+}
+
+.margin {
+padding-top: 25px;
+background-color: #f7f9fb;
+padding-bottom: 75px;
+}
