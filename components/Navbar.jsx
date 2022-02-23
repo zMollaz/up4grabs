@@ -31,10 +31,10 @@ export default function Navbar(props) {
 
   return (
     <div className="navbar rounded sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
-      <div className="md:hidden flex items-center">
+      <div class="md:hidden flex items-center">
         <button
           onClick={handleDropdown}
-          className="outline-none mobile-menu-button"
+          class="pr-2 outline-none mobile-menu-button"
         >
           <svg
             className="w-6 h-6 text-gray-500"
@@ -51,21 +51,21 @@ export default function Navbar(props) {
         </button>
       </div>
       {/* Mobile menu  */}
-      <div className={`${isHidden} mobile-menu flex-col mobile-dropDown`}>
-        <ul className="">
+      <div class={`${isHidden} mobile-menu flex-col mobile-dropDown`}>
+        <ul class="">
           <li>
             <Link href="#listings">
-              <a className=" ml-2.5 mt-0.5 btn input input-ghost btn-sm rounded-btn">
+              <a className="ml-2.5 mt-0.5 btn input input-ghost btn-sm rounded-btn">
                 <svg
-                  className="w-7 h-7  text-white"
+                  class="w-7 h-7  text-white"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  strokeWidth="2"
+                  stroke-width="2"
                   stroke="currentColor"
                   fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 >
                   {" "}
                   <path stroke="none" d="M0 0h24v24H0z" />{" "}
@@ -99,7 +99,7 @@ export default function Navbar(props) {
         </ul>
         <a
           onClick={handleClickNew}
-          className=" mb-2 mt-1 btn input input-ghost btn-sm rounded-btn"
+          className="mb-2 mt-1 btn input input-ghost btn-sm rounded-btn"
         >
           <svg
             className="h-6 w-6 text-white "
@@ -132,12 +132,12 @@ export default function Navbar(props) {
       <div className="flex-1">
         <div className="items-stretch lg:flex">
           <Link href="#listings">
-            <a className="hidden sm:block btn input input-ghost btn-sm rounded-btn">
+            <a className="hidden-mobile btn input input-ghost btn-sm rounded-btn">
               Listings
             </a>
           </Link>
           <Link href="/users/likes">
-            <a className="hidden sm:block btn input input-ghost btn-sm rounded-btn mx-3">
+            <a className="hidden-mobile btn input input-ghost btn-sm rounded-btn mx-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -156,7 +156,7 @@ export default function Navbar(props) {
 
           <a
             onClick={handleClickNew}
-            className="hidden sm:block btn input input-ghost btn-sm rounded-btn"
+            className="hidden-mobile btn input input-ghost btn-sm rounded-btn"
           >
             <svg
               className="mt-0.5 h-6 w-6 text-white "
@@ -199,11 +199,11 @@ export default function Navbar(props) {
         {/* for the search icon copy the starting a tag till the ending a tag  */}
         <a
           onClick={() => onSearch(searchValue)}
-          className="btn lg:btn-sm input input-ghost lg:mr-5"
+          className="btn btn-sm input input-ghost lg:mr-5"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="lg:h-6 lg:w-6 "
+            className="h-6 w-6 "
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -221,7 +221,7 @@ export default function Navbar(props) {
         <div className="flex ">
           <label htmlFor="select-user">
             <svg
-              className="h-6 w-6 text-white mt-1"
+              className="mb-50 h-6 w-6 text-white mt-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -240,7 +240,7 @@ export default function Navbar(props) {
               onChange={(e) => {
                 switchUser(e.target.value);
               }}
-              className=" text-white w-24 btn btn-sm input input-ghost"
+              className=" text-white w-29 btn btn-sm input input-ghost"
               value={user.id}
             >
               <option value="0" className="" disabled>
