@@ -58,7 +58,6 @@ export default function Countdown({
       axios
         .post("/api/email", data)
         .then((response) => {
-          console.log(response);
         })
         .catch((error) => console.log(error));
 
@@ -69,7 +68,6 @@ export default function Countdown({
       axios
         .post("/api/winner", winnerData)
         .then((response) => {
-          console.log(555, response);
         })
         .catch((error) => console.log(error));
       return itemWinner;
@@ -86,11 +84,9 @@ export default function Countdown({
           const resWinner = response.data.winner;
           const getWinner = users.find((user) => user.id === resWinner.user_id);
           setWinner(getWinner)
-          console.log(747, getWinner)
-          console.log(888, winner)
         })
         .catch((err) => console.log(err))
-      }, 100)
+      }, 400)
     }   
 
     //might need clean up because of memory leak
@@ -137,4 +133,3 @@ export default function Countdown({
     </>
   );
 }
-//test t
