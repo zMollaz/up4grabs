@@ -245,7 +245,7 @@ const main = async () => {
         title: "Apple Keyboard",
         description:
           "This is a 2015 Apple Magic Keyboard in excellent working condition with one issue: there is a bit of a bend on the right-bottom of the keyboard. Bluetooth-enabled Mac computer with OS X v10.11 or later. iOS devices running iOS 9.1 or later. Height: 0.16–0.43 inch (0.41–1.09 cm) Width: 10.98 inches (27.9 cm).",
-        img_src: "https://i.ibb.co/h2DMDhr/spin-master.jpg",
+        img_src: "https://i.ibb.co/51tntRT/apple-keyboard2.jpg",
         start_date: "2022-02-07",
         end_date: "2022-03-15",
         postal_code: "M6K",

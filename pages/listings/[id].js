@@ -79,6 +79,7 @@ export default function ListingPage(props) {
       user_id: user.id,
       listing_id: props.listingId,
     });
+    
     const getResponse = await axios.get(`/api/likes/${props.listingId}`);
     const biddings = getResponse.data.likes;
     setBidCount(biddings.length);

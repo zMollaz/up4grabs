@@ -54,7 +54,6 @@ export default function Countdown({
       listingImage: listing.img_src,
     };
 
-
     if (itemWinner) {
       axios
         .post("/api/email", data)
@@ -62,18 +61,41 @@ export default function Countdown({
           console.log(response);
         })
         .catch((error) => console.log(error));
-        return itemWinner;
-      }
-    };
-    
+
+      const winnerData = {
+        user_id: itemWinner.id,
+        listing_id: listing.id,
+      };
+      axios
+        .post("/api/winner", winnerData)
+        .then((response) => {
+          console.log(555, response);
+        })
+        .catch((error) => console.log(error));
+      return itemWinner;
+    }
+  };
+
   useEffect(async () => {
     if (timeUp) {
-      const winner = await randomWinner(users, listingItem)
-      setWinner(winner);
-    }
+      randomWinner(users, listingItem);
+      setTimeout(() => {
+
+        axios.get(`/api/winner/${listingItem.id}`)
+        .then((response)=>{
+          const resWinner = response.data.winner;
+          const getWinner = users.find((user) => user.id === resWinner.user_id);
+          setWinner(getWinner)
+          console.log(747, getWinner)
+          console.log(888, winner)
+        })
+        .catch((err) => console.log(err))
+      }, 100)
+    }   
 
     //might need clean up because of memory leak
   }, [timeUp]);
+
 
   return (
     <>
@@ -82,16 +104,6 @@ export default function Countdown({
           {data} until draw!
         </div>
       ) : (
-        // <div
-        //   class="px-4 py-3 leading-normal text-[#15803D] bg-[#DCFCE7] rounded-lg"
-        //   role="alert"
-        // >
-        //   <p class="font-bold">Our lucky winner is </p>
-        //   <p>{winner?.name}!!!</p>
-        // </div>
-        // <div className="py-2 border-gray-200 font-bold text-green text-xl grid grid-flow-col gap-2 text-center auto-cols-max">
-        //   Winner is {winner?.name}
-        // </div>
         <div className="flex mt-3 ">
           <div className="m-auto ">
             <div className="bg-[#DCFCE7] shadow-md px-4 flex flex-row rounded-lg animate-bounce">
