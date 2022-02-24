@@ -41,7 +41,7 @@ const main = async () => {
         title: "Eagan Multipanel Mirror",
         description:
           "Iron metal frame with a bronze finish; enhanced with metal rosettes. Mounts vertically or horizontally; mounting hardware is included. Star detailing at each intersection.",
-        img_src: "https://i.ibb.co/5RYKb2d/wall-mirror.jpg",
+        img_src: "https://i.ibb.co/1QQ8w8K/multipanel-mirror2-0.jpg",
         start_date: "2022-02-10",
         end_date: "2022-03-08",
         postal_code: "M2N",
@@ -185,7 +185,7 @@ const main = async () => {
         title: "Industrial Flashlight",
         description:
           "Small and compact, this general purpose flashlight is suitable for use in personal applications ranging from reading books and maps, to searching through crawlspaces and storage units. Requires AA batteries.",
-        img_src: "https://i.ibb.co/sgkzv8p/industrialflashlight.jpg",
+        img_src: "https://i.ibb.co/9HjbBpt/flashlight.jpg",
         start_date: "2022-02-01",
         end_date: "2022-03-08",
         postal_code: "M6K",
@@ -233,7 +233,7 @@ const main = async () => {
         title: "Rubber ducks",
         description:
           "5 soft rubber ducks. Easy-to-hold for tiny hands. Multi-purpose play value. Easy to wipe clean. BPA-Free",
-        img_src: "https://i.ibb.co/QPF3XFW/Fun-time-ducks.jpg",
+        img_src: "https://i.ibb.co/dKbGQXk/rubber-ducks-2-0.jpg",
         start_date: "2022-02-04",
         end_date: "2022-03-10",
         postal_code: "M6K",
