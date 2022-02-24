@@ -3,12 +3,9 @@ import axios from "axios";
 
 export default function Countdown({
   end_date,
-  biddings,
-  user,
   users,
   listingItem,
   timeUp,
-  setTimeUp,
   winner,
   setWinner,
 }) {
