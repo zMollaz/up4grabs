@@ -8,12 +8,19 @@ We would like to present you, “Up4Grabs”, an environmentally-focused platfor
 Up4Grabs allows users to divert unwanted, but otherwise valuable items, from the landfill and into new, loving homes – but only if you are lucky enough to win the draw…
 
 ### Checkout the GIF for a quick demo:
+!["Demo Gif of Up4Grabs"]()
 
 
-## Tech Stack
-- Next.js
-- Prisma
-- Tailwind CSS
+## Tech Stack/Dependencies
+* Next.js
+* React
+* Tailwind CSS 
+* Prisma
+* Node
+* SendGrid
+* Socket.IO
+* MapBox
+* ImgBB
 
 ## Getting Started
 
@@ -26,8 +33,4 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-
-## Dependencies
-
 
