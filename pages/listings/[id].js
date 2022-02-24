@@ -121,9 +121,9 @@ export default function ListingPage(props) {
                 </button>
                 </div>
                  <div className="flex flex-col">
-                <button class="bg-gray-dark mt-[10px] ml-[105px] items-center w-40 btn gap-2">
+                <button className="bg-gray-dark mt-[10px] ml-[105px] items-center w-40 btn gap-2">
                   Bid Count 
-                  <div class="badge badge-secondary">{bidCount}</div>
+                  <div className="badge badge-secondary">{bidCount}</div>
                 </button>
                 </div>
             </div>
