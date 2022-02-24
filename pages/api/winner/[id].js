@@ -11,7 +11,6 @@ export default async function winnerHandler(req, res) {
         listing_id: Number(req.query.id),
       },
     });
-    console.log("get winner", winner);
     res.json({ winner });
   }
 

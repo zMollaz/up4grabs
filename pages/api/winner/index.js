@@ -11,7 +11,6 @@ export default async function winnerHandler(req, res) {
     const winner = await prisma.Winners.create({
       data: { user_id, listing_id },
     });
-    console.log("post winner", winner);
     res.json({ winner });
   }
 }

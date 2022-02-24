@@ -26,10 +26,10 @@ export default function Chat({ handleClick, setDisplay }) {
 
     socketInitializer();
 
-    // return () => {
-    //   socket.disconnect() // gives an error after some time, invistigaet later
-    //   console.log("disconnected")
-    // };
+    return () => {
+      socket.disconnect() // gives an error after some time, invistigaet later
+      console.log("disconnected")
+    };
     
   }, []);
 
@@ -65,10 +65,12 @@ export default function Chat({ handleClick, setDisplay }) {
            }}
         >
         
-          {messages.map((message) => {
+          {messages.map((message, index) => {
             const position = message.sender === user.name ? "speech-receiver" : " speech-sender"
               return (
-                <div className={`flex flex-col ${position} m-2`}>
+                <div 
+                key={index}
+                className={`flex flex-col ${position} m-2`}>
                   <div className="d-flex w-fit align-items-center justify-content-between">
                     <strong className="mb-1 p-1">@{message.sender}</strong>
                   </div>

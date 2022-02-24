@@ -25,8 +25,6 @@ export default async function emailHandler(req, res) {
       template_id: "d-9b54ba70537b492192ade1c98b7df59b",     //template 2
     };
 
-    console.log("123", message);
-
     sgMail
       .send(message)
       .then((response) => {

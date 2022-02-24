@@ -9,7 +9,6 @@ const SocketHandler = (req, res) => {
     res.socket.server.io = io;
     io.on("connection", (socket) => {
       socket.on("sent", (messagesArr) => {
-        console.log("Recieved at the back", messagesArr)
         socket.broadcast.emit("return", messagesArr);
       });
     });
