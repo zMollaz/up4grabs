@@ -26,10 +26,11 @@ export default function Chat({ handleClick, setDisplay }) {
 
     socketInitializer();
 
-    return () => {
-      socket.disconnect(); // gives an error after some time, invistigaet later
-      console.log("disconnected")
-    };
+    // return () => {
+    //   socket.disconnect() // gives an error after some time, invistigaet later
+    //   console.log("disconnected")
+    // };
+    
   }, []);
 
   const changeHandler = (e) => {
