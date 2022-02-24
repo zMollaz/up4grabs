@@ -58,10 +58,12 @@ export default function ListingPage(props) {
   const [color, setColor] = useState("none");
   const [timeUp, setTimeUp] = useState(false);
   const [winner, setWinner] = useState({});
-
+  const [bidCount, setBidCount] = useState(0);
+  
   const likeHistory = async () => {
     const response = await axios.get(`/api/likes/${props.listingId}`);
     const biddings = response.data.likes;
+    setBidCount(biddings.length)
     const bidders = biddings.map((bidding) => bidding.user_id);
     const userWithPriorLike = bidders.find((bidder) => bidder === user.id);
     if (userWithPriorLike !== undefined) {
@@ -73,11 +75,13 @@ export default function ListingPage(props) {
   useEffect(() => likeHistory(), [user]);
 
   const handleLike = async () => {
-    const response = await axios.post("/api/likes", {
+    const postResponse = await axios.post("/api/likes", {
       user_id: user.id,
       listing_id: props.listingId,
     });
-
+    const getResponse = await axios.get(`/api/likes/${props.listingId}`);
+    const biddings = getResponse.data.likes;
+    setBidCount(biddings.length)
     setColor("#DA4567"); // may want to remove this line
   };
 
@@ -116,6 +120,7 @@ export default function ListingPage(props) {
                   </svg>
                 </button>
               </div>
+              <div>Bid Count = {bidCount}</div>
             </div>
             <div className="lg:w-[60%] w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 xs:flex xs:flex-col xs:items-center">
               <h2 className="text-sm title-font text-gray-dark tracking-widest">
