@@ -40,6 +40,12 @@ model Biddings {
   listing_id Int
 }
 
+model Winners {
+  id         Int @id @default(autoincrement())
+  user_id    Int
+  listing_id Int
+}
+
 model Conversation {
   id          Int       @id @default(autoincrement())
   sender_id   Int
