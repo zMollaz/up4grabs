@@ -30,7 +30,7 @@ export default function Navbar(props) {
   });
 
   return (
-    <div className="navbar rounded sticky sm:flex flex-wrap  top-0 z-index shadow-lg bg-gray-dark text-off-white">
+    <div className="navbar z-50 rounded sticky sm:flex flex-wrap  top-0 shadow-lg bg-gray-dark text-off-white">
       <div className="md:hidden flex items-center">
         <button
           onClick={handleDropdown}

@@ -116,7 +116,7 @@ export default function New({ handleClick, setDisplay }) {
               type="text"
               name="description"
               placeholder="Include important details about what's Up4Grabs! Do you need this item gone by a certain date? Dimensions? Weight? Pick up or meet-up only? New or used condition? Let other Grabbers know!"
-              className="bg-gray-50 border-2 text-gray-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-white border-2 text-gray-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required=""
             />
           </div>
